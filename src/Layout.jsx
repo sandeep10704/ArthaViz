@@ -1,9 +1,21 @@
-import React from 'react'
+import  HeaderLayout from "./Components/Header/HeaderLayout"
+import FooterLayout from "./Components/Footer/FooterLayout"
+
+import { Outlet } from "react-router-dom";
 
 const Layout = () => {
-  return (
-    <div>Layout</div>
-  )
-}
+  console.log("HeaderLayout:", HeaderLayout);
+console.log("FooterLayout:", FooterLayout);
 
-export default Layout
+  return (
+    <>
+      <HeaderLayout />
+      <main>
+        <Outlet />
+      </main>
+      <FooterLayout />
+    </>
+  );
+};
+
+export default Layout;
