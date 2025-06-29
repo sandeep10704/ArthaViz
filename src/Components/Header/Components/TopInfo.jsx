@@ -11,7 +11,6 @@ const TopInfo = () => {
         width: '100%',
         height: '45px',
         fontFamily: 'Outfit',
-        fontWeight: 100,
       }}
     >
       {/* Column 1 */}
@@ -21,7 +20,7 @@ const TopInfo = () => {
         p={2}
         borderRight={CommonCss.line}
       >
-        <Typography variant="body1">Need help? Call us 112233344455</Typography>
+        <Typography variant="body1" sx={{fontWeight: 100}}>Need help? Call us 112233344455</Typography>
       </Box>
 
       {/* Column 2 */}
@@ -31,12 +30,12 @@ const TopInfo = () => {
         p={2}
         borderRight={CommonCss.line}
       >
-        <Typography variant="body1">Summer sale discount off 60%! Shop Now</Typography>
+        <Typography variant="body1" sx={{fontWeight: 100}}>Summer sale discount off 60%! Shop Now</Typography>
       </Box>
 
       {/* Column 3 */}
       <Box flex={1} textAlign="center" p={2}>
-        <Typography variant="body1">2-3 business days delivery & free returns</Typography>
+        <Typography variant="body1" sx={{fontWeight: 100}}>2-3 business days delivery & free returns</Typography>
       </Box>
     </Box>
   );
