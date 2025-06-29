@@ -9,7 +9,7 @@ const HeaderLayout = () => {
     
     <TopInfo/>
     <Navbar/>
-    {/* <PageHeader/> */}
+    <PageHeader/>
     </>
   )
 }

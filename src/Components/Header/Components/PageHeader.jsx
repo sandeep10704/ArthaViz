@@ -1,13 +1,30 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
 import '@fontsource/outfit/100.css';
 import '@fontsource/outfit/400.css';
 
 const PageHeader = () => {
-  const { page } = useParams();
+  const location = useLocation();
+  const currentPath = location.pathname;
 
-  const pageTitle = page ? page.replace(/-/g, ' ') : 'Page';
+  console.log("Current URL Path:", currentPath);
+
+  // Mapping of paths to titles
+  const pageTitles = {
+    '/about': 'About Us',
+    '/shop': 'Our Shop',
+    '/blogs': 'Latest Blogs',
+    '/contact': 'Contact Us',
+    '/cart': 'Your Cart',
+  };
+
+  // If current path is not in pageTitles, do not render anything
+  if (!pageTitles[currentPath]) {
+    return null;
+  }
+
+  const pageTitle = pageTitles[currentPath];
 
   return (
     <Box
@@ -60,7 +77,7 @@ const PageHeader = () => {
             display: 'inline',
           }}
         >
-          {pageTitle}
+          {currentPath.replace('/', '')}
         </Typography>
       </Box>
     </Box>

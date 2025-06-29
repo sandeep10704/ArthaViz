@@ -4,8 +4,7 @@ import FooterLayout from "./Components/Footer/FooterLayout"
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {
-  console.log("HeaderLayout:", HeaderLayout);
-console.log("FooterLayout:", FooterLayout);
+
 
   return (
     <>
