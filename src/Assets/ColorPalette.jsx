@@ -1,5 +1,5 @@
 
-import React from 'react'
+
 
 const ColorPalette ={
     orange:'#FF6543',
