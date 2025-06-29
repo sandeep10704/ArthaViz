@@ -4,7 +4,7 @@ import {
   List, ListItemButton, ListItemText, useMediaQuery, useTheme, Divider
 } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
-import '@fontsource/outfit'; 
+import '@fontsource/outfit';
 
 import '@fontsource/outfit/100.css';
 import '@fontsource/outfit/500.css';
@@ -48,9 +48,25 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
-  const drawerContent = (
-    <Box sx={{ width: 250, display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <List sx={{ flexGrow: 1 }}>
+ const drawerContent = (
+  <Box
+    sx={{
+      width: 250,
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      position: 'relative',
+    }}
+  >
+    {/* Scrollable Menu List */}
+    <Box
+      sx={{
+        overflowY: 'auto',
+        pb: 16, // leaves space for bottom section so it's not hidden
+        flex: 1,
+      }}
+    >
+      <List disablePadding>
         {menuItems.map(({ label, path }) => (
           <ListItemButton
             key={label}
@@ -62,7 +78,34 @@ const Navbar = () => {
           </ListItemButton>
         ))}
       </List>
-      <Divider />
+    </Box>
+
+    {/* Fixed Bottom Section */}
+    <Box
+      sx={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        width: '100%',
+        bgcolor: '#fff', // background to overlay properly
+        borderTop: '1px solid #ddd',
+        pt: 1,
+      }}
+    >
+      {/* Info Texts */}
+      <Box sx={{ px: 2 }}>
+        <Typography variant="body2" sx={{ fontFamily: 'Outfit', fontWeight: 100, fontSize: '13px', mb: 0.5 }}>
+          Need help? Call us 112233344455
+        </Typography>
+        <Typography variant="body2" sx={{ fontFamily: 'Outfit', fontWeight: 100, fontSize: '13px', mb: 0.5 }}>
+          Summer sale discount 60% off! Shop Now
+        </Typography>
+        <Typography variant="body2" sx={{ fontFamily: 'Outfit', fontWeight: 100, fontSize: '13px' }}>
+          2-3 business days delivery & free returns
+        </Typography>
+      </Box>
+
+      {/* Icon Buttons */}
       <Box sx={{ display: 'flex', justifyContent: 'space-around', p: 2 }}>
         {iconLinks.map(({ icon, path }, i) => (
           <IconButton
@@ -75,30 +118,35 @@ const Navbar = () => {
         ))}
       </Box>
     </Box>
-  );
+  </Box>
+);
+
+
+
+
 
   return (
     <>
       <AppBar position="static" color="inherit" elevation={0}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           {/* Logo */}
-          <Typography
-            variant="h6"
-            sx={{
-              fontWeight: 500,
-              letterSpacing: '2px',
-              cursor: 'pointer',
-              fontFamily: 'Outfit',
-              fontSize: '31px',
-              lineHeight: '100%',
-              textTransform: 'uppercase',
-              padding:"0 0 0 180px",
-            }}
-            onClick={() => navigate('/')}
-          >
-            SHOP<span style={{ fontWeight: 100 }}>LITE</span>
-          </Typography>
-
+          <Box sx={{ ml: { xs: 1, sm: 3, md: 10, lg: 20 } }}>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 500,
+                letterSpacing: '2px',
+                cursor: 'pointer',
+                fontFamily: 'Outfit',
+                fontSize: '31px',
+                lineHeight: '100%',
+                textTransform: 'uppercase',
+              }}
+              onClick={() => navigate('/')}
+            >
+              SHOP<span style={{ fontWeight: 100 }}>LITE</span>
+            </Typography>
+          </Box>
 
           {/* Desktop Menu */}
           {!isMobile && (
@@ -115,7 +163,7 @@ const Navbar = () => {
                   }}
                   onClick={() => handleNavigate(path)}
                 >
-                  <Typography variant="body1" sx={{fontFamily: 'Outfit',}}>{label}</Typography>
+                  <Typography variant="body1" sx={{ fontFamily: 'Outfit', }}>{label}</Typography>
                   {label === 'PAGES' && <ArrowDropDownIcon fontSize="small" />}
                 </Box>
               ))}
@@ -129,7 +177,7 @@ const Navbar = () => {
                 <IconButton
                   key={i}
                   onClick={() => handleNavigate(path)}
-                  sx={{ color: isActive(path) ? ColorPalette.orange : 'inherit',fontFamily: 'Outfit', }}
+                  sx={{ color: isActive(path) ? ColorPalette.orange : 'inherit', fontFamily: 'Outfit', }}
                 >
                   {icon}
                 </IconButton>
