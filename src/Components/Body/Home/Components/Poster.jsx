@@ -41,8 +41,8 @@ const Poster = ({ direction = 'right' }) => {
                 sx={{
                     position: isSmallScreen ? 'relative' : 'absolute',
                     [isLeft ? 'left' : 'right']: isSmallScreen ? 'auto' : '190px',
-                    width: isSmallScreen ? '100%' : '720px',
-                    height: isSmallScreen ? '250px' : '760px',
+                    width: isSmallScreen ? '100%' : '750px',
+                    height: isSmallScreen ? '250px' : '750px',
                     borderRadius: isSmallScreen ? 0 : '50%',
                     backgroundColor: '#f3f3f3',
                     display: 'flex',
@@ -56,8 +56,8 @@ const Poster = ({ direction = 'right' }) => {
             >
                 <Box
                     sx={{
-                        width: isSmallScreen ? '300px' : '750px',
-                        height: isSmallScreen ? '300px' : '750px',
+                        width: isSmallScreen ? '300px' : '800px',
+                        height: isSmallScreen ? '300px' : '800px',
                         position: 'relative',
                     }}
                 >

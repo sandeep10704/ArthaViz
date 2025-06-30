@@ -1,0 +1,32 @@
+import React from 'react';
+import { Box, Typography } from '@mui/material';
+import '@fontsource/outfit/200.css';
+
+const TextHeading = ({text}) => {
+  return (
+    <Box display="flex" alignItems="center">
+      <Typography
+        variant="h6"
+        sx={{
+          fontFamily: "Outfit",
+          letterSpacing: '0.2em',
+          fontWeight: 200,
+          fontSize: { xs: '20px', sm: '24px', md: '28px' },
+          lineHeight: { xs: 1.2, sm: 1.3, md: 1.4 }, 
+        }}
+      >
+        {text}
+      </Typography>
+      <Box
+        ml={2}
+        flexGrow={1}
+        sx={{
+          height: { xs: '10px', md: '14px' }, 
+          backgroundImage: 'repeating-linear-gradient(-45deg, #ccc, #ccc 1px, transparent 2px, transparent 6px)',
+        }}
+      />
+    </Box>
+  );
+};
+
+export default TextHeading;

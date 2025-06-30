@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   AppBar, Toolbar, Typography, IconButton, Box, Drawer,
-  List, ListItemButton, ListItemText, useMediaQuery, useTheme, Divider
+  List, ListItemButton, ListItemText, useMediaQuery, useTheme
 } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '@fontsource/outfit';
@@ -87,7 +87,7 @@ const Navbar = () => {
         bottom: 0,
         left: 0,
         width: '100%',
-        bgcolor: '#fff', // background to overlay properly
+        bgcolor: '#fff', 
         borderTop: '1px solid #ddd',
         pt: 1,
       }}

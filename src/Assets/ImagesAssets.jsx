@@ -10,5 +10,9 @@ const ImagesAssets ={
     FlipKart:require('./Images/FlipKart.png'),
     Visa:require('./Images/visa.png'),
     PayPal:require('./Images/PayPal.png'),
+    Post01:require('./Images/Post01.jpg'),
+    Post02:require('./Images/Post02.jpg'),
+    Post03:require('./Images/Post03.jpg'),
+    Post04:require('./Images/Post04.jpg'),
 }
 export default ImagesAssets;

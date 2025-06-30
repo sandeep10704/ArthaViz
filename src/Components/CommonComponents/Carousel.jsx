@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Box, IconButton } from '@mui/material';
+import { Box, IconButton, useMediaQuery } from '@mui/material';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 
 const Carousel = ({ items, itemsToShow = 1 }) => {
     const totalSlides = Math.ceil(items.length / itemsToShow);
     const [currentSlide, setCurrentSlide] = useState(0);
+    const isSmallScreen = useMediaQuery('(max-width:600px)');
 
     const handlePrev = () => {
         setCurrentSlide((prev) =>
@@ -37,6 +38,7 @@ const Carousel = ({ items, itemsToShow = 1 }) => {
                     transform: `translateX(-${translateXPercent}%)`,
                     transition: 'transform 0.6s ease-in-out',
                     height: '100%',
+                    padding: isSmallScreen ? "0 0 0 25px" : "0px",
                 }}
             >
                 {items.map(({ Component, props }, index) => (
@@ -62,13 +64,13 @@ const Carousel = ({ items, itemsToShow = 1 }) => {
                     left: '10px',
                     transform: 'translateY(-50%)',
                     zIndex: 10,
-                    backgroundColor: 'rgba(255,255,255,0.7)',
-                    '&:hover': { backgroundColor: 'rgba(255,255,255,0.9)' },
+                    backgroundColor: 'transparent', // fully transparent background
+                    '&:hover': { backgroundColor: 'rgba(255,255,255,0.2)' }, // optional hover
                     height: '50px',
                     width: '50px',
                 }}
             >
-                <ArrowBackIos />
+                <ArrowBackIos sx={{ color: 'rgba(0,0,0,0.4)' }} /> {/* Adjust transparency */}
             </IconButton>
 
             <IconButton
@@ -79,14 +81,15 @@ const Carousel = ({ items, itemsToShow = 1 }) => {
                     right: '10px',
                     transform: 'translateY(-50%)',
                     zIndex: 10,
-                    backgroundColor: 'rgba(255,255,255,0.7)',
-                    '&:hover': { backgroundColor: 'rgba(255,255,255,0.9)' },
+                    backgroundColor: 'transparent', // fully transparent background
+                    '&:hover': { backgroundColor: 'rgba(255,255,255,0.2)' },
                     height: '50px',
                     width: '50px',
                 }}
             >
-                <ArrowForwardIos />
+                <ArrowForwardIos sx={{ color: 'rgba(0,0,0,0.4)' }} /> {/* Adjust transparency */}
             </IconButton>
+
         </Box>
     );
 };
