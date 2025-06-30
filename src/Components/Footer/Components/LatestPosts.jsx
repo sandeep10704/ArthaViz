@@ -4,9 +4,16 @@ import TextHeading from '../../CommonComponents/TextHeading';
 import PostCard from '../../CommonComponents/PostCard';
 import ImagesAssets from '../../../Assets/ImagesAssets';
 import Carousel from '../../CommonComponents/Carousel'; // Adjust the path based on your project structure
+import { useLocation } from 'react-router';
 
 function LatestPosts() {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
+   const location = useLocation(); 
+
+
+  if (location.pathname === '/blogs') {
+    return null;
+  }
 
   const posts = [
     {
