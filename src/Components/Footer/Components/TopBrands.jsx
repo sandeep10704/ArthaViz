@@ -19,7 +19,7 @@ const TopBrands = () => {
         justifyContent: 'space-between',
         alignItems: 'center',
         flexWrap: isSmall ? 'wrap' : 'nowrap',
-        gap: isSmall ? 2 : 0,
+        gap: (isSmall) ? 2 : 0,
         padding: isSmall ? '30px 20px' : '100px 190px',
         borderTop: '1px solid #E3E3E3',
         borderBottom: '1px solid #E3E3E3',

@@ -12,7 +12,8 @@ const TextHeading = ({text}) => {
           letterSpacing: '0.2em',
           fontWeight: 200,
           fontSize: { xs: '20px', sm: '24px', md: '28px' },
-          lineHeight: { xs: 1.2, sm: 1.3, md: 1.4 }, 
+          lineHeight: { xs: 1.2, sm: 1.3, md: 1.4 },
+          textTransform:"uppercase" 
         }}
       >
         {text}

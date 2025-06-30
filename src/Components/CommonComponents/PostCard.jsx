@@ -9,11 +9,16 @@ const PostCard = ({ data }) => {
   const [expanded, setExpanded] = useState(false);
 
   const isSmallScreen = useMediaQuery("(max-width:600px)");
+  const isMediumScreen = useMediaQuery("(max-width:1440px)");
 
-  const baseWidth = 345; // original width
-  const reducedWidth = baseWidth * 0.8; // reduce by 10%
+  const baseWidth = 345;
+  const baseImageWidth = 325;
 
-  const cardWidth = isSmallScreen ? `${reducedWidth}px` : `${baseWidth}px`;
+  // Calculate scale
+  const scale = isSmallScreen ? 0.8 : (isMediumScreen ? (5 / 7) : 1);
+
+  const cardWidth = `${baseWidth * scale}px`;
+  const imageWidth = `${baseImageWidth * scale}px`;
 
   const handleToggle = () => {
     setExpanded(!expanded);
@@ -53,7 +58,7 @@ const PostCard = ({ data }) => {
           </Typography>
         </Box>
 
-        <Box width={isSmallScreen ? `${325 * 0.9}px` : "325px"} height="216px" overflow="hidden" mb={1}>
+        <Box width={imageWidth} height="216px" overflow="hidden" mb={1}>
           <img
             src={image}
             alt={textHeading}

@@ -28,7 +28,7 @@ const Carousel = ({ items, itemsToShow = 1 }) => {
                 position: 'relative',
                 width: '100%',
                 overflow: 'hidden',
-                height: '100vh',
+                height: 'auto',
             }}
         >
             <Box

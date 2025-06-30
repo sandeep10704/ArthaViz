@@ -8,18 +8,19 @@ const FooterLayout = lazy(() => import("./Components/Footer/FooterLayout"));
 const Layout = () => {
   return (
     <>
-      <Suspense fallback={<div>Loading Header...</div>}>
-        <HeaderLayout />
-      </Suspense>
+  <Suspense fallback={<div>Loading Header...</div>}>
+    <HeaderLayout />
+  </Suspense>
 
-      <main>
-        <Outlet />
-      </main>
+  <main style={{ paddingTop: '100px' }}>
+    <Outlet />
+  </main>
 
-      <Suspense fallback={<div>Loading Footer...</div>}>
-        <FooterLayout />
-      </Suspense>
-    </>
+  <Suspense fallback={<div>Loading Footer...</div>}>
+    <FooterLayout />
+  </Suspense>
+</>
+
   );
 };
 

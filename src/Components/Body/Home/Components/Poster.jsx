@@ -1,12 +1,28 @@
 import React from 'react';
-import { Box, Typography, Button, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Typography, Button, useMediaQuery, useTheme, styled } from '@mui/material';
 import ImagesAssets from '../../../../Assets/ImagesAssets';
 import SplitText from '../../../CommonComponents/SplitText';
 import AnimatedContent from '../../../CommonComponents/AnimatedContent';
 
 const Poster = ({ direction = 'right' }) => {
+
+    const RotatingImage = styled('img')({
+        width: '220%',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%) rotate(21deg)',
+        filter: 'contrast(95%) brightness(220%)',
+        animation: 'rotateScale 5s infinite ease-in-out',
+        animationPlayState: 'running',
+        '&:hover': {
+            animationPlayState: 'paused',
+        },
+    });
+
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const isMidScreen = useMediaQuery(theme.breakpoints.between('sm', 'lg')); // mid screen detection
 
     const isLeft = direction === 'left';
 
@@ -14,16 +30,47 @@ const Poster = ({ direction = 'right' }) => {
         console.log('Animation completed!');
     };
 
+    // Calculate sizes based on screen
+    const imageWidth = isSmallScreen
+        ? '100%'
+        : isMidScreen
+            ? `${(750 * 3) / 7}px` // 5/7 of 750px
+            : '750px';
+
+    const imageHeight = isSmallScreen
+        ? '250px'
+        : isMidScreen
+            ? `${(750 * 3) / 7}px` // 5/7 of 750px
+            : '750px';
+
+    const imgInnerWidth = isSmallScreen
+        ? '300px'
+        : isMidScreen
+            ? `${(800 * 4) / 7}px`
+            : '800px';
+
+    const imgInnerHeight = isSmallScreen
+        ? '300px'
+        : isMidScreen
+            ? `${(800 * 4) / 7}px`
+            : '800px';
+
     return (
         <Box
             sx={{
                 width: '100%',
-                minHeight: isSmallScreen ? 'auto' : '678px',
+                minHeight: isSmallScreen
+                    ? 'auto'
+                    : isMidScreen
+                        ? `${(678 * 3) / 7}px`
+                        : '678px',
+
                 display: 'flex',
                 flexDirection: isSmallScreen
                     ? 'column'
-                    : (isLeft ? 'row-reverse' : 'row'),
-
+                    : isLeft
+                        ? 'row-reverse'
+                        : 'row',
                 alignItems: 'center',
                 justifyContent: 'space-around',
                 backgroundColor: '#fafafa',
@@ -40,67 +87,78 @@ const Poster = ({ direction = 'right' }) => {
             <Box
                 sx={{
                     position: isSmallScreen ? 'relative' : 'absolute',
-                    [isLeft ? 'left' : 'right']: isSmallScreen ? 'auto' : '190px',
-                    width: isSmallScreen ? '100%' : '750px',
-                    height: isSmallScreen ? '250px' : '750px',
+                    [isLeft ? 'left' : 'right']: isSmallScreen
+                        ? 'auto'
+                        : isMidScreen
+                            ? `${(190 * 2) / 7}px`
+                            : '190px',
+
+                    width: imageWidth,
+                    height: imageHeight,
                     borderRadius: isSmallScreen ? 0 : '50%',
                     backgroundColor: '#f3f3f3',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     overflow: 'hidden',
-                    padding: isSmallScreen ? '0' : isLeft ? '0 20px 70px 0' : '0 70px 20px 0',
+                    padding: isSmallScreen
+                        ? '0'
+                        : isLeft
+                            ? '0 20px 70px 0'
+                            : '0 70px 20px 0',
                     mt: isSmallScreen ? 2 : 0,
                     mb: isSmallScreen ? 2 : 0,
                 }}
             >
                 <Box
                     sx={{
-                        width: isSmallScreen ? '300px' : '800px',
-                        height: isSmallScreen ? '300px' : '800px',
+                        width: imgInnerWidth,
+                        height: imgInnerHeight,
                         position: 'relative',
                     }}
                 >
-                    <Box
-                        component="img"
+                    <img
                         src={ImagesAssets.poster1}
                         alt="Product"
-                        sx={{
+                        className="rotating-image"
+                        style={{
                             width: '220%',
                             height: isSmallScreen ? '100%' : 'auto',
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            transform: isSmallScreen
-                                ? 'translate(-50%, -50%)'
-                                : 'translate(-50%, -50%) rotate(21deg)',
                             objectFit: isSmallScreen ? 'contain' : 'initial',
                             filter: 'contrast(95%) brightness(220%)',
-                            animation: 'rotateScale 5s infinite ease-in-out',
-                            '@keyframes rotateScale': {
-                                '0%': {
-                                    transform: 'translate(-50%, -50%) rotate(0deg) scale(0.8)',
-                                },
-                                '50%': {
-                                    transform: 'translate(-50%, -50%) rotate(180deg) scale(1.1)',
-                                },
-                                '100%': {
-                                    transform: 'translate(-50%, -50%) rotate(360deg) scale(0.8)',
-                                },
-                            },
                         }}
                     />
+
+
+
+
                 </Box>
             </Box>
 
             {/* Text Content */}
             <Box
                 zIndex={1}
-                sx={{ flex: 1, textAlign: isSmallScreen ? 'center' : isLeft ? 'right' : 'left' }}
+                sx={{
+                    flex: 1,
+                    textAlign: isSmallScreen
+                        ? 'center'
+                        : isLeft
+                            ? 'right'
+                            : 'left',
+                }}
             >
                 <Typography
                     variant={isSmallScreen ? 'h5' : 'h2'}
-                    sx={{ fontWeight: 200, textTransform: 'uppercase' }}
+                    sx={{
+                        fontWeight: 200,
+                        textTransform: 'uppercase',
+                        fontSize: isSmallScreen
+                            ? undefined
+                            : isMidScreen
+                                ? `${((parseFloat(theme.typography.h3.fontSize) * theme.typography.htmlFontSize * 4) / 7).toFixed(2)}px`
+                                : undefined,
+                        ml: isMidScreen ? 0 : undefined,
+                    }}
                 >
                     <SplitText
                         text="GoPro hero9 Black"
@@ -116,9 +174,18 @@ const Poster = ({ direction = 'right' }) => {
                     />
                 </Typography>
 
+
                 <Typography
                     variant="body1"
-                    sx={{ fontSize: isSmallScreen ? '16px' : '20px', mb: 3, fontWeight: 200 }}
+                    sx={{
+                        fontSize: isSmallScreen
+                            ? '16px'
+                            : isMidScreen
+                                ? `${(20 * 4) / 7}px`
+                                : '20px',
+                        mb: 3,
+                        fontWeight: 200,
+                    }}
                 >
                     <SplitText
                         text="Limited stocks available. Grab it now!"
@@ -153,7 +220,11 @@ const Poster = ({ direction = 'right' }) => {
                             borderRadius: '30px',
                             px: 4,
                             py: 1.5,
-                            fontSize: '16px',
+                            fontSize: isSmallScreen
+                                ? '16px'
+                                : isMidScreen
+                                    ? `${(16 * 5) / 7}px`
+                                    : '16px',
                             textTransform: 'uppercase',
                             fontWeight: 200,
                             '&:hover': {
@@ -165,6 +236,7 @@ const Poster = ({ direction = 'right' }) => {
                     </Button>
                 </AnimatedContent>
             </Box>
+
         </Box>
     );
 };

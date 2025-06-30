@@ -9,4 +9,4 @@ const ColorPalette ={
 }
 
 
-export default ColorPalette
+export default ColorPalette;

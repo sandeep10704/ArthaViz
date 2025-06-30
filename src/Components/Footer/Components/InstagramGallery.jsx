@@ -9,13 +9,14 @@ const instaImages = [
 const InstagramGallery = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMidScreen = useMediaQuery(theme.breakpoints.between('sm', 'md'));
 
   return (
     <Box
       sx={{
         width: '100%',
         textAlign: 'center',
-        py: isSmallScreen ? 2 : 15,
+        py: isSmallScreen ? 2 : isMidScreen ? 8 : 15,
         background: '#fff'
       }}
     >
@@ -23,12 +24,12 @@ const InstagramGallery = () => {
         sx={{
           fontFamily: 'Outfit',
           fontWeight: 200,
-          fontSize: isSmallScreen ? '18px' : '30px',
+          fontSize: isSmallScreen ? '18px' : isMidScreen ? '24px' : '30px',
           lineHeight: '100%',
           letterSpacing: '6%',
           textTransform: 'uppercase',
           color: '#272727',
-          mb: isSmallScreen ? 2 : 4
+          mb: isSmallScreen ? 2 : isMidScreen ? 3 : 4
         }}
       >
         INSTAGRAM #SHOPLITE
@@ -38,7 +39,7 @@ const InstagramGallery = () => {
         display="flex"
         justifyContent="center"
         flexWrap="wrap"
-        gap={isSmallScreen ? '12px' : '39px'}
+        gap={isSmallScreen ? '12px' : isMidScreen ? '24px' : '39px'}
       >
         {instaImages.map((src, i) => (
           <Box
@@ -47,8 +48,8 @@ const InstagramGallery = () => {
             src={src}
             alt={`insta-${i}`}
             sx={{
-              width: isSmallScreen ? '120px' : '240px',
-              height: isSmallScreen ? '120px' : '240px',
+              width: isSmallScreen ? '120px' : isMidScreen ? '180px' : '240px',
+              height: isSmallScreen ? '120px' : isMidScreen ? '180px' : '240px',
               borderRadius: '10px',
               objectFit: 'cover'
             }}
