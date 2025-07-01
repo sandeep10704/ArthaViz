@@ -2,16 +2,14 @@ import { Box, useMediaQuery } from "@mui/material";
 import TextHeading from "../../../CommonComponents/TextHeading";
 import Carousel from "../../../CommonComponents/Carousel";
 import ImagesAssets from "../../../../Assets/ImagesAssets";
-import Categoriescard from "./Categoriescard";
-import ProductCard from "../../../CommonComponents/ProductCard";
+import ProductCard from '../../../CommonComponents/ProductCard'
+import React from "react";
 
 
 function BestSellingItems() {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
-  if (isSmallScreen){
-    return null
-}
- 
+
+//  const ProductCard = React.lazy(() => import('../../../CommonComponents/ProductCard'));
 
   const posts = [
     {
@@ -80,7 +78,9 @@ function BestSellingItems() {
       </Box>
 
       {isSmallScreen ? (
-        <Carousel items={posts} itemsToShow={1} maxWidth={'300px'}/>
+        <Box width="350px" mx="auto"> 
+        <Carousel items={posts} itemsToShow={2} />
+        </Box>
       ) : (
         <Box
           display="flex"
@@ -99,6 +99,7 @@ function BestSellingItems() {
           ))}
         </Box>
       )}
+     
     </Box>
   );
 }

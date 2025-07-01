@@ -1,15 +1,16 @@
 import { Box, useMediaQuery } from '@mui/material';
-import React from 'react';
+import React, { lazy } from 'react';
 import TextHeading from '../../CommonComponents/TextHeading';
-import PostCard from '../../CommonComponents/PostCard';
+
 import ImagesAssets from '../../../Assets/ImagesAssets';
 import Carousel from '../../CommonComponents/Carousel'; // Adjust the path based on your project structure
 import { useLocation } from 'react-router';
+import PostCard from '../../CommonComponents/PostCard';
 
 function LatestPosts() {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
    const location = useLocation(); 
-
+// const PostCard = lazy(() => import('../../CommonComponents/PostCard'));
 
   if (location.pathname === '/blogs') {
     return null;

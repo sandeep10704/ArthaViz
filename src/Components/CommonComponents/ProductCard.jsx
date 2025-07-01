@@ -21,7 +21,7 @@ const ProductCard = ({ data }) => {
   const gap = 9;
 
 
-  const scale = isSmallScreen ? 0.6 : 1;
+  const scale = isSmallScreen ? 0.5 : 1;
 
   return (
     <Box

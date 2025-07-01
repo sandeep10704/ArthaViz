@@ -1,13 +1,13 @@
 import { Box, useMediaQuery } from '@mui/material';
-import React from 'react';
-import ReviewCard from './ReviewCard';
+import React, { lazy } from 'react';
+
 import TextHeading from '../../CommonComponents/TextHeading';
 import Carousel from '../../CommonComponents/Carousel';
-
+import ReviewCard from './ReviewCard'
 const CustomersReviews = () => {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
   const isMediumScreen = useMediaQuery('(max-width:960px)');
-
+const ReviewCard = lazy(() => import('./ReviewCard'));
   const reviews = [
     {
       Component: ReviewCard,

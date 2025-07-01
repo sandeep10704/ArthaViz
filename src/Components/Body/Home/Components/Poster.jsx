@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Box, Typography, Button, useMediaQuery, useTheme, styled } from '@mui/material';
 import ImagesAssets from '../../../../Assets/ImagesAssets';
-import SplitText from '../../../CommonComponents/SplitText';
-import AnimatedContent from '../../../CommonComponents/AnimatedContent';
+// import SplitText from '../../../CommonComponents/SplitText';
+// import AnimatedContent from '../../../CommonComponents/AnimatedContent';
 
+const SplitText = lazy(() => import('../../../CommonComponents/SplitText'));
+// const AnimatedContent = lazy(() => import('../../../CommonComponents/AnimatedContent'));
 const Poster = ({ direction = 'right' }) => {
+
+
+
 
     const RotatingImage = styled('img')({
         width: '220%',
@@ -159,11 +164,11 @@ const Poster = ({ direction = 'right' }) => {
                                 : undefined,
                         ml: isMidScreen ? 0 : undefined,
                     }}
-                >
+                ><Suspense fallback={<div>Loading animation...</div>}>
                     <SplitText
                         text="GoPro hero9 Black"
-                        delay={100}
-                        duration={0.6}
+                        delay={200}
+                        duration={1.5}
                         ease="power3.out"
                         splitType="chars"
                         from={{ opacity: 0, y: 40 }}
@@ -172,6 +177,7 @@ const Poster = ({ direction = 'right' }) => {
                         rootMargin="-100px"
                         onLetterAnimationComplete={handleAnimationComplete}
                     />
+                       </Suspense>
                 </Typography>
 
 
@@ -186,11 +192,11 @@ const Poster = ({ direction = 'right' }) => {
                         mb: 3,
                         fontWeight: 200,
                     }}
-                >
+                ><Suspense fallback={<div>Loading animation...</div>}>
                     <SplitText
                         text="Limited stocks available. Grab it now!"
-                        delay={40}
-                        duration={0.4}
+                        delay={100}
+                        duration={1.3}
                         ease="power3.out"
                         splitType="chars"
                         from={{ opacity: 0, y: 40 }}
@@ -199,42 +205,33 @@ const Poster = ({ direction = 'right' }) => {
                         rootMargin="-100px"
                         onLetterAnimationComplete={handleAnimationComplete}
                     />
+                    </Suspense>
                 </Typography>
+                <Suspense fallback={<div>Loading animation...</div>}>
 
-                <AnimatedContent
-                    distance={100}
-                    direction="vertical"
-                    reverse={true}
-                    duration={1.5}
-                    ease="elastic.out(1, 0.3)"
-                    initialOpacity={0.0}
-                    animateOpacity
-                    scale={1.0}
-                    threshold={0.1}
-                    delay={0.0}
-                >
-                    <Button
-                        variant="contained"
-                        sx={{
-                            backgroundColor: '#ff6a4f',
-                            borderRadius: '30px',
-                            px: 4,
-                            py: 1.5,
-                            fontSize: isSmallScreen
-                                ? '16px'
-                                : isMidScreen
-                                    ? `${(16 * 5) / 7}px`
-                                    : '16px',
-                            textTransform: 'uppercase',
-                            fontWeight: 200,
-                            '&:hover': {
-                                backgroundColor: '#ff5a3f',
-                            },
-                        }}
-                    >
-                        Shop collection
-                    </Button>
-                </AnimatedContent>
+                        <Button
+                            variant="contained"
+                            sx={{
+                                backgroundColor: '#ff6a4f',
+                                borderRadius: '30px',
+                                px: 4,
+                                py: 1.5,
+                                fontSize: isSmallScreen
+                                    ? '16px'
+                                    : isMidScreen
+                                        ? `${(16 * 5) / 7}px`
+                                        : '16px',
+                                textTransform: 'uppercase',
+                                fontWeight: 200,
+                                '&:hover': {
+                                    backgroundColor: '#ff5a3f',
+                                },
+                            }}
+                        >
+                            Shop collection
+                        </Button>
+
+                </Suspense>
             </Box>
 
         </Box>

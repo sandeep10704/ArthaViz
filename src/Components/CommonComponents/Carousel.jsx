@@ -1,76 +1,80 @@
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Box, IconButton, useMediaQuery } from '@mui/material';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
+import LoadingScreen from './LoadingScreen';
 
+// Allow itemsToShow prop to work on all screen sizes
 const Carousel = ({ items, itemsToShow = 1 }) => {
-    const totalSlides = Math.ceil(items.length / itemsToShow);
-    const [currentSlide, setCurrentSlide] = useState(0);
     const isSmallScreen = useMediaQuery('(max-width:600px)');
+    // Use itemsToShow regardless of screen size
+    const visibleCount = itemsToShow;
+
+    // Build slide groups
+    const slides = [];
+    for (let i = 0; i < items.length; i += visibleCount) {
+        slides.push(items.slice(i, i + visibleCount));
+    }
+
+    const totalSlides = slides.length;
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     const handlePrev = () => {
-        setCurrentSlide((prev) =>
-            prev === 0 ? totalSlides - 1 : prev - 1
-        );
+        setCurrentSlide(prev => (prev === 0 ? totalSlides - 1 : prev - 1));
     };
-
     const handleNext = () => {
-        setCurrentSlide((prev) =>
-            prev === totalSlides - 1 ? 0 : prev + 1
-        );
+        setCurrentSlide(prev => (prev === totalSlides - 1 ? 0 : prev + 1));
     };
-
-    const itemWidthPercent = 100 / items.length;
-    const translateXPercent = currentSlide * itemWidthPercent * itemsToShow;
 
     return (
-        <Box
-            sx={{
-                position: 'relative',
-                width: '100%',
-                overflow: 'hidden',
-                height: 'auto',
-            }}
-        >
+        <Box sx={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
             <Box
                 sx={{
                     display: 'flex',
-                    width: `${(items.length * 100) / itemsToShow}%`,
-                    transform: `translateX(-${translateXPercent}%)`,
-                    transition: 'transform 0.6s ease-in-out',
-                    height: '100%',
-                    padding: isSmallScreen ? "0 0 0 25px" : "0px",
+                    width: `${totalSlides * 100}%`,
+                    transform: `translateX(-${(currentSlide * 100) / totalSlides}%)`,
+                    transition: 'transform 0.5s ease-in-out',
                 }}
             >
-                {items.map(({ Component, props }, index) => (
+                {slides.map((group, slideIdx) => (
                     <Box
-                        key={index}
+                        key={slideIdx}
                         sx={{
-                            width: `${100 / items.length}%`,
-                            flexShrink: 0,
-                            height: '100%',
+                            width: `${100 / totalSlides}%`,
+                            display: 'flex',
+                            boxSizing: 'border-box',
                         }}
                     >
-                        <Component {...props} />
+                        {group.map(({ Component, props }, idx) => (
+                            <Box
+                                key={idx}
+                                sx={{
+                                    flex: `0 0 ${100 / visibleCount}%`,
+                                    boxSizing: 'border-box',
+                                    p: isSmallScreen ? 2 : 1,
+                                }}
+                            >
+                                <Suspense fallback={<LoadingScreen/>}>
+                                    <Component {...props} />
+                                </Suspense>
+                            </Box>
+                        ))}
                     </Box>
                 ))}
             </Box>
 
-            {/* Navigation Arrows */}
             <IconButton
                 onClick={handlePrev}
                 sx={{
                     position: 'absolute',
                     top: '50%',
-                    left: '10px',
+                    left: 8,
                     transform: 'translateY(-50%)',
-                    zIndex: 10,
-                    backgroundColor: 'transparent', // fully transparent background
-                    '&:hover': { backgroundColor: 'rgba(255,255,255,0.2)' }, // optional hover
-                    height: '50px',
-                    width: '50px',
+                    zIndex: 2,
+                    bgcolor: 'rgba(255,255,255,0.7)',
+                    '&:hover': { bgcolor: 'rgba(255,255,255,0.9)' },
                 }}
             >
-                <ArrowBackIos sx={{ color: 'rgba(0,0,0,0.4)' }} /> {/* Adjust transparency */}
+                <ArrowBackIos />
             </IconButton>
 
             <IconButton
@@ -78,18 +82,15 @@ const Carousel = ({ items, itemsToShow = 1 }) => {
                 sx={{
                     position: 'absolute',
                     top: '50%',
-                    right: '10px',
+                    right: 8,
                     transform: 'translateY(-50%)',
-                    zIndex: 10,
-                    backgroundColor: 'transparent', // fully transparent background
-                    '&:hover': { backgroundColor: 'rgba(255,255,255,0.2)' },
-                    height: '50px',
-                    width: '50px',
+                    zIndex: 2,
+                    bgcolor: 'rgba(255,255,255,0.7)',
+                    '&:hover': { bgcolor: 'rgba(255,255,255,0.9)' },
                 }}
             >
-                <ArrowForwardIos sx={{ color: 'rgba(0,0,0,0.4)' }} /> {/* Adjust transparency */}
+                <ArrowForwardIos />
             </IconButton>
-
         </Box>
     );
 };

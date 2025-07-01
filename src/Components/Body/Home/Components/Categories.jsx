@@ -5,11 +5,10 @@ import Carousel from "../../../CommonComponents/Carousel";
 import ImagesAssets from "../../../../Assets/ImagesAssets";
 import Categoriescard from "./Categoriescard";
 
+
 function Categories() {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
-if (isSmallScreen){
-    return null
-}
+// const CategoriesCard = React.lazy(() => import('./Categoriescard'));
   const posts = [
     {
       Component: Categoriescard,
@@ -80,7 +79,9 @@ if (isSmallScreen){
       </Box>
 
       {isSmallScreen ? (
+        <Box width="300px" mx="auto">
         <Carousel items={posts} itemsToShow={1} />
+        </Box>
       ) : (
         <Box
           display="flex"
