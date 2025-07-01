@@ -28,7 +28,7 @@ function BestSellingItems() {
         data: { 
           image: ImagesAssets.Selling02,
           text: "PlayStations",
-          amount:"$870"
+          amount:"$600"
           }
       }
     },
@@ -38,7 +38,7 @@ function BestSellingItems() {
         data: { 
           image: ImagesAssets.Selling03,
           text: "Digital watches",
-          amount:"$870"
+          amount:"$400"
           }
       }
     },
@@ -48,7 +48,7 @@ function BestSellingItems() {
         data: { 
           image: ImagesAssets.Selling04,
           text: "Joysticks",
-          amount:"$870"
+          amount:"$900"
           }
       }
     },{
@@ -57,7 +57,7 @@ function BestSellingItems() {
         data: { 
           image: ImagesAssets.Selling05,
           text: "EarPods",
-          amount:"$870"
+          amount:"$300"
           }
       }
     },
