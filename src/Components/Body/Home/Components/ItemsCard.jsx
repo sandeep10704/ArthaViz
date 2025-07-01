@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Divider, Typography } from '@mui/material';
 import ImagesAssets from '../../../../Assets/ImagesAssets';
 import ColorPalette from '../../../../Assets/ColorPalette';
+import { cardHoverStyle, imageHoverBoxStyle } from '../../../../Assets/CommonCss';
 
 const ItemsCard = ({ title, items }) => {
 
@@ -25,6 +26,7 @@ const ItemsCard = ({ title, items }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '15px',
+                ...cardHoverStyle,
             }}
         >
             <Typography
@@ -59,6 +61,7 @@ const ItemsCard = ({ title, items }) => {
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '15px',
+
                 }}
             >
                 {items.map((item, index) => (
@@ -70,20 +73,24 @@ const ItemsCard = ({ title, items }) => {
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '10px',
+                                ...cardHoverStyle,
                             }}
                         >
-                            <Box
-                                component="img"
-                                src={item.image}
-                                alt={`Image of ${item.name}`}
-                                sx={{
-                                    width: '70px',
-                                    height: '70px',
-                                    borderRadius: '6px',
-                                    objectFit: 'cover',
-                                    display: 'block',
-                                }}
-                            />
+                            <Box sx={{ ...imageHoverBoxStyle, }}>
+                                <Box
+                                    component="img"
+                                    src={item.image}
+                                    alt={`Image of ${item.name}`}
+                                    sx={{
+                                        width: '70px',
+                                        height: '70px',
+                                        borderRadius: '6px',
+                                        objectFit: 'cover',
+                                        display: 'block',
+
+                                    }}
+                                />
+                            </Box>
 
                             <Box
                                 sx={{
