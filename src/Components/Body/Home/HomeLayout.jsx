@@ -9,6 +9,8 @@ import FeaturesRow from '../../CommonComponents/FeaturesRow';
 import Categories from './Components/Categories';
 import BestSellingItems from './Components/BestSellingItems';
 import { Box } from '@mui/material';
+import ItemsCard from './Components/ItemsCard';
+import Items from './Components/Items';
 
 const HomeLayout = () => {
   const Poster = lazy(() => import('./Components/Poster'));
@@ -35,6 +37,8 @@ const HomeLayout = () => {
       <FeaturesRow />
       <Categories />
       <BestSellingItems />
+      <Items/>
+
     </Box>
 
 

@@ -1,111 +1,117 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
+import ImagesAssets from '../../../../Assets/ImagesAssets';
+import ColorPalette from '../../../../Assets/ColorPalette';
 
-const ItemsCard = () => {
-  const items = [
-    { id: 1, name: 'Wireless Headset', price: '$500', image: 'https://via.placeholder.com/80x90' },
-    { id: 2, name: 'Iphone X Pro Max', price: '$820', image: 'https://via.placeholder.com/80x90' },
-    { id: 3, name: 'Iphone 11 Pro', price: '$960', image: 'https://via.placeholder.com/80x90' },
-  ];
+const ItemsCard = ({ title, items }) => {
 
-  return (
-    <Box
-      sx={{
-        width: '370px',
-        height: '557px',
-        border: '1px solid #ccc',
-        borderRadius: '10px',
-        padding: '40px 30px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '39px',
-      }}
-    >
-      <Typography
-        sx={{
-          fontFamily: 'Outfit',
-          fontWeight: 300,
-          fontSize: '21px',
-          lineHeight: '100%',
-          letterSpacing: '1%',
-          textTransform: 'capitalize',
-        }}
-      >
-        Featured
-      </Typography>
+    const itemTextStyle = {
+        fontFamily: 'Outfit',
+        fontWeight: 200,
+        fontSize: '18px',
+        lineHeight: '100%',
+        letterSpacing: '0.01em',
+        textTransform: 'capitalize',
+    };
 
-      <Box
-        sx={{
-          width: '310px',
-          height: '352px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '20px',
-        }}
-      >
-        {items.map((item) => (
-          <Box
-            key={item.id}
+    return (
+        <Box
             sx={{
-              width: '310px',
-              height: '90px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '15px',
-            }}
-          >
-            <Box
-              component="img"
-              src={item.image}
-              alt={item.name}
-              sx={{
-                width: '80px',
-                height: '90px',
-                borderRadius: '6px',
-                objectFit: 'cover',
-              }}
-            />
-            <Box
-              sx={{
-                width: '215px',
-                height: '61px',
+                width: '260px',
+                height: '370px',
+                border: '1px solid #ccc',
+                borderRadius: '10px',
+                padding: '30px 20px',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-between',
-                gap: '9px',
-              }}
+                gap: '15px',
+            }}
+        >
+            <Typography
+                sx={{
+                    fontFamily: 'Outfit',
+                    fontWeight: 200,
+                    fontSize: '24px',
+                    lineHeight: '100%',
+                    letterSpacing: '0.01em',
+                    textTransform: 'uppercase',
+                }}
             >
-              <Typography
-                sx={{
-                  fontFamily: 'Outfit',
-                  fontWeight: 300,
-                  fontSize: '21px',
-                  lineHeight: '100%',
-                  letterSpacing: '1%',
-                  textTransform: 'capitalize',
-                }}
-              >
-                {item.name}
-              </Typography>
-              <Typography
-                sx={{
-                  fontFamily: 'Outfit',
-                  fontWeight: 300,
-                  fontSize: '21px',
-                  lineHeight: '100%',
-                  letterSpacing: '1%',
-                  textTransform: 'capitalize',
-                  color: 'red',
-                }}
-              >
-                {item.price}
-              </Typography>
+                {title}
+            </Typography>
+
+            <Box sx={{ display: "flex", flexDirection: "row" }}>
+                <Box
+                    flexGrow={1}
+                    sx={{
+                        height: '12px',
+                        width: '100%',
+                        backgroundImage: 'repeating-linear-gradient(-45deg, #ccc, #ccc 1px, transparent 2px, transparent 8px)',
+                    }}
+                />
             </Box>
-          </Box>
-        ))}
-      </Box>
-    </Box>
-  );
+
+            <Box
+                sx={{
+                    width: '100%',
+                    maxWidth: '240px',
+                    height: '330px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '15px',
+                }}
+            >
+                {items.map((item, index) => (
+                    <React.Fragment key={item.id}>
+                        <Box
+                            sx={{
+                                width: '225px', // fixed typo from Width
+                                minHeight: '90px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '10px',
+                            }}
+                        >
+                            <Box
+                                component="img"
+                                src={item.image}
+                                alt={`Image of ${item.name}`}
+                                sx={{
+                                    width: '70px',
+                                    height: '70px',
+                                    borderRadius: '6px',
+                                    objectFit: 'cover',
+                                    display: 'block',
+                                }}
+                            />
+
+                            <Box
+                                sx={{
+                                    width: '100%',
+                                    maxWidth: '200px',
+                                    minHeight: '60px',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'space-between',
+                                    gap: '5px',
+                                }}
+                            >
+                                <Typography sx={itemTextStyle}>
+                                    {item.name}
+                                </Typography>
+                                <Typography sx={{ ...itemTextStyle, fontWeight: 300, color: ColorPalette.orange }}>
+                                    {item.price}
+                                </Typography>
+                            </Box>
+                        </Box>
+                        {index !== items.length - 1 && (
+                            <Divider orientation="horizontal" flexItem />
+                        )}
+                    </React.Fragment>
+                ))}
+            </Box>
+        </Box>
+    );
 };
 
 export default ItemsCard;

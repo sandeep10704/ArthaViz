@@ -25,6 +25,19 @@ const ImagesAssets ={
     Selling03:require('./Images/Selling03.png'),
     Selling04:require('./Images/Selling04.png'),
     Selling05:require('./Images/Selling05.png'),
+    Item11:require('./Images/Item11.jpg'),
+    Item12:require('./Images/Item12.jpg'),
+    Item13:require('./Images/Item13.jpg'),
+    Item21:require('./Images/Item21.jpg'),
+    Item22:require('./Images/Item22.jpg'),
+    Item23:require('./Images/Item23.jpg'),
+    Item31:require('./Images/Item31.jpg'),
+    Item32:require('./Images/Item32.jpg'),
+    Item33:require('./Images/Item33.jpg'),
+    Item41:require('./Images/Item41.jpg'),
+    Item42:require('./Images/Item42.jpg'),
+    Item43:require('./Images/Item43.jpg'),
+
 
 
 
