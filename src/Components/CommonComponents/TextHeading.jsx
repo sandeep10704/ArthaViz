@@ -10,8 +10,8 @@ const TextHeading = ({text}) => {
         sx={{
           fontFamily: "Outfit",
           letterSpacing: '0.2em',
-          fontWeight: 200,
-          fontSize: { xs: '20px', sm: '24px', md: '28px' },
+          fontWeight: 100,
+          fontSize: { xs: '16px', sm: '20px', md: '24px' },
           lineHeight: { xs: 1.2, sm: 1.3, md: 1.4 },
           textTransform:"uppercase" 
         }}

@@ -13,8 +13,7 @@ const FooterLayout = () => {
   return (
     <Box bgcolor="#fff" color="#333">
     
-<CustomersReviews/>
-    <LatestPosts/>
+
     <TopBrands />
     <Divider />
     <InstagramGallery />

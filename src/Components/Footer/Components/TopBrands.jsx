@@ -7,14 +7,14 @@ const TopBrands = () => {
   const isSmall = useMediaQuery(theme.breakpoints.down('sm')); 
   const isMedium = useMediaQuery(theme.breakpoints.down('md')); 
 
-  const fontSize = isSmall ? '16px' : isMedium ? '24px' : '33.74px';
-  const miniStoreSize = isSmall ? '22px' : isMedium ? '30px' : '45px';
+  const fontSize = isSmall ? '16px' : isMedium ? '24px' : '30.74px';
+  const miniStoreSize = isSmall ? '22px' : isMedium ? '30px' : '40px';
 
   return (
     <Box
       sx={{
         width: '100%',
-        height: isSmall ? 'auto' : '232px',
+        height: isSmall ? 'auto' : '200px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',

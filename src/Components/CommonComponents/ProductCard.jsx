@@ -2,19 +2,20 @@ import React from "react";
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import '@fontsource/outfit/300.css';
 import ColorPalette from "../../Assets/ColorPalette";
+import { cardHoverStyle, imageHoverBoxStyle } from "../../Assets/CommonCss";
 
 const ProductCard = ({ data }) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
 
-  const width = 250; 
-  const height = 300;
-  const imgWidth = 180;
-  const imgHeight = 140;
-  const imgTop = 40;
-  const imgLeft =35;
-  const textTop = 200;
+  const width = 205; 
+  const height = 230;
+  const imgWidth = 140;
+  const imgHeight = 130;
+  const imgTop = 20;
+  const imgLeft =27;
+  const textTop = 150;
   const textWidth = 292;
   const textHeight = 61;
   const fontSize = 21;
@@ -32,8 +33,10 @@ const ProductCard = ({ data }) => {
         border: "1px solid #ccc",
         borderRadius: "8px",
         overflow: "hidden",
+        ...cardHoverStyle,
       }}
     >
+    <Box sx={{...imageHoverBoxStyle}}> 
       <Box
         component="img"
         src={data.image}
@@ -44,9 +47,9 @@ const ProductCard = ({ data }) => {
           left: `${imgLeft * scale}px`,
           width: `${imgWidth * scale}px`,
           height: `${imgHeight * scale}px`,
-          objectFit: "cover",
         }}
       />
+      </Box>
 
       <Box
         sx={{

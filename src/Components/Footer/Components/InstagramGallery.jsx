@@ -1,5 +1,6 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import ImagesAssets from "../../../Assets/ImagesAssets";
+import { imageHoverBoxStyle } from "../../../Assets/CommonCss";
 
 const instaImages = [
   ImagesAssets.Insta01, ImagesAssets.Insta02, ImagesAssets.Insta03,
@@ -40,20 +41,25 @@ const InstagramGallery = () => {
         justifyContent="center"
         flexWrap="wrap"
         gap={isSmallScreen ? '12px' : isMidScreen ? '24px' : '39px'}
+        
       >
         {instaImages.map((src, i) => (
+          <Box sx={{...imageHoverBoxStyle}}>
           <Box
             key={i}
             component="img"
             src={src}
             alt={`insta-${i}`}
             sx={{
-              width: isSmallScreen ? '120px' : isMidScreen ? '180px' : '240px',
-              height: isSmallScreen ? '120px' : isMidScreen ? '180px' : '240px',
+              width: isSmallScreen ? '120px' : isMidScreen ? '180px' : '200px',
+              height: isSmallScreen ? '120px' : isMidScreen ? '180px' : '200px',
               borderRadius: '10px',
-              objectFit: 'cover'
+
+              objectFit: 'cover',
+
             }}
           />
+          </Box>
         ))}
       </Box>
     </Box>

@@ -6,10 +6,12 @@ import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import PaymentOutlinedIcon from '@mui/icons-material/PaymentOutlined';
 import '@fontsource/outfit/100.css';
 import ColorPalette from "../../Assets/ColorPalette";
+import { cardHoverStyle, imageHoverBoxStyle } from "../../Assets/CommonCss";
 
 const iconCss = {
-  fontSize: 28,
+  fontSize: 24,
   color: ColorPalette.orange,
+       ...imageHoverBoxStyle, 
 };
 
 const features = [
@@ -44,35 +46,37 @@ const FeaturesRow = () => {
     <Box
       sx={{
         width: "100%",
-        maxWidth: "1540px",
         display: "flex",
         flexWrap: "wrap",
-        justifyContent: isSmallScreen ? "center" : "space-between",
-        gap: isSmallScreen ? "20px" : "20px",
+        justifyContent: isSmallScreen ? "center" : "space-around",
+        gap: isSmallScreen ? "16px" : "16px",
         mx: "auto",
+        padding:"0 40px"
       }}
     >
       {features.map((feature, index) => (
         <Box
           key={index}
           sx={{
-            width: isSmallScreen ? "90%" : isMidScreen ? "45%" : "370px",
+            width: isSmallScreen ? "90%" : isMidScreen ? "45%" : "300px",
             display: "flex",
             flexDirection: "column",
             gap: "4px",
+            ...cardHoverStyle,
+            p:"2px"
           }}
         >
           <Box
             sx={{
               display: "flex",
               alignItems: "flex-start",
-              gap: "10px",
+              gap: "8px",
             }}
           >
             <Box
               sx={{
-                width: "33px",
-                height: "33px",
+                width: "28px",
+                height: "28px",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -84,7 +88,7 @@ const FeaturesRow = () => {
               sx={{
                 fontFamily: "Outfit",
                 fontWeight: 100,
-                fontSize: "18px",
+                fontSize: "15px",
                 lineHeight: "100%",
                 letterSpacing: "6%",
                 textTransform: "uppercase",
@@ -96,11 +100,11 @@ const FeaturesRow = () => {
           <Typography
             sx={{
               fontFamily: "Outfit",
-              fontWeight: 100,
-              fontSize: "17px",
+              fontWeight: 200,
+              fontSize: "10px",
               lineHeight: "100%",
               letterSpacing: "1%",
-              ml: "43px",
+              ml: "35px",
             }}
           >
             {feature.text}

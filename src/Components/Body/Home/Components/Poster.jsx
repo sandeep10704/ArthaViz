@@ -1,30 +1,15 @@
 import React, { lazy, Suspense } from 'react';
 import { Box, Typography, Button, useMediaQuery, useTheme, styled } from '@mui/material';
 import ImagesAssets from '../../../../Assets/ImagesAssets';
+import CustomButton from '../../../CommonComponents/CustomButton';
+import '@fontsource/outfit/200.css';
+import '@fontsource/outfit/100.css';
 // import SplitText from '../../../CommonComponents/SplitText';
 // import AnimatedContent from '../../../CommonComponents/AnimatedContent';
 
 const SplitText = lazy(() => import('../../../CommonComponents/SplitText'));
 // const AnimatedContent = lazy(() => import('../../../CommonComponents/AnimatedContent'));
 const Poster = ({ direction = 'right' }) => {
-
-
-
-
-    const RotatingImage = styled('img')({
-        width: '220%',
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%) rotate(21deg)',
-        filter: 'contrast(95%) brightness(220%)',
-        animation: 'rotateScale 5s infinite ease-in-out',
-        animationPlayState: 'running',
-        '&:hover': {
-            animationPlayState: 'paused',
-        },
-    });
-
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const isMidScreen = useMediaQuery(theme.breakpoints.between('sm', 'lg')); // mid screen detection
@@ -39,26 +24,26 @@ const Poster = ({ direction = 'right' }) => {
     const imageWidth = isSmallScreen
         ? '100%'
         : isMidScreen
-            ? `${(750 * 3) / 7}px` // 5/7 of 750px
-            : '750px';
+            ? `${(600 * 3) / 7}px` // 5/7 of 750px
+            : '600px';
 
     const imageHeight = isSmallScreen
         ? '250px'
         : isMidScreen
-            ? `${(750 * 3) / 7}px` // 5/7 of 750px
-            : '750px';
+            ? `${(600 * 3) / 7}px` // 5/7 of 750px
+            : '600px';
 
     const imgInnerWidth = isSmallScreen
         ? '300px'
         : isMidScreen
-            ? `${(800 * 4) / 7}px`
-            : '800px';
+            ? `${(600 * 4) / 7}px`
+            : '600px';
 
     const imgInnerHeight = isSmallScreen
         ? '300px'
         : isMidScreen
-            ? `${(800 * 4) / 7}px`
-            : '800px';
+            ? `${(600 * 4) / 7}px`
+            : '600px';
 
     return (
         <Box
@@ -68,7 +53,7 @@ const Poster = ({ direction = 'right' }) => {
                     ? 'auto'
                     : isMidScreen
                         ? `${(678 * 3) / 7}px`
-                        : '678px',
+                        : '520px',
 
                 display: 'flex',
                 flexDirection: isSmallScreen
@@ -95,8 +80,8 @@ const Poster = ({ direction = 'right' }) => {
                     [isLeft ? 'left' : 'right']: isSmallScreen
                         ? 'auto'
                         : isMidScreen
-                            ? `${(190 * 2) / 7}px`
-                            : '190px',
+                            ? `${(50 * 2) / 7}px`
+                            : '50px',
 
                     width: imageWidth,
                     height: imageHeight,
@@ -144,16 +129,23 @@ const Poster = ({ direction = 'right' }) => {
             <Box
                 zIndex={1}
                 sx={{
-                    flex: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: isSmallScreen
+                        ? 'center'
+                        : isLeft
+                            ? 'flex-end'
+                            : 'flex-start',
                     textAlign: isSmallScreen
                         ? 'center'
                         : isLeft
                             ? 'right'
                             : 'left',
+                    flex: 1,
                 }}
             >
                 <Typography
-                    variant={isSmallScreen ? 'h5' : 'h2'}
+                    variant={isSmallScreen ? 'h5' : 'h4'}
                     sx={{
                         fontWeight: 200,
                         textTransform: 'uppercase',
@@ -163,76 +155,60 @@ const Poster = ({ direction = 'right' }) => {
                                 ? `${((parseFloat(theme.typography.h3.fontSize) * theme.typography.htmlFontSize * 4) / 7).toFixed(2)}px`
                                 : undefined,
                         ml: isMidScreen ? 0 : undefined,
+                        width: isSmallScreen ? '100%' : 'auto',
+                        p:0,
                     }}
-                ><Suspense fallback={<div>Loading animation...</div>}>
-                    <SplitText
-                        text="GoPro hero9 Black"
-                        delay={200}
-                        duration={1.5}
-                        ease="power3.out"
-                        splitType="chars"
-                        from={{ opacity: 0, y: 40 }}
-                        to={{ opacity: 1, y: 0 }}
-                        threshold={0.1}
-                        rootMargin="-100px"
-                        onLetterAnimationComplete={handleAnimationComplete}
-                    />
-                       </Suspense>
+                >
+                    <Suspense fallback={<div>Loading animation...</div>}>
+                        <SplitText
+                            text="GoPro hero9 Black"
+                            delay={200}
+                            duration={1.5}
+                            ease="power3.out"
+                            splitType="chars"
+                            from={{ opacity: 0, y: 40 }}
+                            to={{ opacity: 1, y: 0 }}
+                            threshold={0.1}
+                            rootMargin="-100px"
+                            onLetterAnimationComplete={handleAnimationComplete}
+                        />
+                    </Suspense>
                 </Typography>
 
-
                 <Typography
-                    variant="body1"
+                    variant="body3"
                     sx={{
                         fontSize: isSmallScreen
                             ? '16px'
                             : isMidScreen
-                                ? `${(20 * 4) / 7}px`
-                                : '20px',
+                                ? `${(15 * 4) / 7}px`
+                                : '15px',
                         mb: 3,
-                        fontWeight: 200,
+                        fontWeight: 100,
+                        width: isSmallScreen ? '100%' : 'auto',
                     }}
-                ><Suspense fallback={<div>Loading animation...</div>}>
-                    <SplitText
-                        text="Limited stocks available. Grab it now!"
-                        delay={100}
-                        duration={1.3}
-                        ease="power3.out"
-                        splitType="chars"
-                        from={{ opacity: 0, y: 40 }}
-                        to={{ opacity: 1, y: 0 }}
-                        threshold={0.1}
-                        rootMargin="-100px"
-                        onLetterAnimationComplete={handleAnimationComplete}
-                    />
+                >
+                    <Suspense fallback={<div>Loading animation...</div>}>
+                        <SplitText
+                            text="Limited stocks available. Grab it now!"
+                            delay={100}
+                            duration={1.3}
+                            ease="power3.out"
+                            splitType="chars"
+                            from={{ opacity: 0, y: 40 }}
+                            to={{ opacity: 1, y: 0 }}
+                            threshold={0.1}
+                            rootMargin="-100px"
+                            onLetterAnimationComplete={handleAnimationComplete}
+                        />
                     </Suspense>
                 </Typography>
+
                 <Suspense fallback={<div>Loading animation...</div>}>
-
-                        <Button
-                            variant="contained"
-                            sx={{
-                                backgroundColor: '#ff6a4f',
-                                borderRadius: '30px',
-                                px: 4,
-                                py: 1.5,
-                                fontSize: isSmallScreen
-                                    ? '16px'
-                                    : isMidScreen
-                                        ? `${(16 * 5) / 7}px`
-                                        : '16px',
-                                textTransform: 'uppercase',
-                                fontWeight: 200,
-                                '&:hover': {
-                                    backgroundColor: '#ff5a3f',
-                                },
-                            }}
-                        >
-                            Shop collection
-                        </Button>
-
+                    <CustomButton text="Shop collection" />
                 </Suspense>
             </Box>
+
 
         </Box>
     );

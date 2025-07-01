@@ -3,26 +3,27 @@ import { Box, Typography, useMediaQuery } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import '@fontsource/outfit/100.css';
 import '@fontsource/outfit/400.css';
+import { cardHoverStyle } from "../../../Assets/CommonCss";
 
 const ReviewCard = ({ text, name, stars }) => {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
   const isMediumScreen = useMediaQuery('(max-width:1440px)');
 
   // Base sizes (for large screens)
-  const baseCardWidth = 360;
-  const baseCardHeight = 220;
-  const baseTextBoxWidth = 315;
-  const baseTextBoxHeight = 117;
-  const basePadding = 30;
+  const baseCardWidth = 260;
+  const baseCardHeight = 200;
+  const baseTextBoxWidth = 235;
+  const baseTextBoxHeight = 100;
+  const basePadding = 15;
   const baseGap = 22.5;
   const baseStarIconSize = 16;
-  const baseReviewBoxWidth = 133;
-  const baseReviewBoxHeight = 38.25;
+  const baseReviewBoxWidth = 113;
+  const baseReviewBoxHeight = 28.25;
   const baseReviewGap = 6.75;
   const baseStarBoxWidth = 104;
   const baseStarBoxHeight = 16;
   const baseStarBoxGap = 6;
-  const baseFontSize = 21;
+  const baseFontSize = 16;
 
   // Calculate sizes based on screen
   const scale = isSmallScreen ? (2 / 3) : (isMediumScreen ? (3 / 5) : 1);
@@ -54,6 +55,7 @@ const ReviewCard = ({ text, name, stars }) => {
         flexDirection: "column",
         justifyContent: "space-between",
         gap: gap,
+         ...cardHoverStyle,
       }}
     >
       {/* Text Field */}
@@ -107,7 +109,7 @@ const ReviewCard = ({ text, name, stars }) => {
         <Typography
           sx={{
             fontFamily: "Outfit",
-            fontWeight: 400,
+            fontWeight: 300,
             fontSize: fontSize,
             lineHeight: "100%",
             letterSpacing: "1%",

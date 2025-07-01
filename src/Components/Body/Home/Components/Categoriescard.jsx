@@ -1,26 +1,29 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import '@fontsource/outfit/300.css';
+import { cardHoverStyle, imageHoverBoxStyle } from "../../../../Assets/CommonCss";
 
 const Categoriescard = ({ data }) => {
   return (
     <Box
       sx={{
         position: "relative",
-        width: "200px",
-        height: "270px",
+        width: "170px",
+        height: "200px",
         border: "1px solid #ccc",
         borderRadius: "8px",
         overflow: "hidden",
+        ...cardHoverStyle,
       }}
     >
 <Box
   sx={{
     position: "absolute",
-    top: "28px",
-    left: "28px",
-    width: "152px",
-    height: "190px",
+    top: "20px",
+    left: "33px",
+    width: "102px",
+    height: "120px",
+     ...imageHoverBoxStyle, 
   }}
 >
   <Box
@@ -40,8 +43,8 @@ const Categoriescard = ({ data }) => {
       <Box
         sx={{
           position: "absolute",
-          top: "235px",
-          left: "66px",
+          top: "145px",
+          left: "46px",
           width: "69px",
           height: "26px",
           display: "flex",
@@ -53,7 +56,7 @@ const Categoriescard = ({ data }) => {
           sx={{
             fontFamily: "Outfit",
             fontWeight: 300,
-            fontSize: "21px",
+            fontSize: "18px",
             lineHeight: "100%",
             letterSpacing: "1%",
             textAlign: "center",

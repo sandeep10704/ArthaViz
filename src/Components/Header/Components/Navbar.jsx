@@ -48,78 +48,78 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
- const drawerContent = (
-  <Box
-    sx={{
-      width: 250,
-      height: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      position: 'relative',
-    }}
-  >
-    {/* Scrollable Menu List */}
+  const drawerContent = (
     <Box
       sx={{
-        overflowY: 'auto',
-        pb: 16, // leaves space for bottom section so it's not hidden
-        flex: 1,
+        width: 250,
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
       }}
     >
-      <List disablePadding>
-        {menuItems.map(({ label, path }) => (
-          <ListItemButton
-            key={label}
-            onClick={() => handleNavigate(path)}
-            selected={isActive(path)}
-          >
-            <ListItemText primary={label} />
-            {label === 'PAGES' && <ArrowDropDownIcon />}
-          </ListItemButton>
-        ))}
-      </List>
-    </Box>
-
-    {/* Fixed Bottom Section */}
-    <Box
-      sx={{
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        width: '100%',
-        bgcolor: '#fff', 
-        borderTop: '1px solid #ddd',
-        pt: 1,
-      }}
-    >
-      {/* Info Texts */}
-      <Box sx={{ px: 2 }}>
-        <Typography variant="body2" sx={{ fontFamily: 'Outfit', fontWeight: 100, fontSize: '13px', mb: 0.5 }}>
-          Need help? Call us 112233344455
-        </Typography>
-        <Typography variant="body2" sx={{ fontFamily: 'Outfit', fontWeight: 100, fontSize: '13px', mb: 0.5 }}>
-          Summer sale discount 60% off! Shop Now
-        </Typography>
-        <Typography variant="body2" sx={{ fontFamily: 'Outfit', fontWeight: 100, fontSize: '13px' }}>
-          2-3 business days delivery & free returns
-        </Typography>
+      {/* Scrollable Menu List */}
+      <Box
+        sx={{
+          overflowY: 'auto',
+          pb: 16, // leaves space for bottom section so it's not hidden
+          flex: 1,
+        }}
+      >
+        <List disablePadding>
+          {menuItems.map(({ label, path }) => (
+            <ListItemButton
+              key={label}
+              onClick={() => handleNavigate(path)}
+              selected={isActive(path)}
+            >
+              <ListItemText primary={label} />
+              {label === 'PAGES' && <ArrowDropDownIcon />}
+            </ListItemButton>
+          ))}
+        </List>
       </Box>
 
-      {/* Icon Buttons */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-around', p: 2 }}>
-        {iconLinks.map(({ icon, path }, i) => (
-          <IconButton
-            key={i}
-            onClick={() => handleNavigate(path)}
-            sx={{ color: isActive(path) ? ColorPalette.orange : 'inherit' }}
-          >
-            {icon}
-          </IconButton>
-        ))}
+      {/* Fixed Bottom Section */}
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          bgcolor: '#fff',
+          borderTop: '1px solid #ddd',
+          pt: 1,
+        }}
+      >
+        {/* Info Texts */}
+        <Box sx={{ px: 2 }}>
+          <Typography variant="body2" sx={{ fontFamily: 'Outfit', fontWeight: 100, fontSize: '13px', mb: 0.5 }}>
+            Need help? Call us 112233344455
+          </Typography>
+          <Typography variant="body2" sx={{ fontFamily: 'Outfit', fontWeight: 100, fontSize: '13px', mb: 0.5 }}>
+            Summer sale discount 60% off! Shop Now
+          </Typography>
+          <Typography variant="body2" sx={{ fontFamily: 'Outfit', fontWeight: 100, fontSize: '13px' }}>
+            2-3 business days delivery & free returns
+          </Typography>
+        </Box>
+
+        {/* Icon Buttons */}
+        <Box sx={{ display: 'flex', justifyContent: 'space-around', p: 2 }}>
+          {iconLinks.map(({ icon, path }, i) => (
+            <IconButton
+              key={i}
+              onClick={() => handleNavigate(path)}
+              sx={{ color: isActive(path) ? ColorPalette.orange : 'inherit' }}
+            >
+              {icon}
+            </IconButton>
+          ))}
+        </Box>
       </Box>
     </Box>
-  </Box>
-);
+  );
 
 
 
@@ -130,7 +130,7 @@ const Navbar = () => {
       <AppBar position="static" color="inherit" elevation={0}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           {/* Logo */}
-          <Box sx={{ ml: { xs: 1, sm: 3, md: 10, lg: 20 } }}>
+          <Box sx={{ ml: { xs: 1, sm: 3, md: 10, lg: 15 } }}>
             <Typography
               variant="h6"
               sx={{
@@ -173,21 +173,27 @@ const Navbar = () => {
           {/* Right Icons / Mobile Menu */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             {!isMobile ? (
-              iconLinks.map(({ icon, path }, i) => (
-                <IconButton
-                  key={i}
-                  onClick={() => handleNavigate(path)}
-                  sx={{ color: isActive(path) ? ColorPalette.orange : 'inherit', fontFamily: 'Outfit', }}
-                >
-                  {icon}
-                </IconButton>
-              ))
+              <Box sx={{ mr: { md: 10, lg: 15 } }}>
+                {iconLinks.map(({ icon, path }, i) => (
+                  <IconButton
+                    key={i}
+                    onClick={() => handleNavigate(path)}
+                    sx={{
+                      color: isActive(path) ? ColorPalette.orange : 'inherit',
+                      fontFamily: 'Outfit',
+                    }}
+                  >
+                    {icon}
+                  </IconButton>
+                ))}
+              </Box>
             ) : (
               <IconButton edge="end" onClick={() => setDrawerOpen(true)}>
                 <MenuIcon />
               </IconButton>
             )}
           </Box>
+
         </Toolbar>
       </AppBar>
 

@@ -68,10 +68,10 @@ function BestSellingItems() {
       display="flex"
       flexDirection="column"
       gap={2}
-      width="auto"
+       width="100%"
       mx= {!isSmallScreen ? "10%" : "0%"}
     >
-      <Box width={isSmallScreen ? "300px" : "auto"}
+      <Box width={isSmallScreen ? "300px" : "100%"}
 
 >
         <TextHeading text="Best Selling Items" />

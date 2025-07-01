@@ -72,9 +72,9 @@ function Categories() {
       flexDirection="column"
       gap={2}
       mx={!isSmallScreen ? "10%" : "0%"}
-      width="auto"
+      width="100%"
     >
-      <Box width={isSmallScreen ? "300px" : "auto"}>
+      <Box width={isSmallScreen ? "300px" : "100%"}>
         <TextHeading text="Categories" />
       </Box>
 
