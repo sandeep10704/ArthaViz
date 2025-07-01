@@ -26,7 +26,7 @@ const ReviewCard = ({ text, name, stars }) => {
   const baseFontSize = 16;
 
   // Calculate sizes based on screen
-  const scale = isSmallScreen ? (2 / 3) : (isMediumScreen ? (3 / 5) : 1);
+  const scale = isSmallScreen ? (1) : (isMediumScreen ? (4 / 5) : 1);
 
   const cardWidth = `${baseCardWidth * scale}px`;
   const cardHeight = `${baseCardHeight * scale}px`;

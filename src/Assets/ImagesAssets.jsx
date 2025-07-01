@@ -37,6 +37,7 @@ const ImagesAssets ={
     Item41:require('./Images/Item41.jpg'),
     Item42:require('./Images/Item42.jpg'),
     Item43:require('./Images/Item43.jpg'),
+    Poster02:require('./Images/Poster02.png'),
 
 
 

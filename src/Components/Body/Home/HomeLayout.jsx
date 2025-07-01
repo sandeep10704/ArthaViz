@@ -11,6 +11,7 @@ import BestSellingItems from './Components/BestSellingItems';
 import { Box } from '@mui/material';
 import ItemsCard from './Components/ItemsCard';
 import Items from './Components/Items';
+import PosterDiscount from './Components/PosterDiscount';
 
 const HomeLayout = () => {
   const Poster = lazy(() => import('./Components/Poster'));
@@ -37,6 +38,7 @@ const HomeLayout = () => {
       <FeaturesRow />
       <Categories />
       <BestSellingItems />
+      <PosterDiscount/>
       <Items/>
 
     </Box>

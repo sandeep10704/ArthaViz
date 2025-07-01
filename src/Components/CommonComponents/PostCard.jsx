@@ -15,7 +15,7 @@ const PostCard = ({ data }) => {
   const baseWidth = 250;
   const baseImageWidth = 240;
 
-  const scale = isSmallScreen ? 0.8 : (isMediumScreen ? (5 / 7) : 1);
+  const scale = isSmallScreen ? 1 : (isMediumScreen ? (5 / 7) : 1);
 
   const cardWidth = `${baseWidth * scale}px`;
   const imageWidth = `${baseImageWidth * scale}px`;

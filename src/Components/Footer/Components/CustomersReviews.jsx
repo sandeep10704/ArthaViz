@@ -71,7 +71,7 @@ const ReviewCard = lazy(() => import('./ReviewCard'));
           ...review,
           props: {
             ...review.props,
-            width: cardWidth, // pass calculated width to ReviewCard
+            width: cardWidth,
           },
         }))}
         itemsToShow={itemsToShow}
