@@ -24,26 +24,26 @@ const Poster = ({ direction = 'right' }) => {
     const imageWidth = isSmallScreen
         ? '100%'
         : isMidScreen
-            ? `${(600 * 3) / 7}px` // 5/7 of 750px
-            : '600px';
+            ? `${(550 * 3) / 7}px` 
+            : '550px';
 
     const imageHeight = isSmallScreen
         ? '250px'
         : isMidScreen
-            ? `${(600 * 3) / 7}px` // 5/7 of 750px
-            : '600px';
+            ? `${(550 * 3) / 7}px` 
+            : '550px';
 
     const imgInnerWidth = isSmallScreen
         ? '300px'
         : isMidScreen
-            ? `${(600 * 4) / 7}px`
-            : '600px';
+            ? `${(550 * 4) / 7}px`
+            : '550px';
 
     const imgInnerHeight = isSmallScreen
         ? '300px'
         : isMidScreen
-            ? `${(600 * 4) / 7}px`
-            : '600px';
+            ? `${(550 * 4) / 7}px`
+            : '550px';
 
     return (
         <Box
@@ -53,7 +53,7 @@ const Poster = ({ direction = 'right' }) => {
                     ? 'auto'
                     : isMidScreen
                         ? `${(678 * 3) / 7}px`
-                        : '520px',
+                        : '500px',
 
                 display: 'flex',
                 flexDirection: isSmallScreen

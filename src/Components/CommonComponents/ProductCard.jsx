@@ -3,11 +3,12 @@ import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import '@fontsource/outfit/300.css';
 import ColorPalette from "../../Assets/ColorPalette";
 import { cardHoverStyle, imageHoverBoxStyle } from "../../Assets/CommonCss";
+import { useNavigate } from "react-router-dom"; // ✅ import useNavigate
 
 const ProductCard = ({ data }) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-
+  const navigate = useNavigate(); // ✅ initialize navigate
 
   const width = 205; 
   const height = 230;
@@ -21,11 +22,16 @@ const ProductCard = ({ data }) => {
   const fontSize = 21;
   const gap = 9;
 
-
   const scale = isSmallScreen ? 0.5 : 1;
+
+  // ✅ onClick handler to navigate
+  const handleCardClick = () => {
+    navigate(`/shop/${data.text}`); // adjust if your route uses slug or another field
+  };
 
   return (
     <Box
+      onClick={handleCardClick} // ✅ attach click handler here
       sx={{
         position: "relative",
         width: `${width * scale}px`,
@@ -33,22 +39,23 @@ const ProductCard = ({ data }) => {
         border: "1px solid #ccc",
         borderRadius: "8px",
         overflow: "hidden",
+        cursor: "pointer", // ✅ show pointer on hover
         ...cardHoverStyle,
       }}
     >
-    <Box sx={{...imageHoverBoxStyle}}> 
-      <Box
-        component="img"
-        src={data.image}
-        alt="Card Image"
-        sx={{
-          position: "absolute",
-          top: `${imgTop * scale}px`,
-          left: `${imgLeft * scale}px`,
-          width: `${imgWidth * scale}px`,
-          height: `${imgHeight * scale}px`,
-        }}
-      />
+      <Box sx={{...imageHoverBoxStyle}}> 
+        <Box
+          component="img"
+          src={data.image}
+          alt="Card Image"
+          sx={{
+            position: "absolute",
+            top: `${imgTop * scale}px`,
+            left: `${imgLeft * scale}px`,
+            width: `${imgWidth * scale}px`,
+            height: `${imgHeight * scale}px`,
+          }}
+        />
       </Box>
 
       <Box
@@ -88,7 +95,7 @@ const ProductCard = ({ data }) => {
             letterSpacing: "1%",
             textAlign: "center",
             textTransform: "capitalize",
-            color:ColorPalette.orange
+            color: ColorPalette.orange,
           }}
         >
           {data.amount}

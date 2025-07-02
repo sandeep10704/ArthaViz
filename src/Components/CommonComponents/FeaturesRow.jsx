@@ -49,9 +49,8 @@ const FeaturesRow = () => {
         display: "flex",
         flexWrap: "wrap",
         justifyContent: isSmallScreen ? "center" : "space-around",
-        gap: isSmallScreen ? "16px" : "16px",
+        gap: isSmallScreen ? "16px" : "6px",
         mx: "auto",
-        padding:"0 40px"
       }}
     >
       {features.map((feature, index) => (
@@ -75,8 +74,8 @@ const FeaturesRow = () => {
           >
             <Box
               sx={{
-                width: "28px",
-                height: "28px",
+                width: "30px",
+                height: "30px",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -88,7 +87,7 @@ const FeaturesRow = () => {
               sx={{
                 fontFamily: "Outfit",
                 fontWeight: 100,
-                fontSize: "15px",
+                fontSize: "18px",
                 lineHeight: "100%",
                 letterSpacing: "6%",
                 textTransform: "uppercase",
@@ -101,7 +100,7 @@ const FeaturesRow = () => {
             sx={{
               fontFamily: "Outfit",
               fontWeight: 200,
-              fontSize: "10px",
+              fontSize: "12px",
               lineHeight: "100%",
               letterSpacing: "1%",
               ml: "35px",

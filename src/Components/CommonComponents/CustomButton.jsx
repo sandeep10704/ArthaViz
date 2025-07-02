@@ -5,7 +5,7 @@ import React from 'react'
 const CustomButton = ({text}) => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const isMidScreen = useMediaQuery(theme.breakpoints.between('sm', 'lg')); // mid screen detection
+    const isMidScreen = useMediaQuery(theme.breakpoints.between('sm', 'lg'));
   return (
     
     <Button
@@ -16,7 +16,7 @@ const CustomButton = ({text}) => {
                                 px: 4,
                                 py: 1.5,
                                 fontSize: isSmallScreen
-                                    ? '12px'
+                                    ? '8px'
                                     : isMidScreen
                                         ? `${(16 * 5) / 7}px`
                                         : '16px',

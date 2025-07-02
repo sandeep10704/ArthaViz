@@ -12,8 +12,8 @@ const PostCard = ({ data }) => {
   const isSmallScreen = useMediaQuery("(max-width:600px)");
   const isMediumScreen = useMediaQuery("(max-width:1440px)");
 
-  const baseWidth = 250;
-  const baseImageWidth = 240;
+  const baseWidth = 240;
+  const baseImageWidth = 230;
 
   const scale = isSmallScreen ? 1 : (isMediumScreen ? (5 / 7) : 1);
 

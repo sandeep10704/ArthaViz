@@ -8,11 +8,13 @@ import CartLayout from "./Components/Body/Cart/CartLayout.jsx";
 import ContactLayout from "./Components/Body/Contact/Contact.jsx";
 import HomeLayout from "./Components/Body/Home/HomeLayout.jsx";
 import ShopLayout from "./Components/Body/Shop/ShopLayout.jsx";
+import MainShopLayout from "./Components/Body/Shop/MainShop/MainShopLayout.jsx";
+import ProductShopLayout from "./Components/Body/Shop/ProductShop/ProductShopLayout.jsx";
 
 
 
 const Router = createBrowserRouter([
-  {
+ {
     path: "/",
     element: <Layout />,
     children: [
@@ -21,8 +23,14 @@ const Router = createBrowserRouter([
       { path: "blogs", element: <BlogsLayout /> },
       { path: "cart", element: <CartLayout /> },
       { path: "contact", element: <ContactLayout /> },
-      { path: "shop", element: <ShopLayout /> },
-
+      {
+        path: "shop",
+        element: <ShopLayout />,
+        children: [
+          { index: true, element: <MainShopLayout /> },
+          { path: ":productid", element: <ProductShopLayout /> },
+        ],
+      },
     ],
   },
 ]);

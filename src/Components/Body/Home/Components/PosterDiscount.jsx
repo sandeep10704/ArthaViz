@@ -27,7 +27,7 @@ const Container = styled(Box)`
 
 
 const ProductImage = styled.img`
-  width: 820px;
+  width: 690px;
   max-width: 90%%;
   height: auto;
   object-fit: contain;
@@ -40,7 +40,7 @@ const ProductImage = styled.img`
 `;
 
 const TextSection = styled(Box)`
-  width: 570px;
+  width: 550px;
   max-width: 90%;
   display: flex;
   flex-direction: column;

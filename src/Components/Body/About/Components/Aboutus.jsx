@@ -9,7 +9,7 @@ const Aboutus = () => {
     <Box
       sx={{
         width: 'auto',
-        height: isSmallScreen ? 'auto' : '621px',
+        height: isSmallScreen ? 'auto' : '600px',
         display: 'flex',
         flexDirection: isSmallScreen ? 'column' : 'row',
         gap: isSmallScreen ? '40px' : '120px',
@@ -23,14 +23,14 @@ const Aboutus = () => {
       <Box
         sx={{
           width: isSmallScreen ? '100%' : '1400px',
-          height: isSmallScreen ? 'auto' : '621px',
+          height: isSmallScreen ? 'auto' : 'auto',
           overflow: 'hidden',
           borderRadius: '8px',
         }}
       >
         <iframe
-          width={isSmallScreen ? '316' : '950'}
-          height={isSmallScreen ? '200' : '600'}
+          width={isSmallScreen ? '385' : '950'}
+          height={isSmallScreen ? '220' : '500'}
           src="https://www.youtube.com/embed/dQw4w9WgXcQ" // replace with your desired YouTube video URL
           title="YouTube video player"
           frameBorder="0"
@@ -70,7 +70,7 @@ const Aboutus = () => {
           sx={{
             fontFamily: 'Outfit',
             fontWeight: 100,
-            fontSize: isSmallScreen ? '14px' : '21px',
+            fontSize: isSmallScreen ? '14px' : '16px',
             lineHeight: '150%',
             letterSpacing: '1%',
             textAlign: isSmallScreen ? 'center' : 'left',

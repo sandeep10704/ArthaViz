@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 
 const ShopLayout = () => {
   return (
-    <div>ShopLayout</div>
-  )
+    <div>
+      <Outlet />
+    </div>
+  );
 }
 
-export default ShopLayout
+export default ShopLayout;

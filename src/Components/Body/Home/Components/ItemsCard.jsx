@@ -9,7 +9,7 @@ const ItemsCard = ({ title, items }) => {
     const itemTextStyle = {
         fontFamily: 'Outfit',
         fontWeight: 200,
-        fontSize: '18px',
+        fontSize: '17px',
         lineHeight: '100%',
         letterSpacing: '0.01em',
         textTransform: 'capitalize',
@@ -18,11 +18,11 @@ const ItemsCard = ({ title, items }) => {
     return (
         <Box
             sx={{
-                width: '260px',
-                height: '370px',
+                width: '240px',
+                height: '350px',
                 border: '1px solid #ccc',
                 borderRadius: '10px',
-                padding: '30px 20px',
+                padding: '30px 10px',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '15px',
@@ -33,7 +33,7 @@ const ItemsCard = ({ title, items }) => {
                 sx={{
                     fontFamily: 'Outfit',
                     fontWeight: 200,
-                    fontSize: '24px',
+                    fontSize: '22px',
                     lineHeight: '100%',
                     letterSpacing: '0.01em',
                     textTransform: 'uppercase',
@@ -57,7 +57,7 @@ const ItemsCard = ({ title, items }) => {
                 sx={{
                     width: '100%',
                     maxWidth: '240px',
-                    height: '330px',
+                    height: '320px',
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '15px',
@@ -69,7 +69,7 @@ const ItemsCard = ({ title, items }) => {
                         <Box
                             sx={{
                                 width: '225px', // fixed typo from Width
-                                minHeight: '90px',
+                                minHeight: '80px',
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '10px',

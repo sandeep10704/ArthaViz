@@ -2,8 +2,9 @@ import React, { Suspense, useState } from 'react';
 import { Box, IconButton, useMediaQuery } from '@mui/material';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import LoadingScreen from './LoadingScreen';
+import ColorPalette from '../../Assets/ColorPalette';
 
-const Carousel = ({ items, itemsToShow = 1, gap = 16 }) => {
+const Carousel = ({ items, itemsToShow = 1, gap = 0 }) => {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
   const visibleCount = itemsToShow;
 
@@ -25,7 +26,7 @@ const Carousel = ({ items, itemsToShow = 1, gap = 16 }) => {
   return (
     // outer <Box> no overflow—arrows can float outside
     <Box sx={{ position: 'relative', width: '100%' }}>
-      
+
       {/* inner <Box> with overflow hidden & responsive padding */}
       <Box
         sx={{
@@ -58,8 +59,8 @@ const Carousel = ({ items, itemsToShow = 1, gap = 16 }) => {
                   key={idx}
                   sx={{
                     flex: '0 0 auto',
-                    width: `calc((100% - ${totalGap}px) / ${visibleCount})`,
-                    p: isSmallScreen ? 1 : 0,
+                    width: `calc((92% - ${totalGap}px) / ${visibleCount})`,
+                    p: isSmallScreen ? 0 : 0,
                     boxSizing: 'border-box',
                   }}
                 >
@@ -72,7 +73,7 @@ const Carousel = ({ items, itemsToShow = 1, gap = 16 }) => {
           ))}
         </Box>
       </Box>
-      
+
       {/* Prev arrow: shift further out on small, or hide if you want */}
       <IconButton
         onClick={handlePrev}
@@ -82,15 +83,14 @@ const Carousel = ({ items, itemsToShow = 1, gap = 16 }) => {
           left: isSmallScreen ? `-${gap * 1.5}px` : 0,
           transform: 'translateY(-50%)',
           zIndex: 2,
-          bgcolor: 'rgba(255,255,255,0.7)',
-          '&:hover': { bgcolor: 'rgba(255,255,255,0.9)' },
-          // display: isSmallScreen ? 'none' : 'flex',  // if you prefer to hide
+          bgcolor: 'transparent', // transparent by default
+          '&:hover': { bgcolor: ColorPalette.orange },
+          opacity: "0.8",
         }}
       >
         <ArrowBackIos />
       </IconButton>
 
-      {/* Next arrow */}
       <IconButton
         onClick={handleNext}
         sx={{
@@ -99,13 +99,15 @@ const Carousel = ({ items, itemsToShow = 1, gap = 16 }) => {
           right: isSmallScreen ? `-${gap * 1.5}px` : 8,
           transform: 'translateY(-50%)',
           zIndex: 2,
-          bgcolor: 'rgba(255,255,255,0.7)',
-          '&:hover': { bgcolor: 'rgba(255,255,255,0.9)' },
+          bgcolor: 'transparent', // transparent by default
+          '&:hover': { bgcolor: ColorPalette.orange },
+          opacity: "0.5",
         }}
       >
         <ArrowForwardIos />
       </IconButton>
-      
+
+
     </Box>
   );
 };

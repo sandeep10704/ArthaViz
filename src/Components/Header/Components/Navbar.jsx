@@ -46,13 +46,13 @@ const Navbar = () => {
     setDrawerOpen(false);
   };
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) => (location.pathname === path) ;
 
   const drawerContent = (
     <Box
       sx={{
         width: 250,
-        height: '100vh',
+        height: '98vh',
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
@@ -62,7 +62,7 @@ const Navbar = () => {
       <Box
         sx={{
           overflowY: 'auto',
-          pb: 16, // leaves space for bottom section so it's not hidden
+          pb: 16, 
           flex: 1,
         }}
       >
@@ -106,7 +106,7 @@ const Navbar = () => {
         </Box>
 
         {/* Icon Buttons */}
-        <Box sx={{ display: 'flex', justifyContent: 'space-around', p: 2 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-around', p: 0 }}>
           {iconLinks.map(({ icon, path }, i) => (
             <IconButton
               key={i}
@@ -130,7 +130,7 @@ const Navbar = () => {
       <AppBar position="static" color="inherit" elevation={0}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           {/* Logo */}
-          <Box sx={{ ml: { xs: 1, sm: 3, md: 10, lg: 15 } }}>
+          <Box sx={{ ml: { xs: 0, sm: 0, md: 10, lg: 15 } }}>
             <Typography
               variant="h6"
               sx={{
