@@ -58,8 +58,8 @@ const ReviewCard = lazy(() => import('./ReviewCard'));
       display="flex"
       flexDirection="column"
       gap={2}
-      width="auto"
-      mx={!isSmallScreen ? "10%" : "0%"}
+      // width="auto"
+      mx={!isSmallScreen ? "10%" : "auto"}
       my="10px"
     >
       <Box>

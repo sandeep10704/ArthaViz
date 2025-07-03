@@ -13,7 +13,7 @@ const Container = styled(Box)`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 20px;
   background-color: #f9f9f9;
   flex-wrap: wrap;
 

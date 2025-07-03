@@ -3,9 +3,11 @@ import { Box, Typography, Select, MenuItem, Grid, Pagination } from '@mui/materi
 import ProductCard from '../../../../CommonComponents/ProductCard';
 import ImagesAssets from '../../../../../Assets/ImagesAssets';
 import ColorPalette from '../../../../../Assets/ColorPalette';
+import { useNavigate } from 'react-router';
 
 const ProductShow = () => {
     // Placeholder data
+    
     const products = [
         { id: 1, image: ImagesAssets.Selling01, text: 'Phones', amount: '$870' },
         { id: 2, image: ImagesAssets.Selling02, text: 'Drone', amount: '$600' },

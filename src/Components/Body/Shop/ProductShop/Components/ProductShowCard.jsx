@@ -10,11 +10,18 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ImagesAssets from '../../../../../Assets/ImagesAssets';
 import ColorPalette from '../../../../../Assets/ColorPalette';
 import CustomButton from '../../../../CommonComponents/CustomButton';
+import { useNavigate } from 'react-router';
 
 const ProductShowCard = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState(null);
-
+ const navigate = useNavigate();
+const handleClickOfOrderButton = () => {
+    navigate("/cart"); 
+  };
+  const handleClickOfAddToCartButton = () => {
+    navigate("/cart"); 
+  };
 
   const product = {
     name: 'iPhone 15 Pro Max',
@@ -259,8 +266,8 @@ const ProductShowCard = () => {
 
             {/* Action Buttons */}
             <Box sx={{ display: 'flex', gap: 2, mt: 1, mb: 2 }}>
-              <CustomButton text={" ORDER NOW"} />
-              <CustomButton text={"  ADD TO CART"} />
+              <CustomButton text={" ORDER NOW"} onClick={handleClickOfOrderButton} />
+              <CustomButton text={"  ADD TO CART"} onClick={handleClickOfAddToCartButton}/>
               <IconButton>
                 <FavoriteBorderIcon />
               </IconButton>

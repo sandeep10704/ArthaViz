@@ -64,13 +64,13 @@ const Poster = ({ direction = 'right' }) => {
                 alignItems: 'center',
                 justifyContent: 'space-around',
                 backgroundColor: '#fafafa',
-                px: isSmallScreen ? 2 : '200px',
+                px: isSmallScreen ? 2 : '100px',
                 pt: isSmallScreen ? 4 : 0,
                 pb: isSmallScreen ? 4 : 0,
                 boxSizing: 'border-box',
                 overflow: 'hidden',
                 position: 'relative',
-                gap: isSmallScreen ? 4 : 0,
+                gap: isSmallScreen ? 2 : 0,
             }}
         >
             {/* Image Block */}
@@ -80,8 +80,8 @@ const Poster = ({ direction = 'right' }) => {
                     [isLeft ? 'left' : 'right']: isSmallScreen
                         ? 'auto'
                         : isMidScreen
-                            ? `${(50 * 2) / 7}px`
-                            : '50px',
+                            ? `${(40 * 2) / 7}px`
+                            : '40px',
 
                     width: imageWidth,
                     height: imageHeight,
@@ -91,11 +91,6 @@ const Poster = ({ direction = 'right' }) => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     overflow: 'hidden',
-                    padding: isSmallScreen
-                        ? '0'
-                        : isLeft
-                            ? '0 20px 70px 0'
-                            : '0 70px 20px 0',
                     mt: isSmallScreen ? 2 : 0,
                     mb: isSmallScreen ? 2 : 0,
                 }}
@@ -145,7 +140,7 @@ const Poster = ({ direction = 'right' }) => {
                 }}
             >
                 <Typography
-                    variant={isSmallScreen ? 'h5' : 'h4'}
+                    variant={isSmallScreen ? 'h5' : 'h3'}
                     sx={{
                         fontWeight: 200,
                         textTransform: 'uppercase',
@@ -182,7 +177,7 @@ const Poster = ({ direction = 'right' }) => {
                             ? '16px'
                             : isMidScreen
                                 ? `${(15 * 4) / 7}px`
-                                : '15px',
+                                : '14px',
                         mb: 3,
                         fontWeight: 100,
                         width: isSmallScreen ? '100%' : 'auto',

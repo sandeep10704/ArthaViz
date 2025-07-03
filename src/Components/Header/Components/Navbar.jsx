@@ -12,7 +12,8 @@ import '@fontsource/outfit/500.css';
 
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -29,7 +30,7 @@ const menuItems = [
 
 const iconLinks = [
   { icon: <SearchIcon />, path: '/search' },
-  { icon: <AccountCircle />, path: '/account' },
+  { icon: <PermIdentityIcon />, path: '/account' },
   { icon: <FavoriteBorderIcon />, path: '/wishlist' },
   { icon: <ShoppingCartOutlinedIcon />, path: '/cart' },
 ];
@@ -158,12 +159,13 @@ const Navbar = () => {
                     display: 'flex',
                     alignItems: 'center',
                     cursor: 'pointer',
+                    fontFamily:"outfit",
                     color: isActive(path) ? ColorPalette.orange : '#333',
                     fontWeight: isActive(path) ? 'bold' : 400,
                   }}
                   onClick={() => handleNavigate(path)}
                 >
-                  <Typography variant="body1" sx={{ fontFamily: 'Outfit', }}>{label}</Typography>
+                  <Typography variant="body1" sx={{ fontFamily: 'Outfit', fontWeight: isActive(path) ? 400 : 200,}}>{label}</Typography>
                   {label === 'PAGES' && <ArrowDropDownIcon fontSize="small" />}
                 </Box>
               ))}

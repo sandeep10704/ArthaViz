@@ -1,12 +1,14 @@
 import { useTheme } from '@emotion/react';
 import { Button, useMediaQuery } from '@mui/material';
 import React from 'react'
+const defaultClick =() => console.log("Button clicked!");
 
-const CustomButton = ({text}) => {
+const CustomButton = ({text,onClick=defaultClick}) => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const isMidScreen = useMediaQuery(theme.breakpoints.between('sm', 'lg'));
   return (
+
     
     <Button
                             variant="contained"
@@ -26,6 +28,7 @@ const CustomButton = ({text}) => {
                                     backgroundColor: '#ff5a3f',
                                 },
                             }}
+                            onClick={onClick}
                         >
                             {text}
                         </Button>

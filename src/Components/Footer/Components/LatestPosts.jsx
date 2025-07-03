@@ -68,8 +68,8 @@ function LatestPosts() {
       display="flex"
       flexDirection="column"
       gap={2}
-      width="auto"
-      mx= {!isSmallScreen ? "10%" : "0%"}
+      // mx="auto"
+      mx= {!isSmallScreen ? "10%" : "auto"}
     >
       <Box>
         <TextHeading text="LATEST POSTS" />
