@@ -12,7 +12,7 @@ const Aboutus = () => {
         height: isSmallScreen ? 'auto' : '600px',
         display: 'flex',
         flexDirection: isSmallScreen ? 'column' : 'row',
-        gap: isSmallScreen ? '40px' : '120px',
+        gap: isSmallScreen ? '40px' : '50px',
         paddingRight: isSmallScreen ? '10px' : '90px',
         paddingLeft: isSmallScreen ? 0 : '10px',
         alignItems: 'center',
