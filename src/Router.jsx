@@ -10,6 +10,7 @@ import HomeLayout from "./Components/Body/Home/HomeLayout.jsx";
 import ShopLayout from "./Components/Body/Shop/ShopLayout.jsx";
 import MainShopLayout from "./Components/Body/Shop/MainShop/MainShopLayout.jsx";
 import ProductShopLayout from "./Components/Body/Shop/ProductShop/ProductShopLayout.jsx";
+import CheckoutLayout from "./Components/Body/Checkout/CheckoutLayout.jsx";
 
 
 
@@ -31,6 +32,7 @@ const Router = createBrowserRouter([
           { path: ":productid", element: <ProductShopLayout /> },
         ],
       },
+      {path:"checkout",element:<CheckoutLayout/>},
     ],
   },
 ]);

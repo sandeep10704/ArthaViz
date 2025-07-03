@@ -14,7 +14,7 @@ const Aboutus = () => {
         flexDirection: isSmallScreen ? 'column' : 'row',
         gap: isSmallScreen ? '40px' : '120px',
         paddingRight: isSmallScreen ? '10px' : '90px',
-        paddingLeft: isSmallScreen ? 0 :'10px',
+        paddingLeft: isSmallScreen ? 0 : '10px',
         alignItems: 'center',
         justifyContent: 'center',
       }}
@@ -22,23 +22,25 @@ const Aboutus = () => {
       {/* YouTube Video Embed */}
       <Box
         sx={{
-          width: isSmallScreen ? '100%' : '1400px',
-          height: isSmallScreen ? 'auto' : 'auto',
+          width: isSmallScreen ? '100%' : 'auto',
           overflow: 'hidden',
           borderRadius: '8px',
         }}
       >
         <iframe
-          width={isSmallScreen ? '385' : '950'}
-          height={isSmallScreen ? '220' : '500'}
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ" // replace with your desired YouTube video URL
+          width={isSmallScreen ? '385' : '800'}
+          height={isSmallScreen ? '220' : '450'}
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
           title="YouTube video player"
-          frameBorder="0"
+          style={{
+            border: 0,
+            borderRadius: '8px',
+          }}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-          style={{ borderRadius: '8px' }}
         ></iframe>
       </Box>
+
 
       {/* Text Box */}
       <Box
@@ -76,8 +78,8 @@ const Aboutus = () => {
             textAlign: isSmallScreen ? 'center' : 'left',
           }}
         >
-          Risus augue curabitur diam senectus congue velit et. Sed vitae metus nibh sit era. Nulla adipiscing pharetra pellentesque maecenas odio eros at. Et libero vulputate amet duis erat volutpat vitae eget. Sed vitae metus nibh sit era. Nulla adipiscing pharetra eros at. 
-          Nulla adipiscing pharetra pellentesque maecenas odio eros at. Et libero vulputate amet duis erat volutpat vitae eget. Quam libero etiam et in ac at quis. Risus augue curabitur diam senectus congue velit et. 
+          Risus augue curabitur diam senectus congue velit et. Sed vitae metus nibh sit era. Nulla adipiscing pharetra pellentesque maecenas odio eros at. Et libero vulputate amet duis erat volutpat vitae eget. Sed vitae metus nibh sit era. Nulla adipiscing pharetra eros at.
+          Nulla adipiscing pharetra pellentesque maecenas odio eros at. Et libero vulputate amet duis erat volutpat vitae eget. Quam libero etiam et in ac at quis. Risus augue curabitur diam senectus congue velit et.
         </Typography>
 
         <Box sx={{ width: 'auto', display: 'flex', justifyContent: isSmallScreen ? 'center' : 'flex-start' }}>

@@ -3,8 +3,15 @@ import CartItem from './Components/CartItem'
 import { Box, Divider, Typography, Grid } from '@mui/material'
 import CustomButton from '../../CommonComponents/CustomButton';
 import ColorPalette from '../../../Assets/ColorPalette';
+import { useNavigate } from 'react-router';
 
 const CartLayout = () => {
+  const navigate = useNavigate();
+
+const handleProceedToCheckout = () => {
+  navigate("/checkout");
+};
+
   const products = [
     {
       name: 'Iphone 15 Pro Max',
@@ -76,7 +83,7 @@ const CartLayout = () => {
         <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
           <CustomButton text="Update Cart" />
           <CustomButton text="Continue Shopping" />
-          <CustomButton text="Proceed to Checkout" />
+          <CustomButton text="Proceed to Checkout" onClick={handleProceedToCheckout}/>
         </Box>
       </Box>
     </Box>
