@@ -9,6 +9,9 @@ function App() {
   const theme = createTheme({
   typography: {
     fontFamily: 'Outfit, sans-serif',
+    fontWeightLight: 200,
+    fontWeightRegular: 400,
+    fontWeightMedium: 600,
   },
 });
   return (

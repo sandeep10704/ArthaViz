@@ -5,12 +5,14 @@ import Layout from "./Layout.jsx";
 import AboutLayout from "./Components/Body/About/AboutLayout.jsx";
 import BlogsLayout from "./Components/Body/Blogs/BlogsLayout.jsx";
 import CartLayout from "./Components/Body/Cart/CartLayout.jsx";
-import ContactLayout from "./Components/Body/Contact/Contact.jsx";
+import ContactLayout from "./Components/Body/Contact/ContactLayout.jsx";
 import HomeLayout from "./Components/Body/Home/HomeLayout.jsx";
 import ShopLayout from "./Components/Body/Shop/ShopLayout.jsx";
 import MainShopLayout from "./Components/Body/Shop/MainShop/MainShopLayout.jsx";
 import ProductShopLayout from "./Components/Body/Shop/ProductShop/ProductShopLayout.jsx";
 import CheckoutLayout from "./Components/Body/Checkout/CheckoutLayout.jsx";
+import PostsLayout from "./Components/Body/Blogs/Posts/PostsLayout.jsx";
+import PostLayout from "./Components/Body/Blogs/Post/PostLayout.jsx";
 
 
 
@@ -21,7 +23,12 @@ const Router = createBrowserRouter([
     children: [
       { index: true, element: <HomeLayout /> },
       { path: "about", element: <AboutLayout /> },
-      { path: "blogs", element: <BlogsLayout /> },
+      { path: "blogs",
+        element: <BlogsLayout />,
+        children:[
+          { index: true ,element:<PostsLayout/>},
+          {path:":postid",element:<PostLayout/>}
+        ] },
       { path: "cart", element: <CartLayout /> },
       { path: "contact", element: <ContactLayout /> },
       {

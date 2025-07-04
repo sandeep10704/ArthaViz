@@ -4,10 +4,15 @@ import '@fontsource/outfit/400.css';
 import '@fontsource/outfit/200.css';
 import '@fontsource/outfit/100.css';
 import { cardHoverStyle, imageHoverBoxStyle } from "../../Assets/CommonCss";
+import { useNavigate } from "react-router";
 
 const PostCard = ({ data }) => {
   const { cardHeading, textHeading, text, image } = data;
   const [expanded, setExpanded] = useState(false);
+  const navigate =useNavigate()
+  const handleOnClick =()=>{
+    navigate(`/blogs/${textHeading}`)
+  }
 
   const isSmallScreen = useMediaQuery("(max-width:600px)");
   const isMediumScreen = useMediaQuery("(max-width:1440px)");
@@ -33,6 +38,7 @@ const PostCard = ({ data }) => {
       gap="10px"
       padding={"10px"}
       sx={{...cardHoverStyle}}
+      onClick={handleOnClick}
     >
       {/* Card Heading and Image */}
       <Box>
