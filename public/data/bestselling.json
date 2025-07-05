@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling01.png",
+    "text": "Phones",
+    "amount": "$870"
+  },
+  {
+    "id": 2,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling02.png",
+    "text": "PlayStations",
+    "amount": "$600"
+  },
+  {
+    "id": 3,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling03.png",
+    "text": "Digital watches",
+    "amount": "$400"
+  },
+  {
+    "id": 4,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling04.png",
+    "text": "Joysticks",
+    "amount": "$900"
+  },
+  {
+    "id": 5,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling05.png",
+    "text": "EarPods",
+    "amount": "$300"
+  }
+]

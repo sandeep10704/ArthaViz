@@ -1,64 +1,51 @@
 import { Box, useMediaQuery } from '@mui/material';
-import React, { lazy } from 'react';
-
+import React, { useEffect } from 'react';
 import TextHeading from '../../CommonComponents/TextHeading';
 import Carousel from '../../CommonComponents/Carousel';
-import ReviewCard from './ReviewCard'
+import ReviewCard from './ReviewCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCustomerReviews } from '../../../store/CustomerReview-slice';
+
+
 const CustomersReviews = () => {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
   const isMediumScreen = useMediaQuery('(max-width:960px)');
-const ReviewCard = lazy(() => import('./ReviewCard'));
-  const reviews = [
-    {
-      Component: ReviewCard,
-      props: {
-        text: "“I stumbled upon this tech store while searching for a new laptop, and I couldn't be happier with my experience! The staff was incredibly knowledgeable and guided me through the process of choosing the perfect device for my needs. Highly recommended!”",
-        name: "John Doe",
-        stars: 4,
-      },
-    },
-    {
-      Component: ReviewCard,
-      props: {
-        text: "“Amazing customer service and the prices were unbeatable. Will definitely shop here again!”",
-        name: "Jane Smith",
-        stars: 5,
-      },
-    },
-    {
-      Component: ReviewCard,
-      props: {
-        text: "“Great variety of products and quick delivery. Overall a pleasant shopping experience.”",
-        name: "Alex Johnson",
-        stars: 4,
-      },
-    },
-    {
-      Component: ReviewCard,
-      props: {
-        text: "“Quality products and fast shipping. I highly recommend this store to anyone looking for great deals.”",
-        name: "Emily Brown",
-        stars: 5,
-      },
-    },
-  ];
+
+  const dispatch = useDispatch();
+  const { list: reviews, loading, error } = useSelector((state) => state.CustomerReviews);
+
+  useEffect(() => {
+    dispatch(fetchCustomerReviews());
+  }, [dispatch]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   // Decide number of items to show based on screen size
   const itemsToShow = isSmallScreen ? 1 : (isMediumScreen ? 2 : 3);
 
   // Calculate width based on screen size
   const cardWidth = isSmallScreen
-    ? '100%' // full width for small screens
+    ? '100%'
     : isMediumScreen
-    ? '60%' // 5/7 for mid screens
-    : '100%'; // default full size for large screens
+    ? '60%'
+    : '100%';
+
+  const formattedReviews = reviews.map((review) => ({
+    Component: ReviewCard,
+    props: {
+      text: review.text,
+      name: review.name,
+      stars: review.stars,
+      width: cardWidth
+    }
+  }));
 
   return (
     <Box
       display="flex"
       flexDirection="column"
       gap={2}
-      // width="auto"
       mx={!isSmallScreen ? "10%" : "auto"}
       my="10px"
     >
@@ -67,13 +54,7 @@ const ReviewCard = lazy(() => import('./ReviewCard'));
       </Box>
 
       <Carousel
-        items={reviews.map((review) => ({
-          ...review,
-          props: {
-            ...review.props,
-            width: cardWidth,
-          },
-        }))}
+        items={formattedReviews}
         itemsToShow={itemsToShow}
       />
     </Box>

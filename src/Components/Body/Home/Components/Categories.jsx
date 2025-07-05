@@ -1,70 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, useMediaQuery } from "@mui/material";
 import TextHeading from "../../../CommonComponents/TextHeading";
 import Carousel from "../../../CommonComponents/Carousel";
-import ImagesAssets from "../../../../Assets/ImagesAssets";
 import Categoriescard from "./Categoriescard";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategories } from "../../../../store/Categories-slice";
 
 
 function Categories() {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
-// const CategoriesCard = React.lazy(() => import('./Categoriescard'));
-  const posts = [
-    {
-      Component: Categoriescard,
-      props: {
-        data: {
-          image: ImagesAssets.Categorie01,
-          text: "Phones",
-        }
+  const dispatch = useDispatch();
+  const { list: posts, loading, error } = useSelector((state) => state.Categories);
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const formattedPosts = posts.map((post) => ({
+    Component: Categoriescard,
+    props: {
+      data: {
+        image: post.image,
+        text: post.text,
+        id:post.id,
       }
-    },
-    {
-      Component: Categoriescard,
-      props: {
-        data: {
-          image: ImagesAssets.Categorie02,
-          text: "PlayStations",
-        }
-      }
-    },
-    {
-      Component: Categoriescard,
-      props: {
-        data: {
-          image: ImagesAssets.Categorie03,
-          text: "Digital watches",
-        }
-      }
-    },
-    {
-      Component: Categoriescard,
-      props: {
-        data: {
-          image: ImagesAssets.Categorie04,
-          text: "Joysticks",
-        }
-      }
-    },
-    {
-      Component: Categoriescard,
-      props: {
-        data: {
-          image: ImagesAssets.Categorie05,
-          text: "EarPods",
-        }
-      }
-    },
-    {
-      Component: Categoriescard,
-      props: {
-        data: {
-          image: ImagesAssets.Categorie06,
-          text: "Laptops",
-        }
-      }
-    },
-  ];
+    }
+  }));
 
   return (
     <Box
@@ -80,7 +44,7 @@ function Categories() {
 
       {isSmallScreen ? (
         <Box width="300px" mx="auto">
-        <Carousel items={posts} itemsToShow={1} />
+          <Carousel items={formattedPosts} itemsToShow={1} />
         </Box>
       ) : (
         <Box
@@ -95,7 +59,7 @@ function Categories() {
             },
           }}
         >
-          {posts.map(({ Component, props }, index) => (
+          {formattedPosts.map(({ Component, props }, index) => (
             <Component key={index} {...props} />
           ))}
         </Box>

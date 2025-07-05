@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie01.png",
+    "text": "Phones"
+  },
+  {
+    "id": 2,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie02.png",
+    "text": "PlayStations"
+  },
+  {
+    "id": 3,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie03.png",
+    "text": "Digital watches"
+  },
+  {
+    "id": 4,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie04.png",
+    "text": "Joysticks"
+  },
+  {
+    "id": 5,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie05.png",
+    "text": "EarPods"
+  },
+  {
+    "id": 6,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie06.png",
+    "text": "Laptops"
+  }
+]

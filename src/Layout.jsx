@@ -5,6 +5,7 @@ import { Box } from "@mui/material";
 import LatestPosts from "./Components/Footer/Components/LatestPosts";
 import CustomersReviews from "./Components/Footer/Components/CustomersReviews";
 import ScrollToTop from "./Components/CommonComponents/ScrollToTop";
+import MultiImageUpload from "./MultiImageUpload";
 
 const HeaderLayout = lazy(() => import("./Components/Header/HeaderLayout"));
 const FooterLayout = lazy(() => import("./Components/Footer/FooterLayout"));
@@ -16,6 +17,7 @@ const Layout = () => {
       <Suspense fallback={<LoadingScreen />}>
         <HeaderLayout />
       </Suspense>
+      
 
      <Box
   component="main"
@@ -29,6 +31,7 @@ const Layout = () => {
 >
   <Outlet />
   <Box paddingBottom="40px"> 
+  {/* <MultiImageUpload/> */}
   <CustomersReviews />
     </Box>
   <LatestPosts />

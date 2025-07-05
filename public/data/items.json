@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Featured",
+    "items": [
+      { "id": 1, "name": "Wireless Headset", "price": "$500", "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Item11.jpg" },
+      { "id": 2, "name": "Iphone X Pro Max", "price": "$820", "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Item12.jpg" },
+      { "id": 3, "name": "Iphone 11 Pro", "price": "$960", "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Item13.jpg" }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Latest items",
+    "items": [
+      { "id": 1, "name": "Apple airPod", "price": "$450", "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Item21.jpg" },
+      { "id": 2, "name": "Screen touch watch", "price": "$750", "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Item22.jpg" },
+      { "id": 3, "name": "Digital watch", "price": "$660", "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Item23.jpg" }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Best reviewed",
+    "items": [
+      { "id": 1, "name": "Wireless Joysticks", "price": "$350", "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Item31.jpg" },
+      { "id": 2, "name": "Apple White AirPod", "price": "$330", "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Item32.jpg" },
+      { "id": 3, "name": "Gimbal stabilizer", "price": "$920", "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Item33.jpg" }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "On sale",
+    "items": [
+      { "id": 1, "name": "Iphone 15 pro max", "price": "$500", "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Item41.jpg" },
+      { "id": 2, "name": "White AirPods", "price": "$820", "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Item42.jpg" },
+      { "id": 3, "name": "Security CCTV camera", "price": "$960", "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Item43.jpg" }
+    ]
+  }
+]

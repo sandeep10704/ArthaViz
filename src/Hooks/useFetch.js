@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const useFetch = (url, options) => {
+const useFetch = (url, options = {}) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,15 +13,15 @@ const useFetch = (url, options) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(url, { ...options, signal });
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const json = await response.json();
-        setData(json);
+        const response = await axios({
+          url,
+          signal,
+          ...options,
+        });
+        setData(response.data);
         setError(null);
       } catch (err) {
-        if (err.name !== 'AbortError') {
+        if (!axios.isCancel(err)) {
           setError(err);
         }
       } finally {
@@ -37,4 +38,3 @@ const useFetch = (url, options) => {
 };
 
 export default useFetch;
-    

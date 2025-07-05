@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "text": "“I stumbled upon this tech store while searching for a new laptop, and I couldn't be happier with my experience! The staff was incredibly knowledgeable and guided me through the process of choosing the perfect device for my needs. Highly recommended!”",
+    "name": "John Doe",
+    "stars": 4
+  },
+  {
+    "id": 2,
+    "text": "“Amazing customer service and the prices were unbeatable. Will definitely shop here again!”",
+    "name": "Jane Smith",
+    "stars": 5
+  },
+  {
+    "id": 3,
+    "text": "“Great variety of products and quick delivery. Overall a pleasant shopping experience.”",
+    "name": "Alex Johnson",
+    "stars": 4
+  },
+  {
+    "id": 4,
+    "text": "“Quality products and fast shipping. I highly recommend this store to anyone looking for great deals.”",
+    "name": "Emily Brown",
+    "stars": 5
+  }
+]
