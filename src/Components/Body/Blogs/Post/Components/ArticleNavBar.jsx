@@ -8,31 +8,22 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
-const ArticleNavBar = () => {
+const ArticleNavBar = ({ categories, previousArticle, nextArticle }) => {
   return (
     <Box sx={{ px: 3, py: 2 }}>
       <Grid container alignItems="center" justifyContent="space-between">
         {/* Left Side - Categories */}
         <Grid item>
           <Box sx={{ display: 'flex', gap: 2 }}>
-            <Typography
-              variant="body2"
-              sx={{ fontFamily: 'Outfit', fontWeight: 200 }}
-            >
-              Tech
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{ fontFamily: 'Outfit', fontWeight: 200 }}
-            >
-              Tips
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{ fontFamily: 'Outfit', fontWeight: 200 }}
-            >
-              Gadgets
-            </Typography>
+            {categories.map((category, index) => (
+              <Typography
+                key={index}
+                variant="body2"
+                sx={{ fontFamily: 'Outfit', fontWeight: 200 }}
+              >
+                {category}
+              </Typography>
+            ))}
           </Box>
         </Grid>
 
@@ -69,7 +60,7 @@ const ArticleNavBar = () => {
             variant="body2"
             sx={{ fontFamily: 'Outfit', fontWeight: 200 }}
           >
-            BEST DIGITAL WATCHES TO BUY IN THIS YEAR
+            {previousArticle}
           </Typography>
         </Grid>
 
@@ -78,7 +69,7 @@ const ArticleNavBar = () => {
             variant="body2"
             sx={{ color: '#ff5722', fontFamily: 'Outfit', fontWeight: 200 }}
           >
-            BEST AIRPOD THAT YOU MUST GET IT
+            {nextArticle}
           </Typography>
           <IconButton>
             <ArrowForwardIosIcon fontSize="small" sx={{ color: '#ff5722' }} />

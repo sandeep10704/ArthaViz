@@ -7,11 +7,11 @@ import { cardHoverStyle, imageHoverBoxStyle } from "../../Assets/CommonCss";
 import { useNavigate } from "react-router";
 
 const PostCard = ({ data }) => {
-  const { cardHeading, textHeading, text, image } = data;
+  const { id,cardHeading, textHeading, text, image } = data;
   const [expanded, setExpanded] = useState(false);
   const navigate =useNavigate()
   const handleOnClick =()=>{
-    navigate(`/blogs/${textHeading}`)
+    navigate(`/blogs/${id}`)
   }
 
   const isSmallScreen = useMediaQuery("(max-width:600px)");

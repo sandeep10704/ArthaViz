@@ -27,7 +27,7 @@ const Router = createBrowserRouter([
         element: <BlogsLayout />,
         children:[
           { index: true ,element:<PostsLayout/>},
-          {path:":postid",element:<PostLayout/>}
+          {path:":id",element:<PostLayout/>}
         ] },
       { path: "cart", element: <CartLayout /> },
       { path: "contact", element: <ContactLayout /> },
