@@ -1,0 +1,44 @@
+{
+  "id": "3",
+  "product": {
+    "name": "Apple Watch Series 9",
+    "price": 499,
+    "rating": 4.5,
+    "description": "The latest smartwatch from Apple with enhanced health tracking.",
+    "colors": ["Red", "Black", "Starlight"],
+    "sizes": ["41mm", "45mm"],
+    "stock": 12,
+    "sku": "AW9-45ST",
+    "category": ["Watch", "Smart Wear"],
+    "tags": ["Fitness", "Health", "Style"],
+    "images": [
+      "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie06.png",
+      "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie07.png",
+      "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie09.png"
+    ]
+  },
+  "productDescription": {
+    "title": "Product Description",
+    "topText": "Track your workouts, heart rate, and sleep patterns effortlessly.",
+    "points": [
+      "Double tap gesture control",
+      "New S9 chip for faster performance",
+      "Improved always-on Retina display"
+    ],
+    "bottomText": "Stay connected and healthy on the go with Series 9."
+  },
+  "reviews": [
+    {
+      "image": "https://i.pravatar.cc/150?img=15",
+      "name": "Olivia Martinez",
+      "date": "01/12/2024",
+      "text": "The fitness tracking is spot on and battery lasts all day."
+    },
+    {
+      "image": "https://i.pravatar.cc/150?img=11",
+      "name": "Noah Johnson",
+      "date": "02/22/2024",
+      "text": "Feels light on the wrist, love the new gestures."
+    }
+  ]
+}

@@ -26,7 +26,7 @@ const ProductCard = ({ data }) => {
 
   // ✅ onClick handler to navigate
   const handleCardClick = () => {
-    navigate(`/shop/${data.text}`); // adjust if your route uses slug or another field
+    navigate(`/shop/${data.id}`); // adjust if your route uses slug or another field
   };
 
   return (

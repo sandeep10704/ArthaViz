@@ -3,7 +3,10 @@ import { Box, Typography, List, ListItem, ListItemText, Divider } from '@mui/mat
 import ColorPalette from '../../../../../Assets/ColorPalette';
 
 const ProductDescriptionCard = ({ data }) => {
-  const { title, topText, points, bottomText } = data;
+  if (!data) return null; // ⛑️ Prevent destructuring null
+
+  const { title, topText, points = [], bottomText } = data;
+
   return (
     <Box
       sx={{
@@ -12,9 +15,9 @@ const ProductDescriptionCard = ({ data }) => {
         margin: 'auto',
       }}
     >
-    <Divider sx={{ borderColor: ColorPalette.line }} />
+      <Divider sx={{ borderColor: ColorPalette.line }} />
 
-      <Typography variant="subtitle1" sx={{ fontWeight: 400, mb: 1,mt:2, fontFamily: "Outfit" }}>
+      <Typography variant="subtitle1" sx={{ fontWeight: 400, mb: 1, mt: 2, fontFamily: "Outfit" }}>
         {title}
       </Typography>
 
@@ -41,8 +44,6 @@ const ProductDescriptionCard = ({ data }) => {
                 }
               }}
             />
-
-
           </ListItem>
         ))}
       </List>
@@ -50,6 +51,7 @@ const ProductDescriptionCard = ({ data }) => {
       <Typography variant="body2" sx={{ mb: 2, fontFamily: "Outfit", fontWeight: 200 }}>
         {bottomText}
       </Typography>
+
       <Divider sx={{ borderColor: ColorPalette.line }} />
     </Box>
   );

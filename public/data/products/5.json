@@ -1,0 +1,44 @@
+{
+  "id": "5",
+  "product": {
+    "name": "MacBook Air M3",
+    "price": 1599,
+    "rating": 4.9,
+    "description": "Apple’s thinnest, lightest, and most powerful Air laptop yet.",
+    "colors": ["Midnight", "Silver", "Space Gray"],
+    "sizes": ["13-inch", "15-inch"],
+    "stock": 4,
+    "sku": "MBA-M3",
+    "category": ["Laptop", "Mac"],
+    "tags": ["Portable", "Powerful"],
+    "images": [
+      "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie09.png",
+      "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie09.png",
+      "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie09.png"
+    ]
+  },
+  "productDescription": {
+    "title": "Product Description",
+    "topText": "All-day battery and blazing fast M3 chip performance.",
+    "points": [
+      "Up to 18 hours of battery life",
+      "Liquid Retina display",
+      "Fanless silent design"
+    ],
+    "bottomText": "Your perfect companion for work, creativity, or learning."
+  },
+  "reviews": [
+    {
+      "image": "https://i.pravatar.cc/150?img=19",
+      "name": "Isla Fernandez",
+      "date": "05/18/2024",
+      "text": "A productivity beast with zero fan noise!"
+    },
+    {
+      "image": "https://i.pravatar.cc/150?img=14",
+      "name": "Ethan Clark",
+      "date": "05/20/2024",
+      "text": "Lightweight, sleek and super fast. Battery lasts forever."
+    }
+  ]
+}

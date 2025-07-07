@@ -6,6 +6,7 @@ import categoriesReducer from "./Categories-slice"
 import itemsReducer from "./Items-slice"
 import productReducer from "./productSlice"
 import postsReducer from "./postsSlice"
+import singleProductReducer from "./singleProductSlice"
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     Categories: categoriesReducer,
     products: productReducer,
     posts: postsReducer,
+    singleProduct: singleProductReducer
   },
 });
 

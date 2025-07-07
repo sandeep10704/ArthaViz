@@ -1,0 +1,44 @@
+{
+  "id": "4",
+  "product": {
+    "name": "Sony WH-1000XM5",
+    "price": 399,
+    "rating": 4.7,
+    "description": "Industry-leading noise cancelling wireless headphones.",
+    "colors": ["Black", "Silver"],
+    "sizes": ["One Size"],
+    "stock": 8,
+    "sku": "SONYXM5",
+    "category": ["Audio", "Headphones"],
+    "tags": ["Noise Cancelling", "Wireless"],
+    "images": [
+      "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie08.png",
+      "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie09.png",
+      "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie09.png"
+    ]
+  },
+  "productDescription": {
+    "title": "Product Description",
+    "topText": "Perfect blend of sound quality and comfort for audiophiles.",
+    "points": [
+      "Multi-point connection support",
+      "Up to 30 hours of battery life",
+      "Touch sensor controls"
+    ],
+    "bottomText": "Whether commuting or working, enjoy your audio in peace."
+  },
+  "reviews": [
+    {
+      "image": "https://i.pravatar.cc/150?img=17",
+      "name": "Ella Patel",
+      "date": "06/09/2023",
+      "text": "Crystal clear sound with deep bass. Worth every rupee!"
+    },
+    {
+      "image": "https://i.pravatar.cc/150?img=12",
+      "name": "Daniel Roy",
+      "date": "07/21/2023",
+      "text": "Impressed with how well it cancels background noise."
+    }
+  ]
+}

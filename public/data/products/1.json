@@ -1,0 +1,43 @@
+{
+  "id": "1",
+  "product": {
+    "name": "iPhone 15 Pro Max",
+    "price": 2000,
+    "rating": 5,
+    "description": "Latest iPhone model with top-tier performance and camera quality.",
+    "colors": ["Orange", "Green", "Blue", "Black"],
+    "sizes": ["XL", "L", "M", "S"],
+    "stock": 2,
+    "sku": "1223",
+    "category": ["Phone", "Screen Touch"],
+    "tags": ["Classic", "Modern"],
+    "images": [
+      "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie01.png",
+      "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie02.png",
+      "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie03.png"
+    ]
+  },
+  "productDescription": {
+    "title": "Product Description",
+    "topText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.",
+    "points": [
+      "Donec nec justo eget felis facilisis fermentum.",
+      "Suspendisse urna viverra non, semper suscipit pede."
+    ],
+    "bottomText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis."
+  },
+  "reviews": [
+    {
+      "image": "https://i.pravatar.cc/150?img=3",
+      "name": "Emma Chamberlin",
+      "date": "11/22/2022",
+      "text": "Vitae tortor condimentum lacinia quis vel eros donec ac. Nam at lectus urna duis convallis convallis."
+    },
+    {
+      "image": "https://i.pravatar.cc/150?img=5",
+      "name": "John Doe",
+      "date": "02/10/2023",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    }
+  ]
+}

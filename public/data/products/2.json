@@ -1,0 +1,44 @@
+{
+  "id": "2",
+  "product": {
+    "name": "Samsung Galaxy S24 Ultra",
+    "price": 1800,
+    "rating": 4.8,
+    "description": "A high-end Android phone with a powerful camera and AI features.",
+    "colors": ["Black", "Silver", "Beige", "Navy"],
+    "sizes": ["128GB", "256GB", "512GB"],
+    "stock": 5,
+    "sku": "SGS24U",
+    "category": ["Phone", "Android"],
+    "tags": ["Flagship", "Premium"],
+    "images": [
+      "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie04.png",
+      "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie05.png",
+      "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie09.png"
+    ]
+  },
+  "productDescription": {
+    "title": "Product Description",
+    "topText": "Experience the future of Android with Samsung's most advanced smartphone.",
+    "points": [
+      "200MP AI-powered camera system",
+      "Snapdragon Gen 3 Processor",
+      "Dynamic AMOLED 2X Display"
+    ],
+    "bottomText": "Built for power users, photographers, and mobile gamers alike."
+  },
+  "reviews": [
+    {
+      "image": "https://i.pravatar.cc/150?img=8",
+      "name": "Liam Smith",
+      "date": "03/15/2024",
+      "text": "Absolutely love the zoom and battery life on this phone!"
+    },
+    {
+      "image": "https://i.pravatar.cc/150?img=9",
+      "name": "Sophia Lee",
+      "date": "04/01/2024",
+      "text": "Smooth experience, great screen, worth the upgrade."
+    }
+  ]
+}
