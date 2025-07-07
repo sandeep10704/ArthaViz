@@ -1,0 +1,65 @@
+{
+  "page": "PostsLayout",
+  "filters": [
+    {
+      "header": "Categories",
+      "topics": ["All", "Phones", "Accessories", "Tablets", "Watches"]
+    },
+    {
+      "header": "Tags",
+      "topics": ["White", "Cheap", "Mobile", "Modern"]
+    },
+    {
+      "header": "Social links",
+      "topics": ["Facebook", "Instagram", "Twitter", "Youtube", "Pinterest"]
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "cardHeading": "Gadgets",
+      "textHeading": "5 Must-Have Gadgets for the Modern Home",
+      "text": "Dive into the world of cutting-edge technology with our latest blog post, where we highlight five essential gadgets every modern home should have. From smart assistants to home security systems, discover how these innovations can enhance your daily life and bring convenience to your fingertips.",
+      "image": "Post01",
+      "tags": ["Modern", "Home", "Tech"]
+    },
+    {
+      "id": 2,
+      "cardHeading": "Gadgets",
+      "textHeading": "5 Must-Have Gadgets for the Modern Home",
+      "text": "Dive into the world of cutting-edge technology with our latest blog post, where we highlight five essential gadgets every modern home should have. From smart assistants to home security systems, discover how these innovations can enhance your daily life and bring convenience to your fingertips.",
+      "image": "Post01",
+      "tags": ["Modern", "Home", "Tech"]
+    },
+    {
+      "id": 3,
+      "cardHeading": "Phones",
+      "textHeading": "Eco-Friendly Innovations Making a Difference",
+      "text": "Explore the intersection of technology and sustainability in our latest blog post. Learn about the innovative eco-friendly technologies revolutionizing various industries, from renewable energy solutions to recyclable electronics. Discover how these advancements are paving the way for a more sustainable future.",
+      "image": "Post02",
+      "tags": ["Eco-Friendly", "Innovation", "Green"]
+    },
+    {
+      "id": 4,
+      "cardHeading": "Tech",
+      "textHeading": "The Future of Wearable Tech: Trends to Watch",
+      "text": "Stay ahead of the curve with our insightful look into the rapidly evolving landscape of wearable technology. Explore the latest trends, from health monitoring devices to fashion-forward wearables, and learn how these advancements are shaping the future of personal technology.",
+      "image": "Post03",
+      "tags": ["Wearable", "Trends", "Tech"]
+    },
+    {
+      "id": 5,
+      "cardHeading": "Digital Watch",
+      "textHeading": "Top Apps and Tools for Remote Work",
+      "text": "In today's remote work environment, productivity is key. Discover the top apps and tools that can help you stay organized, focused, and efficient while working from home. From project management platforms to time-tracking apps, find out which tools are essential for maximizing your productivity.",
+      "image": "Post04",
+      "tags": ["Remote Work", "Apps", "Productivity"]
+    }
+ 
+  ],
+  "pagination": {
+    "itemsPerPage": 9,
+    "totalPosts": 30,
+    "pageCount": 4
+  }
+}

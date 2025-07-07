@@ -1,0 +1,64 @@
+{
+  "page": "MainShopLayout",
+  "filters": [
+    {
+      "header": "Categories",
+      "topics": ["All", "Phones", "Accessories", "Tablets", "Watches"]
+    },
+    {
+      "header": "Tags",
+      "topics": ["White", "Cheap", "Mobile", "Modern", "Expensive", "Electronics", "Fashion"]
+    },
+    {
+      "header": "Brands",
+      "topics": ["Apple", "Samsung", "Green"]
+    },
+    {
+      "header": "Filter by Price",
+      "topics": ["Less than $10", "$10- $20", "$20- $30", "$30- $40", "$40- $50", "Above $50"]
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "image": "Selling01",
+      "text": "Phones",
+      "amount": "$870",
+      "tags": ["Mobile", "Expensive", "Modern"]
+    },
+    {
+      "id": 2,
+      "image": "Selling02",
+      "text": "Drone",
+      "amount": "$600",
+      "tags": ["Modern", "Electronics"]
+    },
+    {
+      "id": 3,
+      "image": "Selling03",
+      "text": "Watch",
+      "amount": "$450",
+      "tags": ["Fashion", "Modern", "Cheap"]
+    },
+    {
+      "id": 4,
+      "image": "Selling04",
+      "text": "Speaker",
+      "amount": "$250",
+      "tags": ["Electronics", "Cheap", "Modern"]
+    },
+    {
+      "id": 5,
+      "image": "Selling05",
+      "text": "Tablet",
+      "amount": "$300",
+      "tags": ["Mobile", "White", "Cheap"]
+    }
+    
+  ],
+  "pagination": {
+    "itemsPerPage": 12,
+    "totalProducts": 40,
+    "pageCount": 4
+  }
+}
