@@ -1,50 +1,41 @@
-import React from 'react'
-import PostsMenu from "./Components/PostsMenu" 
-import SearchBox from '../../../CommonComponents/SearchBox'
-import Filters from '../../../CommonComponents/Filters'
-import { Box, Grid } from '@mui/material'
- const data = [
-    { header: 'Categories', topics: ['All', 'Phones', 'Accessories', 'Tablets', 'Watches'] },
-    { header: 'Tags', topics: ['White', 'Cheap', 'Mobile', 'Modern'] },
-    { header: 'Social links', topics: ['Facebook', 'Instagram', 'Twitter','Youtube','Pinterest'] },
-    
-  ];
+import React, { useEffect } from 'react';
+import { Box, Grid } from '@mui/material';
+import SearchBox from '../../../CommonComponents/SearchBox';
+import Filters from '../../../CommonComponents/Filters';
+import PostsMenu from './Components/PostsMenu';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  fetchPostData,
+  updateSelectedFilters,
+  applyFilterAndPaginate,
+} from '../../../../store/postsSlice';
+
 const PostsLayout = () => {
+  const dispatch = useDispatch();
+  const { filters, selectedFilters } = useSelector((state) => state.posts);
+
+  useEffect(() => {
+    dispatch(fetchPostData());
+  }, [dispatch]);
+
+  const handleFilterChange = (newFilters) => {
+    dispatch(updateSelectedFilters(newFilters));
+    dispatch(applyFilterAndPaginate(newFilters));
+  };
+
   return (
     <Box sx={{ flexGrow: 1, padding: '16px' }}>
-  <Grid container spacing={2}>
-    {/* xs: Search + Filters above ProductShow, md+: left side */}
-    <Grid
-      item
-      xs={12}
-      md={3}
-      sx={{
-        order: { xs: 1, md: 1 }, // first in both xs and md+
-        display: { xs: 'flex', md: 'block' },
-        flexDirection: { xs: 'row', md: 'column' },
-        gap: '16px',
-        padding: { xs: "0 20px", md: "0" }
-      }}
-    >
-      <SearchBox />
-      <Filters data={data} />
-    </Grid>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={3} sx={{ order: { xs: 1, md: 1 }, display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <SearchBox />
+          <Filters data={filters} selectedFilters={selectedFilters} onFilterChange={handleFilterChange} />
+        </Grid>
+        <Grid item xs={12} md={9} sx={{ order: { xs: 2, md: 2 } }}>
+          <PostsMenu />
+        </Grid>
+      </Grid>
+    </Box>
+  );
+};
 
-    {/* ProductShow */}
-    <Grid
-      item
-      xs={12}
-      md={9}
-      sx={{
-        order: { xs: 2, md: 2 }, // second in both xs and md+
-      }}
-    >
-      <PostsMenu/>
-    </Grid>
-  </Grid>
-</Box>
-
-  )
-}
-
-export default PostsLayout
+export default PostsLayout;

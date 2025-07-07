@@ -25,9 +25,12 @@ const PostCard = ({ data }) => {
   const cardWidth = `${baseWidth * scale}px`;
   const imageWidth = `${baseImageWidth * scale}px`;
 
-  const handleToggle = () => {
-    setExpanded(!expanded);
-  };
+ const handleToggle = (e) => {
+  e.preventDefault();      
+  e.stopPropagation();   
+  setExpanded(!expanded);  
+};
+
 
   return (
     <Box

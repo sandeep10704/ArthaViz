@@ -3,7 +3,7 @@
   "filters": [
     {
       "header": "Categories",
-      "topics": ["All", "Phones", "Accessories", "Tablets", "Watches"]
+      "topics": [ "Phones", "Accessories", "Tablets", "Watches"]
     },
     {
       "header": "Tags",
@@ -21,40 +21,404 @@
   "products": [
     {
       "id": 1,
-      "image": "Selling01",
-      "text": "Phones",
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling01.png",
+      "text": "iPhone 14 Pro",
       "amount": "$870",
-      "tags": ["Mobile", "Expensive", "Modern"]
+      "tags": ["Mobile", "Expensive", "Modern"],
+      "category": "Phones",
+      "brand": "Apple",
+      "priceFilter": "$40- $50"
     },
     {
       "id": 2,
-      "image": "Selling02",
-      "text": "Drone",
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling02.png",
+      "text": "SkyX Drone",
       "amount": "$600",
-      "tags": ["Modern", "Electronics"]
+      "tags": ["Modern", "Electronics"],
+      "category": "Accessories",
+      "brand": "Samsung",
+      "priceFilter": "$30- $40"
     },
     {
       "id": 3,
-      "image": "Selling03",
-      "text": "Watch",
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling03.png",
+      "text": "Smart Watch GenX",
       "amount": "$450",
-      "tags": ["Fashion", "Modern", "Cheap"]
+      "tags": ["Fashion", "Modern", "Cheap"],
+      "category": "Watches",
+      "brand": "Green",
+      "priceFilter": "$20- $30"
     },
     {
       "id": 4,
-      "image": "Selling04",
-      "text": "Speaker",
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling04.png",
+      "text": "Boomer Speaker",
       "amount": "$250",
-      "tags": ["Electronics", "Cheap", "Modern"]
+      "tags": ["Electronics", "Cheap", "Modern"],
+      "category": "Accessories",
+      "brand": "Samsung",
+      "priceFilter": "$20- $30"
     },
     {
       "id": 5,
-      "image": "Selling05",
-      "text": "Tablet",
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling05.png",
+      "text": "iTab 10.2",
       "amount": "$300",
-      "tags": ["Mobile", "White", "Cheap"]
-    }
-    
+      "tags": ["Mobile", "White", "Cheap"],
+      "category": "Tablets",
+      "brand": "Apple",
+      "priceFilter": "$20- $30"
+    },
+    {
+      "id": 6,
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling01.png",
+      "text": "iPhone SE 2022",
+      "amount": "$420",
+      "tags": ["Mobile", "Cheap"],
+      "category": "Phones",
+      "brand": "Apple",
+      "priceFilter": "$20- $30"
+    },
+    {
+      "id": 7,
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling02.png",
+      "text": "Galaxy Buds Pro",
+      "amount": "$180",
+      "tags": ["Electronics", "Cheap"],
+      "category": "Accessories",
+      "brand": "Samsung",
+      "priceFilter": "$10- $20"
+    },
+    {
+      "id": 8,
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling03.png",
+      "text": "GreenFit Watch",
+      "amount": "$220",
+      "tags": ["Fashion", "Modern"],
+      "category": "Watches",
+      "brand": "Green",
+      "priceFilter": "$20- $30"
+    },
+    {
+      "id": 9,
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling04.png",
+      "text": "Samsung Tablet S6",
+      "amount": "$550",
+      "tags": ["Electronics", "Expensive"],
+      "category": "Tablets",
+      "brand": "Samsung",
+      "priceFilter": "$40- $50"
+    },
+    {
+      "id": 10,
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling05.png",
+      "text": "iPad Mini",
+      "amount": "$680",
+      "tags": ["Mobile", "Expensive"],
+      "category": "Tablets",
+      "brand": "Apple",
+      "priceFilter": "$40- $50"
+    },
+    {
+      "id": 11,
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling01.png",
+      "text": "iPhone XR",
+      "amount": "$300",
+      "tags": ["Mobile", "Cheap"],
+      "category": "Phones",
+      "brand": "Apple",
+      "priceFilter": "$20- $30"
+    },
+    {
+      "id": 12,
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling02.png",
+      "text": "Samsung Gear VR",
+      "amount": "$150",
+      "tags": ["Electronics", "Modern"],
+      "category": "Accessories",
+      "brand": "Samsung",
+      "priceFilter": "$10- $20"
+    },
+    {
+      "id": 13,
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling03.png",
+      "text": "GreenFlex Watch Pro",
+      "amount": "$330",
+      "tags": ["Fashion", "Expensive"],
+      "category": "Watches",
+      "brand": "Green",
+      "priceFilter": "$30- $40"
+    },
+    {
+      "id": 14,
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling04.png",
+      "text": "Samsung PowerBank 20k",
+      "amount": "$110",
+      "tags": ["Electronics", "Cheap"],
+      "category": "Accessories",
+      "brand": "Samsung",
+      "priceFilter": "$10- $20"
+    },
+    {
+      "id": 15,
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling05.png",
+      "text": "iPad Air",
+      "amount": "$720",
+      "tags": ["Mobile", "Expensive"],
+      "category": "Tablets",
+      "brand": "Apple",
+      "priceFilter": "Above $50"
+    },
+    {
+      "id": 16,
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling01.png",
+      "text": "iPhone 11",
+      "amount": "$500",
+      "tags": ["Mobile", "Modern"],
+      "category": "Phones",
+      "brand": "Apple",
+      "priceFilter": "$30- $40"
+    },
+    {
+      "id": 17,
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling02.png",
+      "text": "Samsung Smart Tag",
+      "amount": "$50",
+      "tags": ["Electronics", "Cheap"],
+      "category": "Accessories",
+      "brand": "Samsung",
+      "priceFilter": "Less than $10"
+    },
+    {
+      "id": 18,
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling03.png",
+      "text": "GreenPulse Watch",
+      "amount": "$260",
+      "tags": ["Fashion", "Modern"],
+      "category": "Watches",
+      "brand": "Green",
+      "priceFilter": "$20- $30"
+    },
+    {
+      "id": 19,
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling04.png",
+      "text": "Samsung Tab A7",
+      "amount": "$350",
+      "tags": ["Electronics", "Cheap"],
+      "category": "Tablets",
+      "brand": "Samsung",
+      "priceFilter": "$20- $30"
+    },
+    {
+      "id": 20,
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling05.png",
+      "text": "iPad Pro",
+      "amount": "$999",
+      "tags": ["Mobile", "Expensive"],
+      "category": "Tablets",
+      "brand": "Apple",
+      "priceFilter": "Above $50"
+    },
+    {
+    "id": 21,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling01.png",
+    "text": "iPhone 12 Mini",
+    "amount": "$480",
+    "tags": ["Mobile", "Modern", "Cheap"],
+    "category": "Phones",
+    "brand": "Apple",
+    "priceFilter": "$30- $40"
+  },
+  {
+    "id": 22,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling02.png",
+    "text": "Samsung Portable SSD",
+    "amount": "$140",
+    "tags": ["Electronics", "Modern"],
+    "category": "Accessories",
+    "brand": "Samsung",
+    "priceFilter": "$10- $20"
+  },
+  {
+    "id": 23,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling03.png",
+    "text": "Green Active Watch",
+    "amount": "$310",
+    "tags": ["Fashion", "Modern"],
+    "category": "Watches",
+    "brand": "Green",
+    "priceFilter": "$30- $40"
+  },
+  {
+    "id": 24,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling04.png",
+    "text": "Samsung Earbuds Lite",
+    "amount": "$90",
+    "tags": ["Electronics", "Cheap"],
+    "category": "Accessories",
+    "brand": "Samsung",
+    "priceFilter": "$10- $20"
+  },
+  {
+    "id": 25,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling05.png",
+    "text": "iPad Classic",
+    "amount": "$400",
+    "tags": ["Mobile", "Modern"],
+    "category": "Tablets",
+    "brand": "Apple",
+    "priceFilter": "$30- $40"
+  },
+  {
+    "id": 26,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling01.png",
+    "text": "iPhone X",
+    "amount": "$350",
+    "tags": ["Mobile", "Cheap"],
+    "category": "Phones",
+    "brand": "Apple",
+    "priceFilter": "$20- $30"
+  },
+  {
+    "id": 27,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling02.png",
+    "text": "Samsung Fitness Band",
+    "amount": "$75",
+    "tags": ["Electronics", "Cheap"],
+    "category": "Accessories",
+    "brand": "Samsung",
+    "priceFilter": "$10- $20"
+  },
+  {
+    "id": 28,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling03.png",
+    "text": "Green Sport Watch",
+    "amount": "$280",
+    "tags": ["Fashion", "Modern"],
+    "category": "Watches",
+    "brand": "Green",
+    "priceFilter": "$20- $30"
+  },
+  {
+    "id": 29,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling04.png",
+    "text": "Samsung Tablet S7",
+    "amount": "$650",
+    "tags": ["Electronics", "Expensive"],
+    "category": "Tablets",
+    "brand": "Samsung",
+    "priceFilter": "Above $50"
+  },
+  {
+    "id": 30,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling05.png",
+    "text": "iPad Pro 12.9",
+    "amount": "$1100",
+    "tags": ["Mobile", "Expensive"],
+    "category": "Tablets",
+    "brand": "Apple",
+    "priceFilter": "Above $50"
+  },
+  {
+    "id": 31,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling01.png",
+    "text": "iPhone 13",
+    "amount": "$670",
+    "tags": ["Mobile", "Modern"],
+    "category": "Phones",
+    "brand": "Apple",
+    "priceFilter": "$40- $50"
+  },
+  {
+    "id": 32,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling02.png",
+    "text": "Samsung Power Adapter",
+    "amount": "$25",
+    "tags": ["Electronics", "Cheap"],
+    "category": "Accessories",
+    "brand": "Samsung",
+    "priceFilter": "$10- $20"
+  },
+  {
+    "id": 33,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling03.png",
+    "text": "Green Elegance Watch",
+    "amount": "$390",
+    "tags": ["Fashion", "Expensive"],
+    "category": "Watches",
+    "brand": "Green",
+    "priceFilter": "$30- $40"
+  },
+  {
+    "id": 34,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling04.png",
+    "text": "Samsung Wireless Charger",
+    "amount": "$45",
+    "tags": ["Electronics", "Cheap"],
+    "category": "Accessories",
+    "brand": "Samsung",
+    "priceFilter": "$10- $20"
+  },
+  {
+    "id": 35,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling05.png",
+    "text": "iPad Air Pro",
+    "amount": "$850",
+    "tags": ["Mobile", "Expensive"],
+    "category": "Tablets",
+    "brand": "Apple",
+    "priceFilter": "Above $50"
+  },
+  {
+    "id": 36,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling01.png",
+    "text": "iPhone 13 Mini",
+    "amount": "$580",
+    "tags": ["Mobile", "Modern"],
+    "category": "Phones",
+    "brand": "Apple",
+    "priceFilter": "$30- $40"
+  },
+  {
+    "id": 37,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling02.png",
+    "text": "Samsung Car Charger",
+    "amount": "$35",
+    "tags": ["Electronics", "Cheap"],
+    "category": "Accessories",
+    "brand": "Samsung",
+    "priceFilter": "$10- $20"
+  },
+  {
+    "id": 38,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling03.png",
+    "text": "Green Classic Watch",
+    "amount": "$340",
+    "tags": ["Fashion", "Modern"],
+    "category": "Watches",
+    "brand": "Green",
+    "priceFilter": "$20- $30"
+  },
+  {
+    "id": 39,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling04.png",
+    "text": "Samsung Tab S8",
+    "amount": "$780",
+    "tags": ["Electronics", "Expensive"],
+    "category": "Tablets",
+    "brand": "Samsung",
+    "priceFilter": "Above $50"
+  },
+  {
+    "id": 40,
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling05.png",
+    "text": "iPad 9th Gen",
+    "amount": "$500",
+    "tags": ["Mobile", "Modern"],
+    "category": "Tablets",
+    "brand": "Apple",
+    "priceFilter": "$30- $40"
+  }
   ],
   "pagination": {
     "itemsPerPage": 12,

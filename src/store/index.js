@@ -4,6 +4,8 @@ import customerReviewReducer from "./CustomerReview-slice"
 import bestSellingReducer from "./BestSellinga-slice"
 import categoriesReducer from "./Categories-slice"
 import itemsReducer from "./Items-slice"
+import productReducer from "./productSlice"
+import postsReducer from "./postsSlice"
 
 const store = configureStore({
   reducer: {
@@ -12,6 +14,8 @@ const store = configureStore({
     CustomerReviews: customerReviewReducer,
     BestSelling: bestSellingReducer,
     Categories: categoriesReducer,
+    products: productReducer,
+    posts: postsReducer,
   },
 });
 

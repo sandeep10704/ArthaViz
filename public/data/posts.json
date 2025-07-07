@@ -20,42 +20,301 @@
       "cardHeading": "Gadgets",
       "textHeading": "5 Must-Have Gadgets for the Modern Home",
       "text": "Dive into the world of cutting-edge technology with our latest blog post, where we highlight five essential gadgets every modern home should have. From smart assistants to home security systems, discover how these innovations can enhance your daily life and bring convenience to your fingertips.",
-      "image": "Post01",
-      "tags": ["Modern", "Home", "Tech"]
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post01.jpg",
+      "tags": ["Modern", "Home", "Tech"],
+      "category": "Accessories",
+      "socialLinks": ["Instagram", "Twitter"]
     },
     {
       "id": 2,
       "cardHeading": "Gadgets",
       "textHeading": "5 Must-Have Gadgets for the Modern Home",
       "text": "Dive into the world of cutting-edge technology with our latest blog post, where we highlight five essential gadgets every modern home should have. From smart assistants to home security systems, discover how these innovations can enhance your daily life and bring convenience to your fingertips.",
-      "image": "Post01",
-      "tags": ["Modern", "Home", "Tech"]
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post01.jpg",
+      "tags": ["Modern", "Home", "Tech"],
+      "category": "Accessories",
+      "socialLinks": ["Facebook", "Youtube"]
     },
     {
       "id": 3,
       "cardHeading": "Phones",
       "textHeading": "Eco-Friendly Innovations Making a Difference",
       "text": "Explore the intersection of technology and sustainability in our latest blog post. Learn about the innovative eco-friendly technologies revolutionizing various industries, from renewable energy solutions to recyclable electronics. Discover how these advancements are paving the way for a more sustainable future.",
-      "image": "Post02",
-      "tags": ["Eco-Friendly", "Innovation", "Green"]
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post02.jpg",
+      "tags": ["Eco-Friendly", "Innovation", "Green"],
+      "category": "Phones",
+      "socialLinks": ["Twitter", "Pinterest"]
     },
     {
       "id": 4,
       "cardHeading": "Tech",
       "textHeading": "The Future of Wearable Tech: Trends to Watch",
       "text": "Stay ahead of the curve with our insightful look into the rapidly evolving landscape of wearable technology. Explore the latest trends, from health monitoring devices to fashion-forward wearables, and learn how these advancements are shaping the future of personal technology.",
-      "image": "Post03",
-      "tags": ["Wearable", "Trends", "Tech"]
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post03.jpg",
+      "tags": ["Wearable", "Trends", "Tech"],
+      "category": "Watches",
+      "socialLinks": ["Instagram", "Facebook"]
     },
     {
       "id": 5,
       "cardHeading": "Digital Watch",
       "textHeading": "Top Apps and Tools for Remote Work",
       "text": "In today's remote work environment, productivity is key. Discover the top apps and tools that can help you stay organized, focused, and efficient while working from home. From project management platforms to time-tracking apps, find out which tools are essential for maximizing your productivity.",
-      "image": "Post04",
-      "tags": ["Remote Work", "Apps", "Productivity"]
-    }
- 
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post04.jpg",
+      "tags": ["Remote Work", "Apps", "Productivity"],
+      "category": "Tablets",
+      "socialLinks": ["Youtube", "Pinterest"]
+    },
+    {
+    "id": 6,
+    "cardHeading": "Innovation",
+    "textHeading": "Emerging Tech Trends in 2025",
+    "text": "Explore upcoming technologies that will shape industries in 2025, from AI advancements to quantum computing breakthroughs.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post01.jpg",
+    "tags": ["Modern", "Tech"],
+    "category": "Accessories",
+    "socialLinks": ["Twitter", "Pinterest"]
+  },
+  {
+    "id": 7,
+    "cardHeading": "Phones",
+    "textHeading": "Best Budget Smartphones of the Year",
+    "text": "Discover our top picks for budget smartphones offering premium features without breaking the bank.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post02.jpg",
+    "tags": ["Cheap", "Mobile"],
+    "category": "Phones",
+    "socialLinks": ["Facebook", "Instagram"]
+  },
+  {
+    "id": 8,
+    "cardHeading": "Tablets",
+    "textHeading": "Top Tablets for Students in 2025",
+    "text": "Compare the best tablets for students, featuring long battery life, lightweight design, and high performance for study and entertainment.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post03.jpg",
+    "tags": ["Mobile", "Modern"],
+    "category": "Tablets",
+    "socialLinks": ["Youtube", "Twitter"]
+  },
+  {
+    "id": 9,
+    "cardHeading": "Wearables",
+    "textHeading": "Smartwatches to Watch in 2025",
+    "text": "Stay ahead with our curated list of upcoming smartwatches featuring health tracking and premium design.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post04.jpg",
+    "tags": ["Wearable", "Fashion"],
+    "category": "Watches",
+    "socialLinks": ["Pinterest", "Instagram"]
+  },
+  {
+    "id": 10,
+    "cardHeading": "Tech News",
+    "textHeading": "AI Assistants Redefined",
+    "text": "Learn how AI assistants are transforming daily life with smarter, more human-like interactions.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post01.jpg",
+    "tags": ["AI", "Modern"],
+    "category": "Accessories",
+    "socialLinks": ["Twitter", "Facebook"]
+  },
+  {
+    "id": 11,
+    "cardHeading": "Apps",
+    "textHeading": "Top Productivity Apps for 2025",
+    "text": "Boost your efficiency with these top-rated productivity apps designed for professionals and students alike.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post02.jpg",
+    "tags": ["Apps", "Productivity"],
+    "category": "Phones",
+    "socialLinks": ["Instagram", "Pinterest"]
+  },
+  {
+    "id": 12,
+    "cardHeading": "Reviews",
+    "textHeading": "Apple vs Samsung Tablets",
+    "text": "A detailed comparison of the latest Apple and Samsung tablets to help you choose the best for your needs.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post03.jpg",
+    "tags": ["Mobile", "Modern"],
+    "category": "Tablets",
+    "socialLinks": ["Facebook", "Youtube"]
+  },
+  {
+    "id": 13,
+    "cardHeading": "Wearables",
+    "textHeading": "Fitness Trackers for Every Budget",
+    "text": "Find the perfect fitness tracker to suit your goals and budget in our comprehensive guide.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post04.jpg",
+    "tags": ["Fitness", "Fashion"],
+    "category": "Watches",
+    "socialLinks": ["Twitter", "Instagram"]
+  },
+  {
+    "id": 14,
+    "cardHeading": "Innovation",
+    "textHeading": "Foldable Phones: Are They Worth It?",
+    "text": "Explore the pros and cons of foldable phones and whether they’re the future of smartphones.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post01.jpg",
+    "tags": ["Modern", "Mobile"],
+    "category": "Phones",
+    "socialLinks": ["Pinterest", "Facebook"]
+  },
+  {
+    "id": 15,
+    "cardHeading": "Accessories",
+    "textHeading": "Top Tech Accessories for 2025",
+    "text": "Upgrade your gadgets with these must-have tech accessories designed to enhance productivity and lifestyle.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post02.jpg",
+    "tags": ["Tech", "Modern"],
+    "category": "Accessories",
+    "socialLinks": ["Youtube", "Instagram"]
+  },
+  {
+    "id": 16,
+    "cardHeading": "Apps",
+    "textHeading": "Best Camera Apps for Mobile Photography",
+    "text": "Capture stunning photos with our recommended camera apps that transform your smartphone photography game.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post03.jpg",
+    "tags": ["Apps", "Mobile"],
+    "category": "Phones",
+    "socialLinks": ["Twitter", "Pinterest"]
+  },
+  {
+    "id": 17,
+    "cardHeading": "Reviews",
+    "textHeading": "2025 Smartwatch Comparison",
+    "text": "Compare the best smartwatches of 2025 to find the ideal wearable for your lifestyle and budget.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post04.jpg",
+    "tags": ["Wearable", "Modern"],
+    "category": "Watches",
+    "socialLinks": ["Facebook", "Youtube"]
+  },
+  {
+    "id": 18,
+    "cardHeading": "Innovation",
+    "textHeading": "5G Technology Explained",
+    "text": "Understand how 5G technology works and its impact on internet speed, connectivity, and IoT devices.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post01.jpg",
+    "tags": ["Tech", "Modern"],
+    "category": "Accessories",
+    "socialLinks": ["Instagram", "Twitter"]
+  },
+  {
+    "id": 19,
+    "cardHeading": "Phones",
+    "textHeading": "Top Flagship Phones of 2025",
+    "text": "Check out our expert picks for the best flagship smartphones launching this year.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post02.jpg",
+    "tags": ["Mobile", "Expensive"],
+    "category": "Phones",
+    "socialLinks": ["Pinterest", "Facebook"]
+  },
+  {
+    "id": 20,
+    "cardHeading": "Tablets",
+    "textHeading": "Drawing Tablets for Designers",
+    "text": "Explore the top-rated drawing tablets ideal for graphic designers and digital artists.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post03.jpg",
+    "tags": ["Design", "Modern"],
+    "category": "Tablets",
+    "socialLinks": ["Youtube", "Twitter"]
+  },
+  {
+    "id": 21,
+    "cardHeading": "Wearables",
+    "textHeading": "Smart Rings: Next-Gen Wearables",
+    "text": "Discover the rise of smart rings and how they’re revolutionizing personal tech and health tracking.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post04.jpg",
+    "tags": ["Wearable", "Tech"],
+    "category": "Watches",
+    "socialLinks": ["Instagram", "Pinterest"]
+  },
+  {
+    "id": 22,
+    "cardHeading": "Tech News",
+    "textHeading": "Sustainable Tech Startups to Watch",
+    "text": "Meet innovative startups focusing on sustainability and eco-friendly technology solutions.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post01.jpg",
+    "tags": ["Eco-Friendly", "Innovation"],
+    "category": "Accessories",
+    "socialLinks": ["Facebook", "Twitter"]
+  },
+  {
+    "id": 23,
+    "cardHeading": "Apps",
+    "textHeading": "Best Video Editing Apps for Creators",
+    "text": "Enhance your content with these powerful mobile video editing apps loved by creators worldwide.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post02.jpg",
+    "tags": ["Apps", "Productivity"],
+    "category": "Phones",
+    "socialLinks": ["Youtube", "Instagram"]
+  },
+  {
+    "id": 24,
+    "cardHeading": "Reviews",
+    "textHeading": "Gaming Tablets for Ultimate Play",
+    "text": "Find out which tablets deliver the best gaming performance and immersive experiences.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post03.jpg",
+    "tags": ["Gaming", "Modern"],
+    "category": "Tablets",
+    "socialLinks": ["Twitter", "Facebook"]
+  },
+  {
+    "id": 25,
+    "cardHeading": "Wearables",
+    "textHeading": "Hybrid Smartwatches Explained",
+    "text": "Learn about hybrid smartwatches that combine classic design with smart features for everyday use.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post04.jpg",
+    "tags": ["Fashion", "Tech"],
+    "category": "Watches",
+    "socialLinks": ["Pinterest", "Youtube"]
+  },
+  {
+    "id": 26,
+    "cardHeading": "Innovation",
+    "textHeading": "The Rise of Quantum Computing",
+    "text": "Understand the basics of quantum computing and its potential to transform industries worldwide.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post01.jpg",
+    "tags": ["Tech", "Modern"],
+    "category": "Accessories",
+    "socialLinks": ["Instagram", "Facebook"]
+  },
+  {
+    "id": 27,
+    "cardHeading": "Phones",
+    "textHeading": "Camera Phone Innovations in 2025",
+    "text": "Explore how smartphone camera technology is pushing boundaries with advanced AI and sensors.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post02.jpg",
+    "tags": ["Mobile", "Innovation"],
+    "category": "Phones",
+    "socialLinks": ["Twitter", "Pinterest"]
+  },
+  {
+    "id": 28,
+    "cardHeading": "Tablets",
+    "textHeading": "Tablets for Remote Work",
+    "text": "See our recommendations for tablets that improve productivity and flexibility while working remotely.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post03.jpg",
+    "tags": ["Productivity", "Modern"],
+    "category": "Tablets",
+    "socialLinks": ["Facebook", "Instagram"]
+  },
+  {
+    "id": 29,
+    "cardHeading": "Wearables",
+    "textHeading": "Smart Glasses: Future or Fad?",
+    "text": "Dive into the development of smart glasses and their potential real-world applications.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post04.jpg",
+    "tags": ["Wearable", "Tech"],
+    "category": "Watches",
+    "socialLinks": ["Youtube", "Twitter"]
+  },
+  {
+    "id": 30,
+    "cardHeading": "Tech News",
+    "textHeading": "AI-Powered Apps Transforming Daily Life",
+    "text": "Learn about AI-powered apps making everyday tasks easier, smarter, and faster for users globally.",
+    "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/Post01.jpg",
+    "tags": ["AI", "Modern"],
+    "category": "Accessories",
+    "socialLinks": ["Instagram", "Pinterest"]
+  }
   ],
   "pagination": {
     "itemsPerPage": 9,
