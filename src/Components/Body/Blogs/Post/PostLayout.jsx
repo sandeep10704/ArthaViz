@@ -1,74 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { useParams } from 'react-router-dom';
+
 import GadgetArticle from './Components/GadgetArticle';
 import CommentForm from './Components/CommentForm';
 import CommentsSection from './Components/CommentsSection.jsx';
 import ArticleNavBar from './Components/ArticleNavBar.jsx';
+import { fetchSinglePostById } from '../../../../store/singlePostSlice.js';
 
 const PostLayout = () => {
-   const categories = ["Tech", "Tips", "Gadgets"];
-  const previousArticle = "BEST DIGITAL WATCHES TO BUY IN THIS YEAR";
-  const nextArticle = "BEST AIRPOD THAT YOU MUST GET IT";
- 
-  const comments = [
-    {
-      name: 'Sam Smith',
-      date: 'Jul 10',
-      text: 'Mattis pulvinar non viverra donec pellentesque. Odio mi consequat libero dolor. Porta ut diam lobortis eget leo, lectus. Tortor diam dignissim amet, in interdum aliquet. Nascetur libero elementum adipiscing mauris maecenas et magna. Etiam nec, rutrum a diam lacus, nunc integer etiam.',
-      avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
-    },
-    {
-      name: 'Santie Mary',
-      date: 'Jul 10',
-      text: 'Mattis pulvinar non viverra donec pellentesque. Odio mi consequat libero dolor. Porta ut diam lobortis eget leo, lectus. Tortor diam dignissim amet, in interdum aliquet. Nascetur libero elementum adipiscing mauris maecenas et magna. Etiam nec, rutrum a diam lacus, nunc integer etiam.',
-      avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
-    },
-    {
-      name: 'Analisa Nora',
-      date: 'Jul 10',
-      text: 'Mattis pulvinar non viverra donec pellentesque. Odio mi consequat libero dolor. Porta ut diam lobortis eget leo, lectus. Tortor diam dignissim amet, in interdum aliquet. Nascetur libero elementum adipiscing mauris maecenas et magna. Etiam nec, rutrum a diam lacus, nunc integer etiam.',
-      avatar: 'https://randomuser.me/api/portraits/women/65.jpg',
-    },
-  ];
-  const articleData = {
-    title: "5 Must-Have Gadgets for the Modern Home",
-    category: "TECH • GADGETS",
-    headerImage: "https://res.cloudinary.com/dq7lkkucz/image/upload/Selling01.png",
-    content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur facilisis vivamus massa magna. Blandit mauris libero condimentum commodo morbi consectetur sociis convallis sit. Magna diam amet justo sed vel dolor et volutpat integer. Iaculis sit sapien hac odio elementum egestas neque. Adipiscing purus euismod orci sem amet, et. Turpis erat ornare nisi laoreet est euismod.
-    Sit suscipit tortor turpis sed fringilla lectus facilisis amet. Ipsum, amet dolor curabitur non aliquet orci urna volutpat. Id aliquam neque, ut vivamus sit imperdiet enim, lacus, vel. Morbi arcu amet, nulla fermentum vitae mattis arcu mi convallis. Urna in sollicitudin in vestibulum erat. Turpis faucibus augue ipsum, at aliquam. Cras sagittis tellus nunc integer vitae neque bibendum eget. Tempus malesuada et pellentesque maecenas. Sociis porttitor elit tincidunt tellus sit ornare. Purus ut quis sed venenatis eget ut ipsum, enim lacus. Praesent imperdiet vitae eu, eu tincidunt nunc integer sit.`,
-    quote: {
-      text: `"Sit suscipit tortor turpis sed fringilla lectus facilisis amet. Ipsum, amet dolor curabitur non aliquet orci urna volutpat. Id aliquam neque, ut vivamus sit imperdiet enim, lacus, vel."`,
-      author: "ST. JOHN DOE",
-    },
-    gadgetsList: [
-      "Blandit mauris libero condimentum commodo sociis convallis sit.",
-      "Magna diam amet justo sed vel dolor et volutpat integer.",
-      "Laculis sit sapien hac odio elementum egestas neque.",
-    ],
-    bottomParagraphs: [
-      "Morbi arcu amet, nulla fermentum vitae mattis arcu mi convallis. Urna in sollicitudin in vestibulum erat. Turpis faucibus augue ipsum, at aliquam. Cras sagittis tellus nunc integer vitae neque bibendum eget. Tempus malesuada et pellentesque maecenas. Sociis porttitor elit tincidunt tellus sit ornare. Purus ut ipsum, enim lacus",
-      "Tortor diam dignissim amet, in interdum aliquet. Magnis dictum et eros purus fermentum, massa ullamcorper sit sollicitudin. Nascetur libero elementum adipiscing mauris maecenas et magna. Etiam nec, rutrum a diam lacus, nunc integer etiam. Mattis pulvinar non viverra donec pellentesque. Odio mi consequat libero dolor. Porta ut diam lobortis eget leo, lectus. Nunc tempus feugiat massa laoreet ultrices diam magna quam. Congue auctor auctor luctus neque. Enim lorem ultrices diam donec. Sed id placerat consectetur faucibus.",
-    ],
-    responsiveSection: {
-      image: "https://res.cloudinary.com/dq7lkkucz/image/upload/Insta01.jpg",
-      title: "VELIT, PRAESENT PHARETRA MALESUADA",
-      paragraphs: [
-        "Id pulvinar amet. Consequat potenti mollis massa iaculis et, dolor, eget lectus. Aliquam pellentesque molestie felis fames sed eget non euismod eget. Et eget ullamcorper urna, elit ac diam tellus viverra lacus. Cras sagittis tellus nunc integer vitae neque bibendum eget. Tempus malesuada et pellentesque maecenas. Id pulvinar amet. Consequat potenti mollis massa iaculis et, dolor, eget lectus. Aliquam pellentesque molestie felis fames sed eget non euismod eget.",
-        "Tortor diam dignissim amet, in interdum aliquet. Magnis dictum et eros purus fermentum, massa ullamcorper sit sollicitudin. Nascetur libero elementum adipiscing mauris maecenas et magna. Etiam nec, rutrum a diam lacus, nunc integer etiam. Aliquam pellentesque molestie felis fames sed eget non euismod eget. Et eget ullamcorper urna, elit ac diam tellus viverra lacus.",
-      ],
-    },
-    updatedAt: "Jul 3rd",
-    readTime: "5 min read",
-  };
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { data: post, loading, error } = useSelector((state) => state.singlePost);
+
+  useEffect(() => {
+    dispatch(fetchSinglePostById(id));
+  }, [dispatch, id]);
+
+  if (loading) return <p>Loading post...</p>;
+  if (error) return <p>Error: {error}</p>;
+  if (!post) return null;
 
   return (
     <div>
-      <GadgetArticle data={articleData} />
+      <GadgetArticle data={post.articleData} />
       <ArticleNavBar
-        categories={categories}
-        previousArticle={previousArticle}
-        nextArticle={nextArticle}
+        categories={post.categories}
+        previousArticle={post.previousArticle}
+        nextArticle={post.nextArticle}
       />
-     <CommentsSection comments={comments} />
+      <CommentsSection comments={post.comments} />
       <CommentForm />
     </div>
   );

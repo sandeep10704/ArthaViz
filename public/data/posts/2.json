@@ -1,0 +1,55 @@
+{
+  "Id": "2",
+  "categories": ["Health", "Fitness", "Lifestyle"],
+  "previousArticle": "TOP YOGA MATS FOR DAILY PRACTICE",
+  "nextArticle": "BEST PROTEIN SHAKES TO BOOST YOUR DAY",
+  "comments": [
+    {
+      "name": "John Lee",
+      "date": "Jul 11",
+      "text": "Faucibus eu justo gravida et egestas. Pulvinar leo mattis semper magna sapien. Donec hendrerit tincidunt felis, vitae laoreet purus laoreet et. Nunc sodales sapien a urna aliquet, ut aliquam neque cursus. Maecenas ac lectus lorem. Sed ut perspiciatis unde omnis iste natus error.",
+      "avatar": "https://randomuser.me/api/portraits/men/45.jpg"
+    },
+    {
+      "name": "Maria Gomez",
+      "date": "Jul 11",
+      "text": "Faucibus eu justo gravida et egestas. Pulvinar leo mattis semper magna sapien. Donec hendrerit tincidunt felis, vitae laoreet purus laoreet et. Nunc sodales sapien a urna aliquet, ut aliquam neque cursus. Maecenas ac lectus lorem. Sed ut perspiciatis unde omnis iste natus error.",
+      "avatar": "https://randomuser.me/api/portraits/women/55.jpg"
+    },
+    {
+      "name": "Luke Adams",
+      "date": "Jul 11",
+      "text": "Faucibus eu justo gravida et egestas. Pulvinar leo mattis semper magna sapien. Donec hendrerit tincidunt felis, vitae laoreet purus laoreet et. Nunc sodales sapien a urna aliquet, ut aliquam neque cursus. Maecenas ac lectus lorem. Sed ut perspiciatis unde omnis iste natus error.",
+      "avatar": "https://randomuser.me/api/portraits/men/67.jpg"
+    }
+  ],
+  "articleData": {
+    "title": "5 Best Workouts to Stay Fit at Home",
+    "category": "HEALTH • FITNESS",
+    "headerImage": "https://res.cloudinary.com/dq7lkkucz/image/upload/Fitness01.png",
+    "content": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer at nisi eu sem gravida luctus. Nulla facilisi. Duis sed purus ut nulla blandit feugiat. Quisque cursus tincidunt ex, eu vehicula elit porta sit amet. Aliquam erat volutpat. In sit amet commodo eros, a vulputate justo.\nSed vitae justo sit amet velit lacinia convallis. Etiam euismod suscipit velit, sed sollicitudin elit ullamcorper eu. Nulla vel diam at turpis consequat iaculis. Integer non orci sed lorem dictum pharetra. Donec facilisis dui sed sapien vestibulum, eget suscipit magna mattis. Sed ut perspiciatis unde omnis iste natus error.",
+    "quote": {
+      "text": "\"Sed vitae justo sit amet velit lacinia convallis. Etiam euismod suscipit velit, sed sollicitudin elit ullamcorper eu. Nulla vel diam at turpis consequat iaculis. Integer non orci sed lorem dictum pharetra.\"",
+      "author": "DR. EMILY CLARK"
+    },
+    "gadgetsList": [
+      "Duis sed purus ut nulla blandit feugiat tincidunt ex.",
+      "Integer at nisi eu sem gravida luctus elit porta.",
+      "Quisque cursus tincidunt ex, eu vehicula elit porta sit."
+    ],
+    "bottomParagraphs": [
+      "Donec facilisis dui sed sapien vestibulum, eget suscipit magna mattis. Sed vitae justo sit amet velit lacinia convallis. Etiam euismod suscipit velit, sed sollicitudin elit ullamcorper eu. Nulla vel diam at turpis consequat iaculis. Integer non orci sed lorem dictum pharetra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.",
+      "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer at nisi eu sem gravida luctus. Nulla facilisi. Duis sed purus ut nulla blandit feugiat. Quisque cursus tincidunt ex, eu vehicula elit porta sit amet. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
+    ],
+    "responsiveSection": {
+      "image": "https://res.cloudinary.com/dq7lkkucz/image/upload/FitnessInsta01.jpg",
+      "title": "NUNC, VESTIBULUM BIBENDUM FACILISIS",
+      "paragraphs": [
+        "Duis sed purus ut nulla blandit feugiat. Quisque cursus tincidunt ex, eu vehicula elit porta sit amet. Integer at nisi eu sem gravida luctus. Nulla facilisi. Donec facilisis dui sed sapien vestibulum, eget suscipit magna mattis. Sed vitae justo sit amet velit lacinia convallis. Etiam euismod suscipit velit, sed sollicitudin elit ullamcorper eu.",
+        "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer at nisi eu sem gravida luctus. Nulla facilisi. Duis sed purus ut nulla blandit feugiat. Quisque cursus tincidunt ex, eu vehicula elit porta sit amet. Sed ut perspiciatis unde omnis iste natus error."
+      ]
+    },
+    "updatedAt": "Jul 4th",
+    "readTime": "6 min read"
+  }
+}

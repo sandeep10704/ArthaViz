@@ -7,6 +7,7 @@ import itemsReducer from "./Items-slice"
 import productReducer from "./productSlice"
 import postsReducer from "./postsSlice"
 import singleProductReducer from "./singleProductSlice"
+import singlePostReducer from "./singlePostSlice"
 
 const store = configureStore({
   reducer: {
@@ -17,7 +18,8 @@ const store = configureStore({
     Categories: categoriesReducer,
     products: productReducer,
     posts: postsReducer,
-    singleProduct: singleProductReducer
+    singleProduct: singleProductReducer,
+    singlePost: singlePostReducer,
   },
 });
 
