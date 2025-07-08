@@ -18,6 +18,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ColorPalette from '../../../Assets/ColorPalette'
+import ProfileMenu from './ProfileMenu';
 
 const menuItems = [
   { label: 'HOME', path: '/' },
@@ -30,7 +31,6 @@ const menuItems = [
 
 const iconLinks = [
   { icon: <SearchIcon />, path: '/search' },
-  { icon: <PermIdentityIcon />, path: '/account' },
   { icon: <FavoriteBorderIcon />, path: '/wishlist' },
   { icon: <ShoppingCartOutlinedIcon />, path: '/cart' },
 ];
@@ -47,13 +47,13 @@ const Navbar = () => {
     setDrawerOpen(false);
   };
 
-  const isActive = (path) => (location.pathname === path) ;
+  const isActive = (path) => (location.pathname === path);
 
   const drawerContent = (
     <Box
       sx={{
         width: 250,
-        height: '98vh',
+        height: '96vh',
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
@@ -63,7 +63,7 @@ const Navbar = () => {
       <Box
         sx={{
           overflowY: 'auto',
-          pb: 16, 
+          pb: 16,
           flex: 1,
         }}
       >
@@ -78,6 +78,26 @@ const Navbar = () => {
               {label === 'PAGES' && <ArrowDropDownIcon />}
             </ListItemButton>
           ))}
+        </List>
+
+        {/* 🔽 ADD PROFILE OPTIONS HERE */}
+        <List disablePadding>
+          <ListItemButton onClick={() => { navigate('/profile'); setDrawerOpen(false); }}>
+            <ListItemText primary="Open Profile" />
+          </ListItemButton>
+          <ListItemButton onClick={() => { navigate('/profile/settings'); setDrawerOpen(false); }}>
+            <ListItemText primary="Profile Settings" />
+          </ListItemButton>CommonCss
+          <ListItemButton onClick={() => { navigate('/login'); setDrawerOpen(false); }}>
+            <ListItemText primary="Login" />
+          </ListItemButton>
+          <ListItemButton onClick={() => {
+            alert('Logged out');
+            navigate('/');
+            setDrawerOpen(false);
+          }}>
+            <ListItemText primary="Logout" sx={{ color: 'error.main' }} />
+          </ListItemButton>
         </List>
       </Box>
 
@@ -117,8 +137,10 @@ const Navbar = () => {
               {icon}
             </IconButton>
           ))}
+          {/* 🔽 ProfileMenu added here for mobile */}
         </Box>
       </Box>
+
     </Box>
   );
 
@@ -159,13 +181,13 @@ const Navbar = () => {
                     display: 'flex',
                     alignItems: 'center',
                     cursor: 'pointer',
-                    fontFamily:"outfit",
+                    fontFamily: "outfit",
                     color: isActive(path) ? ColorPalette.orange : '#333',
                     fontWeight: isActive(path) ? 'bold' : 400,
                   }}
                   onClick={() => handleNavigate(path)}
                 >
-                  <Typography variant="body1" sx={{ fontFamily: 'Outfit', fontWeight: isActive(path) ? 400 : 200,}}>{label}</Typography>
+                  <Typography variant="body1" sx={{ fontFamily: 'Outfit', fontWeight: isActive(path) ? 400 : 200, }}>{label}</Typography>
                   {label === 'PAGES' && <ArrowDropDownIcon fontSize="small" />}
                 </Box>
               ))}
@@ -175,19 +197,27 @@ const Navbar = () => {
           {/* Right Icons / Mobile Menu */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             {!isMobile ? (
-              <Box sx={{ mr: { md: 10, lg: 15 } }}>
+              <Box sx={{ mr: { md: 10, lg: 15 }, display: 'flex', alignItems: 'center', gap: 2 }}>
                 {iconLinks.map(({ icon, path }, i) => (
                   <IconButton
                     key={i}
                     onClick={() => handleNavigate(path)}
-                    sx={{
-                      color: isActive(path) ? ColorPalette.orange : 'inherit',
-                      fontFamily: 'Outfit',
-                    }}
+                    sx={{ color: isActive(path) ? ColorPalette.orange : 'inherit' }}
                   >
                     {icon}
                   </IconButton>
                 ))}
+                {/* 🔽 ProfileMenu Here */}
+                <ProfileMenu
+                  onOpenProfile={() => navigate('/profile')}
+                  onProfileSettings={() => navigate('/profile/settings')}
+                  onLogin={() => navigate('/login')}
+                  onLogout={() => {
+                    // Logout logic here
+                    alert('Logged out');
+                    navigate('/');
+                  }}
+                />
               </Box>
             ) : (
               <IconButton edge="end" onClick={() => setDrawerOpen(true)}>
@@ -195,6 +225,7 @@ const Navbar = () => {
               </IconButton>
             )}
           </Box>
+
 
         </Toolbar>
       </AppBar>

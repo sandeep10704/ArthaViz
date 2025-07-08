@@ -13,6 +13,8 @@ import ProductShopLayout from "./Components/Body/Shop/ProductShop/ProductShopLay
 import CheckoutLayout from "./Components/Body/Checkout/CheckoutLayout.jsx";
 import PostsLayout from "./Components/Body/Blogs/Posts/PostsLayout.jsx";
 import PostLayout from "./Components/Body/Blogs/Post/PostLayout.jsx";
+import Loginpage from "./pages/loginpage.jsx"
+import SignupPage from "./pages/SignupPage.jsx";
 
 
 
@@ -21,7 +23,10 @@ const Router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
+      
       { index: true, element: <HomeLayout /> },
+      {path:"login", element:<Loginpage/>},
+      {path:"signup", element:<SignupPage/>},
       { path: "about", element: <AboutLayout /> },
       { path: "blogs",
         element: <BlogsLayout />,

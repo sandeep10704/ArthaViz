@@ -1,42 +1,47 @@
 import React, { Suspense, lazy } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import LoadingScreen from "./Components/CommonComponents/LoadingScreen";
 import { Box } from "@mui/material";
 import LatestPosts from "./Components/Footer/Components/LatestPosts";
 import CustomersReviews from "./Components/Footer/Components/CustomersReviews";
 import ScrollToTop from "./Components/CommonComponents/ScrollToTop";
-import MultiImageUpload from "./MultiImageUpload";
 
 const HeaderLayout = lazy(() => import("./Components/Header/HeaderLayout"));
 const FooterLayout = lazy(() => import("./Components/Footer/FooterLayout"));
 
 const Layout = () => {
+  const location = useLocation();
+
+  // Check if current path is /login
+  if (location.pathname === "/login") {
+    return <Outlet />;
+  }
+  if (location.pathname === "/signup") {
+    return <Outlet />;
+  }
+
   return (
     <>
-    <ScrollToTop />
+      <ScrollToTop />
       <Suspense fallback={<LoadingScreen />}>
         <HeaderLayout />
       </Suspense>
-      
 
-     <Box
-  component="main"
-  sx={{
-    paddingTop: { xs: '10px', sm: '80px', md: '100px' },
-
-    px: { xs: '20px', sm: '30px', md: '5px' },
-    maxWidth: '1400px',
-    margin: '0 auto',
-  }}
->
-  <Outlet />
-  <Box paddingBottom="40px"> 
-  {/* <MultiImageUpload/> */}
-  <CustomersReviews />
-    </Box>
-  <LatestPosts />
-
-</Box>
+      <Box
+        component="main"
+        sx={{
+          paddingTop: { xs: '10px', sm: '80px', md: '100px' },
+          px: { xs: '20px', sm: '30px', md: '5px' },
+          maxWidth: '1400px',
+          margin: '0 auto',
+        }}
+      >
+        <Outlet />
+        <Box paddingBottom="40px">
+          <CustomersReviews />
+        </Box>
+        <LatestPosts />
+      </Box>
 
       <Suspense fallback={<LoadingScreen />}>
         <FooterLayout />

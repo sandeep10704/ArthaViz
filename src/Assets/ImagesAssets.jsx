@@ -40,6 +40,7 @@ const ImagesAssets = {
   Item42: baseUrl + "Item42.jpg",
   Item43: baseUrl + "Item43.jpg",
   Poster02: baseUrl + "Poster02.png",
+  login:require("./Images/login.png")
 };
 
 export default ImagesAssets;
