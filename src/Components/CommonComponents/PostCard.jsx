@@ -35,7 +35,7 @@ const PostCard = ({ data }) => {
   return (
     <Box
       width={cardWidth}
-      height={expanded ?"460px" : "380px"}
+      height={expanded ?"500px" : "380px"}
       display="flex"
       flexDirection="column"
       gap="10px"
@@ -96,7 +96,7 @@ const PostCard = ({ data }) => {
           sx={{
             fontFamily: "Outfit",
             fontWeight: 200,
-            fontSize: "15px",
+            fontSize: "18px",
             lineHeight: "100%",
             letterSpacing: "6%",
             textTransform: "uppercase",
@@ -109,7 +109,7 @@ const PostCard = ({ data }) => {
           sx={{
             fontFamily: "Outfit",
             fontWeight: 100,
-            fontSize: "13px",
+            fontSize: "16px",
             lineHeight: "120%",
             letterSpacing: "1%",
             display: "-webkit-box",

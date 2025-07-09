@@ -14,8 +14,8 @@ const ReviewCard = ({ text, name, stars }) => {
   const baseCardHeight = 200;
   const baseTextBoxWidth = 235;
   const baseTextBoxHeight = 100;
-  const basePadding = 15;
-  const baseGap = 22.5;
+  const basePadding = 25;
+  const baseGap = 20.5;
   const baseStarIconSize = 16;
   const baseReviewBoxWidth = 113;
   const baseReviewBoxHeight = 28.25;

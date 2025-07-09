@@ -5,35 +5,40 @@ import {
   Typography,
   IconButton,
 } from '@mui/material';
+import { useDispatch } from 'react-redux';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ColorPalette from '../../../../../Assets/ColorPalette';
 import CustomButton from '../../../../CommonComponents/CustomButton';
+
 import { useNavigate } from 'react-router';
+import { addProductToCart } from '../../../../../store/cartSlice';
 
-const ProductShowCard = ({ product }) => {
+const ProductShowCard = ({ product,Id }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleClickOfAddToCartButton = () => {
+    dispatch(addProductToCart({ Id, quantity }));
+  };
 
-  // ✅ Hooks should be called unconditionally at the top level
+  
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState(null);
   const [image, setImage] = useState(product?.images ? product.images[0] : null);
 
   useEffect(() => {
     if (product?.images?.length > 0) {
-      setImage(product.images[0]); // reset image if product changes
+      setImage(product.images[0]);
     }
   }, [product]);
 
-  // ✅ Early return AFTER hooks to avoid rules-of-hooks error
+
   if (!product || !product.images) return null;
 
   const handleClickOfOrderButton = () => {
     navigate("/cart");
   };
 
-  const handleClickOfAddToCartButton = () => {
-    navigate("/cart");
-  };
+
 
   const handleQuantityChange = (type) => {
     if (type === 'increment' && quantity < product.stock) {

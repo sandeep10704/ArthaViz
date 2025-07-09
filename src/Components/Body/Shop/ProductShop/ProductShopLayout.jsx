@@ -35,7 +35,8 @@ const ProductShopLayout = () => {
 
   return (
     <Stack sx={{ padding: "50px 0 30px 0" }} spacing={2}>
-      <ProductShowCard product={product} />
+      <ProductShowCard product={product} Id={id} />
+
       <ProductDescriptionCard data={productDescription} />
       {reviews.map((review, index) => (
         <ProductReviewCard key={index} review={review} />

@@ -1,34 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Box,
   Grid,
   Typography,
   Divider,
 } from "@mui/material";
-import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
+import RemoveShoppingCartOutlinedIcon from '@mui/icons-material/RemoveShoppingCartOutlined';
+import { useDispatch } from 'react-redux';
+import { removeFromCart, updateQuantity } from "../../../../store/cartSlice";
 import { imageHoverBoxStyle } from "../../../../Assets/CommonCss";
 import ColorPalette from "../../../../Assets/ColorPalette";
-import RemoveShoppingCartOutlinedIcon from '@mui/icons-material/RemoveShoppingCartOutlined';
 
 const CartItem = ({ product }) => {
-  const { name, price, quantity: initialQuantity, image } = product;
-  const [quantity, setQuantity] = useState(initialQuantity);
+  const { id, name, price, quantity, image } = product;
+  const dispatch = useDispatch();
 
-  const baseQtyBtn = 30; // adjust as needed
-  const baseQtyDisplay = 40; // adjust as needed
+  const baseQtyBtn = 30;
+  const baseQtyDisplay = 40;
 
   const responsiveSize = (size) => `${size}px`;
 
   const handleQuantityChange = (type) => {
     if (type === 'decrement' && quantity > 1) {
-      setQuantity(prev => prev - 1);
+      dispatch(updateQuantity({ id, quantity: quantity - 1 }));
     } else if (type === 'increment') {
-      setQuantity(prev => prev + 1);
+      dispatch(updateQuantity({ id, quantity: quantity + 1 }));
     }
   };
 
   const handleDelete = () => {
-    console.log(`Deleting ${name}`);
+    dispatch(removeFromCart(id));
   };
 
   return (
@@ -60,6 +61,7 @@ const CartItem = ({ product }) => {
         <Grid item xs={4} sm={2}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
             <Box
+              onClick={() => handleQuantityChange('decrement')}
               sx={{
                 width: responsiveSize(baseQtyBtn),
                 height: responsiveSize(baseQtyBtn),
@@ -75,7 +77,6 @@ const CartItem = ({ product }) => {
                   boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.15)",
                 },
               }}
-              onClick={() => handleQuantityChange('decrement')}
             >
               -
             </Box>
@@ -89,16 +90,13 @@ const CartItem = ({ product }) => {
                 alignItems: "center",
                 borderRadius: "10px",
                 boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-                cursor: "pointer",
-                transition: "box-shadow 0.2s ease",
-                "&:hover": {
-                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.15)",
-                },
+                cursor: "default",
               }}
             >
               <Typography>{quantity}</Typography>
             </Box>
             <Box
+              onClick={() => handleQuantityChange('increment')}
               sx={{
                 width: responsiveSize(baseQtyBtn),
                 height: responsiveSize(baseQtyBtn),
@@ -114,7 +112,6 @@ const CartItem = ({ product }) => {
                   boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.15)",
                 },
               }}
-              onClick={() => handleQuantityChange('increment')}
             >
               +
             </Box>
@@ -124,7 +121,7 @@ const CartItem = ({ product }) => {
         {/* Subtotal */}
         <Grid item xs={4} sm={2} textAlign="center">
           <Typography variant="h6" color={ColorPalette.orange}>
-            ${Number(price * quantity).toFixed(2)}
+            ${(price * quantity).toFixed(2)}
           </Typography>
         </Grid>
 

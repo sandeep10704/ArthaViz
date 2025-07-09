@@ -86,7 +86,7 @@ const FeaturesRow = () => {
             <Typography
               sx={{
                 fontFamily: "Outfit",
-                fontWeight: 100,
+                fontWeight: 200,
                 fontSize: "18px",
                 lineHeight: "100%",
                 letterSpacing: "6%",
@@ -99,8 +99,8 @@ const FeaturesRow = () => {
           <Typography
             sx={{
               fontFamily: "Outfit",
-              fontWeight: 200,
-              fontSize: "12px",
+              fontWeight: 100,
+              fontSize: "16px",
               lineHeight: "100%",
               letterSpacing: "1%",
               ml: "35px",

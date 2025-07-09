@@ -8,6 +8,7 @@ import productReducer from "./productSlice"
 import postsReducer from "./postsSlice"
 import singleProductReducer from "./singleProductSlice"
 import singlePostReducer from "./singlePostSlice"
+import cartReducer from "./cartSlice"
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     posts: postsReducer,
     singleProduct: singleProductReducer,
     singlePost: singlePostReducer,
+    cart: cartReducer,
   },
 });
 
