@@ -99,7 +99,7 @@ const Filters = ({ data, selectedFilters, onFilterChange }) => {
       textAlign: 'center',
       cursor: 'pointer',
     
-      padding: '8px 16px',
+     
       userSelect: 'none'
     }}
   >
