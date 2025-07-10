@@ -68,7 +68,7 @@ const ItemsCard = ({ title, items }) => {
                     <React.Fragment key={item.id}>
                         <Box
                             sx={{
-                                width: '225px', // fixed typo from Width
+                                width: '225px', 
                                 minHeight: '80px',
                                 display: 'flex',
                                 alignItems: 'center',

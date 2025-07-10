@@ -24,14 +24,14 @@ const ProductCard = ({ data }) => {
 
   const scale = isSmallScreen ? 0.5 : 1;
 
-  // ✅ onClick handler to navigate
+
   const handleCardClick = () => {
-    navigate(`/shop/${data.id}`); // adjust if your route uses slug or another field
+    navigate(`/shop/${data.id}`); 
   };
 
   return (
     <Box
-      onClick={handleCardClick} // ✅ attach click handler here
+      onClick={handleCardClick} 
       sx={{
         position: "relative",
         width: `${width * scale}px`,
@@ -39,7 +39,7 @@ const ProductCard = ({ data }) => {
         border: "1px solid #ccc",
         borderRadius: "8px",
         overflow: "hidden",
-        cursor: "pointer", // ✅ show pointer on hover
+        cursor: "pointer",
         ...cardHoverStyle,
       }}
     >

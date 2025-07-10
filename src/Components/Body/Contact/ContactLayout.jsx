@@ -8,7 +8,7 @@ import ImagesAssets from '../../../Assets/ImagesAssets'
 const Contact = () => {
   return (
     <Box>
-      {/* First Row */}
+     
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
           <ContactInfo />
@@ -18,7 +18,7 @@ const Contact = () => {
         </Grid>
       </Grid>
 
-      {/* Second Row */}
+    
       <Grid container spacing={2} sx={{ mt: 2 }}>
         <Grid item xs={12} md={6} sx={{ maxWidth: 600, maxHeight: 600 }}>
           <Box
@@ -29,7 +29,7 @@ const Contact = () => {
               width: '90%',
               height: '70%',
               objectFit: 'cover',
-              // padding:'15%'
+            
             }}
           />
         </Grid>

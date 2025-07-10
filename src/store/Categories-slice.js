@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// Async thunk to fetch categories from local JSON
+
 export const fetchCategories = createAsyncThunk("Categories/fetchCategories", async () => {
   const response = await axios.get("/data/categories.json");
   return response.data;

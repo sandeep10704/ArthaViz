@@ -43,7 +43,7 @@ const PostCard = ({ data }) => {
       sx={{...cardHoverStyle}}
       onClick={handleOnClick}
     >
-      {/* Card Heading and Image */}
+ 
       <Box>
         <Box
           px={1}
@@ -84,7 +84,7 @@ const PostCard = ({ data }) => {
         </Box>
       </Box>
 
-      {/* Text Field */}
+
       <Box
         width={cardWidth}
         flex="1"

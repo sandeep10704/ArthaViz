@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// Async thunk to fetch posts from public/data/lastestpost.json
+
 export const fetchLastPosts = createAsyncThunk("LastPost/fetchLastPosts", async () => {
   const response = await axios.get("/data/lastestpost.json");
-  return response.data; // returns the array directly
+  return response.data;
 });
 
 const LastPostSlice = createSlice({

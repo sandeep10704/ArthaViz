@@ -15,8 +15,7 @@ const CommentForm = () => {
                 Your email address will not be published. Required fields are marked<span style={{ color: 'red' }}>*</span>
             </Typography>
         
-            {/* <Typography variant="body2" sx={{fontFamily: "Outfit", fontWeight: 200}}>Your rating <span style={{ color: 'red' }}>*</span></Typography>
-            <Rating sx={{ mb: 2 }} /> */}
+            
             <Typography variant="body2" sx={{fontFamily: "Outfit", fontWeight: 200}}>Choose your Photo</Typography>
             <Button
                 variant="outlined"

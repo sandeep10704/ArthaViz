@@ -21,7 +21,7 @@ const CartLayout = () => {
 
   return (
     <Box sx={{ mx: 'auto', p: 2, maxWidth: 1000 }}>
-      {/* Header */}
+  
       <Grid container spacing={0} sx={{ mb: 1, px: 2, width: "100%" }} alignItems="center" justifyContent="space-between">
         <Grid item xs={12} sm={6} >
           <Typography variant="h6">Product/</Typography>
@@ -37,7 +37,7 @@ const CartLayout = () => {
         </Grid>
       </Grid>
 
-      {/* Divider */}
+  
       <Box sx={{ display: "flex", flexDirection: "row" }}>
         <Box
           flexGrow={1}
@@ -50,14 +50,14 @@ const CartLayout = () => {
         />
       </Box>
 
-      {/* Cart Items */}
+  
       {status === 'loading' && <Typography>Loading...</Typography>}
       {error && <Typography color="error">{error}</Typography>}
       {cartItems.map((product) => (
         <CartItem key={product.id} product={product} />
       ))}
 
-      {/* Cart Totals */}
+
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" mb={2}>Cart Totals</Typography>
 
@@ -71,7 +71,7 @@ const CartLayout = () => {
           <Typography color="orange">${subtotal.toFixed(2)}</Typography>
         </Box>
 
-        {/* Buttons */}
+
         <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
           <CustomButton text="Update Cart" />
           <CustomButton text="Continue Shopping" onClick={handleContinueShopping}/>

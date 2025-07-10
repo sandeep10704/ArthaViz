@@ -7,7 +7,7 @@ const LoadingScreen = () => {
       display="flex"
       justifyContent="center"
       alignItems="center"
-      height="100vh" // Full screen height
+      height="100vh" 
     >
       <CircularProgress size={40} />
     </Box>

@@ -50,15 +50,15 @@ const TextSection = styled(Box)`
 
   @media (max-width: 960px) {
     width: 100%;
-    align-items: flex-start; /* changed from center */
-    text-align: left;        /* changed from center */
+    align-items: flex-start; 
+    text-align: left;        
   }
 `;
 
 const TimerBox = styled(Box)`
   display: flex;
   gap: 10px;
-  justify-content: flex-start; /* changed from center */
+  justify-content: flex-start;
 `;
 
 const TimeUnit = styled(Box)`
@@ -114,7 +114,7 @@ const useCountdown = (targetDate) => {
 };
 
 const PosterDiscount = () => {
-    // Set your countdown target date here
+   
     const [days, hours, minutes, seconds] = useCountdown('2025-07-23T23:59:59');
 
     return (

@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// Async thunk to fetch best selling items from local JSON
+
 export const fetchBestSelling = createAsyncThunk("BestSelling/fetchBestSelling", async () => {
   const response = await axios.get("/data/bestselling.json");
-  return response.data; // returns the array directly
+  return response.data; 
 });
 
 const bestSellingSlice = createSlice({

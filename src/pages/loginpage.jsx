@@ -12,13 +12,24 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux'; 
+import { authActions } from '../store/authSlice';
+
 
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch(); 
 
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
+    };
+
+    const handleLogin = () => {
+       
+        dispatch(authActions.login());
+
+        navigate('/');
     };
 
     return (
@@ -29,7 +40,6 @@ const LoginPage = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 p: { sm: 0, md: 2 },
-                // background: '#f5f5f5' // optional global background
                 backgroundColor: 'white',
             }}
         >
@@ -42,17 +52,14 @@ const LoginPage = () => {
                     boxShadow: 3,
                     maxWidth: 1400,
                     width: '100%',
-                    p:5,
+                    p: 5,
                     backgroundColor: 'white',
                 }}
             >
-                {/* Left Section (2/3) */}
+              
                 <Box
                     sx={{
                         flexBasis: { xs: '100%', md: '50%' },
-                        flexGrow: 0,
-                        flexShrink: 0,
-                 
                         display: { xs: 'none', md: 'block' },
                         background: 'linear-gradient(to bottom, #ff7900, #ffa84c)',
                         color: 'white',
@@ -60,6 +67,7 @@ const LoginPage = () => {
                         borderRadius: 6,
                     }}
                 >
+                    
                     <Box display="flex" flexDirection="column" justifyContent="space-between" height="100%">
                         <Box>
                             <Typography variant="h2" fontWeight="bold" sx={{ mb: 2 }}>
@@ -120,26 +128,24 @@ const LoginPage = () => {
                     </Box>
                 </Box>
 
-                {/* Right Section (1/3) */}
+                {/* Right Section */}
                 <Box
-                                    sx={{
-                                        flexBasis: { xs: '100%', md: '33.33%' },
-                                        flexGrow: 0,
-                                        flexShrink: 0,
-                                        p: { xs: 4 },
-                                        '@media (min-width: 900px)': {
-                                            pt: '6px',
-                                            pr: '10px',
-                                            pb: '6px',
-                                            pl: '100px',
-                                        },
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        justifyContent: 'center',
-                                        alignItems: "center",
-                                        backgroundColor: 'white',
-                                    }}
-                                >
+                    sx={{
+                        flexBasis: { xs: '100%', md: '33.33%' },
+                        p: { xs: 4 },
+                        '@media (min-width: 900px)': {
+                            pt: '6px',
+                            pr: '10px',
+                            pb: '6px',
+                            pl: '100px',
+                        },
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: "center",
+                        backgroundColor: 'white',
+                    }}
+                >
                     <Typography
                         variant="h4"
                         sx={{
@@ -200,6 +206,7 @@ const LoginPage = () => {
                     <Button
                         fullWidth
                         variant="contained"
+                        onClick={handleLogin} 
                         sx={{
                             bgcolor: '#ff7900',
                             color: 'white',

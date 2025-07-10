@@ -19,7 +19,7 @@ const Aboutus = () => {
         justifyContent: 'center',
       }}
     >
-      {/* YouTube Video Embed */}
+
       <Box
         sx={{
           width: isSmallScreen ? '100%' : 'auto',
@@ -42,7 +42,7 @@ const Aboutus = () => {
       </Box>
 
 
-      {/* Text Box */}
+
       <Box
         sx={{
           width: isSmallScreen ? '100%' : '600px',

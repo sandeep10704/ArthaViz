@@ -1,9 +1,9 @@
-// redux/slices/productSlice.js
+
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Async thunk to load product + filter data from JSON
+
 export const fetchProductData = createAsyncThunk(
   'products/fetchProductData',
   async () => {

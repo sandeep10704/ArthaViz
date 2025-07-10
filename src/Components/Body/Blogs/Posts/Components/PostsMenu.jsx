@@ -24,7 +24,7 @@ const PostsMenu = () => {
 
   return (
     <Box sx={{ padding: "0 0 0 20px", maxWidth: "1000px", margin: "0 auto" }}>
-      {/* Top Section */}
+
       <Box sx={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
         <Typography variant="h6" sx={{ fontFamily: "Outfit", fontWeight: 200 }}>
           Showing {total === 0 ? 0 : startIndex}-{endIndex} of {total} results
@@ -37,7 +37,7 @@ const PostsMenu = () => {
         </Select>
       </Box>
 
-      {/* Cards */}
+
       <Box sx={{ padding: { sm: "0 100px 0 0", md: "0 40px" } }}>
         <Grid container spacing={2}>
           {currentPosts.map((post) => (
@@ -48,7 +48,7 @@ const PostsMenu = () => {
         </Grid>
       </Box>
 
-      {/* Pagination */}
+    
       {pageCount > 1 && (
         <Box sx={{ display: "flex", justifyContent: "center", marginTop: "20px", padding: "10px" }}>
           <Pagination

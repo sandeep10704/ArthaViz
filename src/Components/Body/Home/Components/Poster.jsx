@@ -4,15 +4,14 @@ import ImagesAssets from '../../../../Assets/ImagesAssets';
 import CustomButton from '../../../CommonComponents/CustomButton';
 import '@fontsource/outfit/200.css';
 import '@fontsource/outfit/100.css';
-// import SplitText from '../../../CommonComponents/SplitText';
-// import AnimatedContent from '../../../CommonComponents/AnimatedContent';
+
 
 const SplitText = lazy(() => import('../../../CommonComponents/SplitText'));
 // const AnimatedContent = lazy(() => import('../../../CommonComponents/AnimatedContent'));
 const Poster = ({ direction = 'right' }) => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const isMidScreen = useMediaQuery(theme.breakpoints.between('sm', 'lg')); // mid screen detection
+    const isMidScreen = useMediaQuery(theme.breakpoints.between('sm', 'lg')); 
 
     const isLeft = direction === 'left';
 
@@ -20,7 +19,7 @@ const Poster = ({ direction = 'right' }) => {
         console.log('Animation completed!');
     };
 
-    // Calculate sizes based on screen
+ 
     const imageWidth = isSmallScreen
         ? '100%'
         : isMidScreen
@@ -73,7 +72,7 @@ const Poster = ({ direction = 'right' }) => {
                 gap: isSmallScreen ? 2 : 0,
             }}
         >
-            {/* Image Block */}
+           
             <Box
                 sx={{
                     position: isSmallScreen ? 'relative' : 'absolute',
@@ -120,7 +119,6 @@ const Poster = ({ direction = 'right' }) => {
                 </Box>
             </Box>
 
-            {/* Text Content */}
             <Box
                 zIndex={1}
                 sx={{

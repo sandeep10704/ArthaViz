@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux'; 
 import { Popover, Box, Typography } from '@mui/material';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 
 const styles = {
   icon: {
-    // fontSize: 36,
     cursor: 'pointer',
   },
   popover: {
@@ -30,6 +30,7 @@ const styles = {
 
 const ProfileMenu = ({ onOpenProfile, onProfileSettings, onLogin, onLogout }) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn); // ✅ get login state
 
   const handleIconClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -66,12 +67,20 @@ const ProfileMenu = ({ onOpenProfile, onProfileSettings, onLogin, onLogout }) =>
           <Typography onClick={() => { onProfileSettings(); handleClose(); }} sx={styles.menuItem}>
             Profile Settings
           </Typography>
-          <Typography onClick={() => { onLogin(); handleClose(); }} sx={styles.menuItem}>
-            Login
-          </Typography>
-          <Typography onClick={() => { onLogout(); handleClose(); }} sx={styles.logoutItem}>
-            Logout
-          </Typography>
+
+         
+          {!isLoggedIn && (
+            <Typography onClick={() => { onLogin(); handleClose(); }} sx={styles.menuItem}>
+              Login
+            </Typography>
+          )}
+
+          
+          {isLoggedIn && (
+            <Typography onClick={() => { onLogout(); handleClose(); }} sx={styles.logoutItem}>
+              Logout
+            </Typography>
+          )}
         </Box>
       </Popover>
     </>

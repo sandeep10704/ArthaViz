@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// ✅ Async thunk to fetch single post data by ID
+
 export const fetchSinglePostById = createAsyncThunk(
   'singlePost/fetchSinglePostById',
   async (Id, { rejectWithValue }) => {
@@ -23,7 +23,7 @@ const singlePostSlice = createSlice({
     error: null,
   },
   reducers: {
-    // Later: add reducers for next/previous article navigation here
+   
   },
   extraReducers: (builder) => {
     builder

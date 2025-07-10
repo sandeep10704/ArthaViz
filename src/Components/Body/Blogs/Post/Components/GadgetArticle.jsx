@@ -15,7 +15,7 @@ import CommonCss from '../../../../../Assets/CommonCss';
 const GadgetArticle = ({ data }) => {
   return (
     <Box sx={{ mx: 'auto', p: 2, fontFamily: 'Outfit', fontWeight: 200 }}>
-      {/* Header Image */}
+  
       <CardMedia
         component="img"
         image={data.headerImage}
@@ -43,7 +43,6 @@ const GadgetArticle = ({ data }) => {
         {data.content}
       </Typography>
 
-      {/* Quotation Block */}
       <Box
         sx={{
           bgcolor: '#f5f5f5',
@@ -67,7 +66,7 @@ const GadgetArticle = ({ data }) => {
 
       <Divider sx={{ my: 3 }} />
 
-      {/* Gadget Item Section */}
+
       <Box>
         <Typography
           variant="h5"
@@ -103,7 +102,7 @@ const GadgetArticle = ({ data }) => {
           </Typography>
         ))}
 
-        {/* Responsive Image + Text Side by Side on md+, stacked on sm/xs */}
+    
         <Box
           component="section"
           sx={{
@@ -114,7 +113,7 @@ const GadgetArticle = ({ data }) => {
             my: 4,
           }}
         >
-          {/* Image Column */}
+
           <Box sx={{ flex: { xs: '0 0 auto', md: '0 0 25%' }, width: '100%' }}>
             <Card sx={{ borderRadius: 3, overflow: 'hidden', width: '100%' }}>
               <CardMedia
@@ -130,7 +129,7 @@ const GadgetArticle = ({ data }) => {
             </Card>
           </Box>
 
-          {/* Text Column */}
+
           <Box
             sx={{
               flex: { xs: '0 0 auto', md: '0 0 75%' },
@@ -156,7 +155,7 @@ const GadgetArticle = ({ data }) => {
         </Box>
       </Box>
 
-      {/* Footer */}
+
       <Typography
         variant="caption"
         color="text.secondary"

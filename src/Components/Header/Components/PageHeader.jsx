@@ -18,7 +18,7 @@ const PageHeader = () => {
   };
 
   if (!pageTitles[currentPath]) {
-    return null; // return nothing if route is not defined
+    return null; 
   }
 
   const pageTitle = pageTitles[currentPath];
@@ -30,9 +30,9 @@ const PageHeader = () => {
   return (
     <Box
       sx={{
-        width: '100%',           // full width
-        maxWidth: '1920px',      // restrict max width
-        height: { xs: '150px', sm: '200px', md: '281px' }, // responsive height
+        width: '100%',          
+        maxWidth: '1920px',     
+        height: { xs: '150px', sm: '200px', md: '281px' }, 
         backgroundColor: '#f8f8f8',
         fontFamily: 'Outfit',
         textAlign: 'center',
@@ -55,7 +55,7 @@ const PageHeader = () => {
           display: 'inline-block',
           marginBottom: '0px',
           lineHeight: 1,
-          fontSize: { xs: '24px', sm: '36px', md: '48px' }, // responsive title size
+          fontSize: { xs: '24px', sm: '36px', md: '48px' }, 
         }}
       >
         <Box sx={{ overflow: 'hidden', display: 'inline-block' }}>

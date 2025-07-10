@@ -8,7 +8,7 @@ const Carousel = ({ items, itemsToShow = 1, gap = 0 }) => {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
   const visibleCount = itemsToShow;
 
-  // group items into “pages”
+
   const slides = [];
   for (let i = 0; i < items.length; i += visibleCount) {
     slides.push(items.slice(i, i + visibleCount));
@@ -24,14 +24,14 @@ const Carousel = ({ items, itemsToShow = 1, gap = 0 }) => {
   const totalGap = gap * (visibleCount - 1);
 
   return (
-    // outer <Box> no overflow—arrows can float outside
+
     <Box sx={{ position: 'relative', width: '100%' }}>
 
-      {/* inner <Box> with overflow hidden & responsive padding */}
+
       <Box
         sx={{
           overflow: 'hidden',
-          px: isSmallScreen ? `${gap * 2}px` : 0,    // inset by twice the gap
+          px: isSmallScreen ? `${gap * 2}px` : 0,   
         }}
       >
         <Box
@@ -74,7 +74,7 @@ const Carousel = ({ items, itemsToShow = 1, gap = 0 }) => {
         </Box>
       </Box>
 
-      {/* Prev arrow: shift further out on small, or hide if you want */}
+
       <IconButton
         onClick={handlePrev}
         sx={{
@@ -83,7 +83,7 @@ const Carousel = ({ items, itemsToShow = 1, gap = 0 }) => {
           left: isSmallScreen ? `-${gap * 1.5}px` : 0,
           transform: 'translateY(-50%)',
           zIndex: 2,
-          bgcolor: 'transparent', // transparent by default
+          bgcolor: 'transparent', 
           '&:hover': { bgcolor: ColorPalette.orange },
           opacity: "0.8",
         }}
@@ -99,7 +99,7 @@ const Carousel = ({ items, itemsToShow = 1, gap = 0 }) => {
           right: isSmallScreen ? `-${gap * 1.5}px` : 8,
           transform: 'translateY(-50%)',
           zIndex: 2,
-          bgcolor: 'transparent', // transparent by default
+          bgcolor: 'transparent', 
           '&:hover': { bgcolor: ColorPalette.orange },
           opacity: "0.5",
         }}

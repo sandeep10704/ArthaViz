@@ -4,7 +4,7 @@ import { Box, Grid, Typography } from '@mui/material';
 const StoreDetails = () => {
   return (
     <Box sx={{ px: { xs: 2, md: 6 }, py: 4 }}>
-      {/* Title */}
+      
       <Typography
         variant="h6"
         sx={{
@@ -18,7 +18,7 @@ const StoreDetails = () => {
         OUR STORES
       </Typography>
 
-      {/* Subtitle */}
+      
       <Typography
         variant="body2"
         sx={{ mb: 4, fontFamily: 'Outfit', fontWeight: 200 }}
@@ -26,9 +26,9 @@ const StoreDetails = () => {
         You can also directly buy products from our stores.
       </Typography>
 
-      {/* Stores Grid */}
+      
       <Grid container spacing={4}>
-        {/* USA */}
+        
         <Grid item xs={12} md={6}>
           <Typography
             variant="subtitle1"
@@ -60,7 +60,7 @@ const StoreDetails = () => {
           </Typography>
         </Grid>
 
-        {/* France */}
+   
         <Grid item xs={12} md={6}>
           <Typography
             variant="subtitle1"

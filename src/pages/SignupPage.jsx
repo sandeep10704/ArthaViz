@@ -32,7 +32,7 @@ const SignupPage = () => {
         <Box
             sx={{
                 minHeight: '100vh',
-                // backgroundColor: '#f5f5f5',
+                
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -51,13 +51,13 @@ const SignupPage = () => {
 
                 }}
             >
-                {/* Left Section */}
+               
                 < Box
                     sx={{
                         flexBasis: { xs: '100%', md: '50%' },
                         flexGrow: 0,
                         flexShrink: 0,
-                        //padding: '20px',
+                        
                         backgroundColor: 'white',
                         '@media (max-width: 600px)': {
                             display: 'none'

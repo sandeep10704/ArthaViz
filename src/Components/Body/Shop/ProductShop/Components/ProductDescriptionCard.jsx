@@ -3,7 +3,7 @@ import { Box, Typography, List, ListItem, ListItemText, Divider } from '@mui/mat
 import ColorPalette from '../../../../../Assets/ColorPalette';
 
 const ProductDescriptionCard = ({ data }) => {
-  if (!data) return null; // ⛑️ Prevent destructuring null
+  if (!data) return null; 
 
   const { title, topText, points = [], bottomText } = data;
 

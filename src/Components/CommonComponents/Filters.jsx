@@ -76,7 +76,7 @@ const Filters = ({ data, selectedFilters, onFilterChange }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleReset = () => {
-    onFilterChange({}); // Clear all filters
+    onFilterChange({});
   };
 
   const filtersContent = (
@@ -90,22 +90,21 @@ const Filters = ({ data, selectedFilters, onFilterChange }) => {
           onChange={onFilterChange}
         />
       ))}
-      <Box sx={{ mt: 2 }}>
+     <Box sx={{ mt: 2 }}>
   <Typography
     onClick={handleReset}
     sx={{
       fontFamily: 'Outfit',
       textTransform: 'none',
-      textAlign: 'center',
+      textAlign: 'left', 
       cursor: 'pointer',
-    
-     
       userSelect: 'none'
     }}
   >
     Remove filter
   </Typography>
 </Box>
+
     </Box>
   );
 

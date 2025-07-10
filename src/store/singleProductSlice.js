@@ -1,4 +1,4 @@
-// store/singleProductSlice.js (or redux/slices/singleProductSlice.js)
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -26,7 +26,7 @@ const singleProductSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchProductById.fulfilled, (state, action) => {
-        console.log('✅ Product JSON fetched:', action.payload);
+        console.log(' Product JSON fetched:', action.payload);
         state.status = 'succeeded';
         state.product = action.payload.product;
         state.productDescription = action.payload.productDescription;

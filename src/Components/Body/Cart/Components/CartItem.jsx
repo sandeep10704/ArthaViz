@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { removeFromCart, updateQuantity } from "../../../../store/cartSlice";
 import { imageHoverBoxStyle } from "../../../../Assets/CommonCss";
 import ColorPalette from "../../../../Assets/ColorPalette";
+import { uiActions } from "../../../../store/uiSlice";
 
 const CartItem = ({ product }) => {
   const { id, name, price, quantity, image } = product;
@@ -30,12 +31,17 @@ const CartItem = ({ product }) => {
 
   const handleDelete = () => {
     dispatch(removeFromCart(id));
+    dispatch(uiActions.showNotification({
+      open: true,
+      message: `${name} removed from cart`,
+      type: 'error',
+    }));
   };
 
   return (
     <>
       <Grid container spacing={2} justifyContent="space-between" alignItems="center" sx={{ px: 2, mb: 2 }}>
-        {/* Product Info */}
+       
         <Grid item xs={12} sm={6}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             <Box sx={{ ...imageHoverBoxStyle }}>
@@ -57,7 +63,7 @@ const CartItem = ({ product }) => {
           </Box>
         </Grid>
 
-        {/* Quantity */}
+
         <Grid item xs={4} sm={2}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
             <Box
@@ -118,14 +124,14 @@ const CartItem = ({ product }) => {
           </Box>
         </Grid>
 
-        {/* Subtotal */}
+
         <Grid item xs={4} sm={2} textAlign="center">
           <Typography variant="h6" color={ColorPalette.orange}>
             ${(price * quantity).toFixed(2)}
           </Typography>
         </Grid>
 
-        {/* Remove Button */}
+
         <Grid item xs={4} sm={2} textAlign="center">
           <Box onClick={handleDelete} sx={{ cursor: "pointer", color: ColorPalette.orange }}>
             <RemoveShoppingCartOutlinedIcon />

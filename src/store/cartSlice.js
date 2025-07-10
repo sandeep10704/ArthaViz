@@ -1,37 +1,72 @@
-// cartSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
+import { uiActions } from './uiSlice'; 
 const initialState = {
   cartItems: [],
   status: 'idle',
   error: null
 };
 
-// Async Thunk to fetch product by ID and add to cart
+
 export const addProductToCart = createAsyncThunk(
   'cart/addProductToCart',
   async ({ Id, quantity }, thunkAPI) => {
-    const response = await axios.get('/data/products.json');
-    const products = response.data.products;
+    const state = thunkAPI.getState(); 
 
-    const product = products.find(p => p.id === Number(Id));
-
-    console.log("Id:", Id);
-    console.log("Products:", products);
-    console.log("Found Product:", product);
-
-    if (!product) {
-      throw new Error('Product not found');
+   
+    if (!state.auth.isLoggedIn) {
+      thunkAPI.dispatch(uiActions.showNotification({
+        open: true,
+        message: 'Please login to add products to cart',
+        type: 'error',
+      }));
+      throw new Error('User not logged in');
     }
 
-    return {
-      id: product.id,
-      name: product.text,
-      price: parseFloat(product.amount.replace("$", "")),
-      image: product.image,
-      quantity: quantity || 1 
-    };
+    try {
+      const response = await axios.get('/data/products.json');
+      const products = response.data.products;
+
+      const product = products.find(p => p.id === Number(Id));
+
+      console.log("Id:", Id);
+      console.log("Products:", products);
+      console.log("Found Product:", product);
+
+      if (!product) {
+   
+        thunkAPI.dispatch(uiActions.showNotification({
+          open: true,
+          message: 'Product not found',
+          type: 'error',
+        }));
+        throw new Error('Product not found');
+      }
+
+ 
+      thunkAPI.dispatch(uiActions.showNotification({
+        open: true,
+        message: `${product.text} added to cart!`,
+        type: 'success',
+      }));
+
+      return {
+        id: product.id,
+        name: product.text,
+        price: parseFloat(product.amount.replace("$", "")),
+        image: product.image,
+        quantity: quantity || 1 
+      };
+
+    } catch (error) {
+      
+      thunkAPI.dispatch(uiActions.showNotification({
+        open: true,
+        message: 'Failed to add product to cart',
+        type: 'error',
+      }));
+      throw error;
+    }
   }
 );
 

@@ -5,7 +5,7 @@ import CustomButton from '../../../CommonComponents/CustomButton';
 const ContactQuestions = () => {
   return (
     <Box sx={{ px: { xs: 2, md: 6 }, py: 4 }} maxWidth="600px">
-      {/* Title */}
+      
       <Typography
         variant="h6"
         sx={{ letterSpacing: 1, mb: 1, fontFamily: 'Outfit', fontWeight: 200 }}
@@ -13,7 +13,7 @@ const ContactQuestions = () => {
         ANY QUESTIONS?
       </Typography>
 
-      {/* Subtitle */}
+     
       <Typography
         variant="body2"
         sx={{ mb: 4, fontFamily: 'Outfit', fontWeight: 200 }}
@@ -21,7 +21,6 @@ const ContactQuestions = () => {
         Use the form below to get in touch with us.
       </Typography>
 
-      {/* Form */}
       <form noValidate autoComplete="off">
         <Box
           sx={{
@@ -37,7 +36,7 @@ const ContactQuestions = () => {
               gap: 2,
             }}
           >
-            {/* Name */}
+           
             <TextField
               fullWidth
               variant="outlined"
@@ -50,7 +49,7 @@ const ContactQuestions = () => {
               }}
             />
 
-            {/* Email */}
+           
             <TextField
               fullWidth
               variant="outlined"
@@ -64,7 +63,7 @@ const ContactQuestions = () => {
             />
           </Box>
 
-          {/* Phone */}
+         
           <TextField
             fullWidth
             variant="outlined"
@@ -77,7 +76,6 @@ const ContactQuestions = () => {
             }}
           />
 
-          {/* Subject */}
           <TextField
             fullWidth
             variant="outlined"
@@ -90,7 +88,7 @@ const ContactQuestions = () => {
             }}
           />
 
-          {/* Message */}
+          
           <TextField
             fullWidth
             variant="outlined"
@@ -105,7 +103,7 @@ const ContactQuestions = () => {
             }}
           />
 
-          {/* Submit Button */}
+        
           <Box width={"auto"}>
             <CustomButton text={"Submit"} />
           </Box>

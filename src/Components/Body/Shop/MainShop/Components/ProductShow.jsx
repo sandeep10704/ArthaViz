@@ -1,4 +1,4 @@
-// pages/MainShopLayout/Components/ProductShow.jsx
+
 
 import React from 'react';
 import {
@@ -34,7 +34,7 @@ const ProductShow = () => {
 
   return (
     <Box sx={{ padding: '0 0 0 20px', maxWidth: '1000px', margin: '0 auto' }}>
-      {/* Header with total count and sorting dropdown */}
+      
       <Box
         sx={{
           display: 'flex',
@@ -53,7 +53,7 @@ const ProductShow = () => {
         </Select>
       </Box>
 
-      {/* Product Grid */}
+     
       <Box sx={{ padding: { sm: '0 100px 0 0', md: '0 40px' } }}>
         <Grid container spacing={2}>
           {currentProducts.length === 0 ? (
@@ -70,7 +70,7 @@ const ProductShow = () => {
         </Grid>
       </Box>
 
-      {/* Pagination */}
+     
       {pageCount > 1 && (
         <Box
           sx={{

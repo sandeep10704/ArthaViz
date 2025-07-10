@@ -12,7 +12,7 @@ const ArticleNavBar = ({ categories, previousArticle, nextArticle }) => {
   return (
     <Box sx={{ px: 3, py: 2 }}>
       <Grid container alignItems="center" justifyContent="space-between">
-        {/* Left Side - Categories */}
+       
         <Grid item>
           <Box sx={{ display: 'flex', gap: 2 }}>
             {categories.map((category, index) => (
@@ -27,7 +27,6 @@ const ArticleNavBar = ({ categories, previousArticle, nextArticle }) => {
           </Box>
         </Grid>
 
-        {/* Right Side - Share Icons */}
         <Grid item>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <Typography
@@ -45,7 +44,7 @@ const ArticleNavBar = ({ categories, previousArticle, nextArticle }) => {
         </Grid>
       </Grid>
 
-      {/* Navigation Arrows and Titles */}
+
       <Grid
         container
         alignItems="center"

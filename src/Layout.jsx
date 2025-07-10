@@ -5,14 +5,17 @@ import { Box } from "@mui/material";
 import LatestPosts from "./Components/Footer/Components/LatestPosts";
 import CustomersReviews from "./Components/Footer/Components/CustomersReviews";
 import ScrollToTop from "./Components/CommonComponents/ScrollToTop";
+import { useSelector } from "react-redux";
+import Notification from "./Components/CommonComponents/Notification";
 
 const HeaderLayout = lazy(() => import("./Components/Header/HeaderLayout"));
 const FooterLayout = lazy(() => import("./Components/Footer/FooterLayout"));
 
 const Layout = () => {
   const location = useLocation();
+    
 
-  // Check if current path is /login
+
   if (location.pathname === "/login") {
     return <Outlet />;
   }
@@ -22,7 +25,9 @@ const Layout = () => {
 
   return (
     <>
+     
       <ScrollToTop />
+      
       <Suspense fallback={<LoadingScreen />}>
         <HeaderLayout />
       </Suspense>
@@ -36,6 +41,7 @@ const Layout = () => {
           margin: '0 auto',
         }}
       >
+      
         <Outlet />
         <Box paddingBottom="40px">
           <CustomersReviews />

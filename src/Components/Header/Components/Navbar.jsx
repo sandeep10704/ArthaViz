@@ -4,20 +4,20 @@ import {
   List, ListItemButton, ListItemText, useMediaQuery, useTheme
 } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
-import '@fontsource/outfit';
+import { useSelector, useDispatch } from 'react-redux'; // ✅ added
+import { uiActions } from '../../../store/uiSlice'; // ✅ adjust path as needed
 
+import '@fontsource/outfit';
 import '@fontsource/outfit/100.css';
 import '@fontsource/outfit/500.css';
 
-
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import ColorPalette from '../../../Assets/ColorPalette'
+import ColorPalette from '../../../Assets/ColorPalette';
 import ProfileMenu from './ProfileMenu';
 
 const menuItems = [
@@ -32,7 +32,7 @@ const menuItems = [
 const iconLinks = [
   { icon: <SearchIcon />, path: '/search' },
   { icon: <FavoriteBorderIcon />, path: '/wishlist' },
-  { icon: <ShoppingCartOutlinedIcon />, path: '/cart' },
+ 
 ];
 
 const Navbar = () => {
@@ -41,6 +41,9 @@ const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
+
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
   const handleNavigate = (path) => {
     navigate(path);
@@ -48,6 +51,18 @@ const Navbar = () => {
   };
 
   const isActive = (path) => (location.pathname === path);
+
+  const handleCartClick = () => {
+    if (!isLoggedIn) {
+      dispatch(uiActions.showNotification({
+        open: true,
+        message: 'Please login to view your cart',
+        type: 'error',
+      }));
+    } else {
+      navigate('/cart');
+    }
+  };
 
   const drawerContent = (
     <Box
@@ -80,14 +95,14 @@ const Navbar = () => {
           ))}
         </List>
 
-        {/* 🔽 ADD PROFILE OPTIONS HERE */}
+       
         <List disablePadding>
           <ListItemButton onClick={() => { navigate('/profile'); setDrawerOpen(false); }}>
             <ListItemText primary="Open Profile" />
           </ListItemButton>
           <ListItemButton onClick={() => { navigate('/profile/settings'); setDrawerOpen(false); }}>
             <ListItemText primary="Profile Settings" />
-          </ListItemButton>CommonCss
+          </ListItemButton>
           <ListItemButton onClick={() => { navigate('/login'); setDrawerOpen(false); }}>
             <ListItemText primary="Login" />
           </ListItemButton>
@@ -101,7 +116,7 @@ const Navbar = () => {
         </List>
       </Box>
 
-      {/* Fixed Bottom Section */}
+     
       <Box
         sx={{
           position: 'absolute',
@@ -113,7 +128,7 @@ const Navbar = () => {
           pt: 1,
         }}
       >
-        {/* Info Texts */}
+      
         <Box sx={{ px: 2 }}>
           <Typography variant="body2" sx={{ fontFamily: 'Outfit', fontWeight: 100, fontSize: '13px', mb: 0.5 }}>
             Need help? Call us 112233344455
@@ -126,7 +141,6 @@ const Navbar = () => {
           </Typography>
         </Box>
 
-        {/* Icon Buttons */}
         <Box sx={{ display: 'flex', justifyContent: 'space-around', p: 0 }}>
           {iconLinks.map(({ icon, path }, i) => (
             <IconButton
@@ -137,16 +151,18 @@ const Navbar = () => {
               {icon}
             </IconButton>
           ))}
-          {/* 🔽 ProfileMenu added here for mobile */}
+          
+          <IconButton
+            onClick={handleCartClick}
+            sx={{ color: isActive('/cart') ? ColorPalette.orange : 'inherit' }}
+          >
+            <ShoppingCartOutlinedIcon />
+          </IconButton>
         </Box>
       </Box>
 
     </Box>
   );
-
-
-
-
 
   return (
     <>
@@ -187,7 +203,7 @@ const Navbar = () => {
                   }}
                   onClick={() => handleNavigate(path)}
                 >
-                  <Typography variant="body1" sx={{ fontFamily: 'Outfit', fontWeight: isActive(path) ? 400 : 200, }}>{label}</Typography>
+                  <Typography variant="body1" sx={{ fontFamily: 'Outfit', fontWeight: isActive(path) ? 400 : 200 }}>{label}</Typography>
                   {label === 'PAGES' && <ArrowDropDownIcon fontSize="small" />}
                 </Box>
               ))}
@@ -207,13 +223,19 @@ const Navbar = () => {
                     {icon}
                   </IconButton>
                 ))}
-                {/* 🔽 ProfileMenu Here */}
+               
+                <IconButton
+                  onClick={handleCartClick}
+                  sx={{ color: isActive('/cart') ? ColorPalette.orange : 'inherit' }}
+                >
+                  <ShoppingCartOutlinedIcon />
+                </IconButton>
+               
                 <ProfileMenu
                   onOpenProfile={() => navigate('/profile')}
                   onProfileSettings={() => navigate('/profile/settings')}
                   onLogin={() => navigate('/login')}
                   onLogout={() => {
-                    // Logout logic here
                     alert('Logged out');
                     navigate('/');
                   }}
@@ -225,7 +247,6 @@ const Navbar = () => {
               </IconButton>
             )}
           </Box>
-
 
         </Toolbar>
       </AppBar>

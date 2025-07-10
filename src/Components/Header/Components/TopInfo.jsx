@@ -13,7 +13,7 @@ const TopInfo = () => {
         fontFamily: 'Outfit',
       }}
     >
-      {/* Column 1 */}
+     
       <Box
         flex={1}
         textAlign="center"
@@ -23,7 +23,7 @@ const TopInfo = () => {
         <Typography variant="body1" sx={{fontWeight: 100}}>Need help? Call us 112233344455</Typography>
       </Box>
 
-      {/* Column 2 */}
+      
       <Box
         flex={1}
         textAlign="center"
@@ -33,7 +33,7 @@ const TopInfo = () => {
         <Typography variant="body1" sx={{fontWeight: 100}}>Summer sale discount off 60%! Shop Now</Typography>
       </Box>
 
-      {/* Column 3 */}
+     
       <Box flex={1} textAlign="center" p={2}>
         <Typography variant="body1" sx={{fontWeight: 100}}>2-3 business days delivery & free returns</Typography>
       </Box>

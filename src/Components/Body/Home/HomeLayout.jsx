@@ -28,8 +28,8 @@ const HomeLayout = () => {
  <Box gap="60px"
       sx={{
         display: "flex",
-        flexDirection: "row", // default as row
-        flexWrap: "wrap", // optional: wraps if space ends
+        flexDirection: "row", 
+        flexWrap: "wrap", 
         width: "100%",
         justifyContent:"center"
       }}
