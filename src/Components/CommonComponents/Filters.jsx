@@ -103,7 +103,7 @@ const Filters = ({ data, selectedFilters, onFilterChange }) => {
       userSelect: 'none'
     }}
   >
-    Reset Filters
+    Remove filter
   </Typography>
 </Box>
     </Box>
