@@ -30,12 +30,12 @@ const productSlice = createSlice({
     error: null,
   },
   reducers: {
-    // Set selected filters only
+    
     updateSelectedFilters: (state, action) => {
       state.selectedFilters = action.payload;
     },
 
-    // Filter and paginate based on selected filters
+   
     applyFilterAndPaginate: (state, action) => {
       const selected = action.payload;
       const filtered = state.allProducts.filter((product) => {
@@ -58,7 +58,7 @@ const productSlice = createSlice({
       state.currentProducts = filtered.slice(0, state.pagination.itemsPerPage);
     },
 
-    // Handle page change
+  
     setPage: (state, action) => {
       const newPage = action.payload;
       state.pagination.currentPage = newPage;

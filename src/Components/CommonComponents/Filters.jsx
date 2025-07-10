@@ -91,15 +91,21 @@ const Filters = ({ data, selectedFilters, onFilterChange }) => {
         />
       ))}
       <Box sx={{ mt: 2 }}>
-        <Button
-          variant="outlined"
-          fullWidth
-          onClick={handleReset}
-          sx={{ fontFamily: 'Outfit', textTransform: 'none' }}
-        >
-          Reset Filters
-        </Button>
-      </Box>
+  <Typography
+    onClick={handleReset}
+    sx={{
+      fontFamily: 'Outfit',
+      textTransform: 'none',
+      textAlign: 'center',
+      cursor: 'pointer',
+    
+      padding: '8px 16px',
+      userSelect: 'none'
+    }}
+  >
+    Reset Filters
+  </Typography>
+</Box>
     </Box>
   );
 
