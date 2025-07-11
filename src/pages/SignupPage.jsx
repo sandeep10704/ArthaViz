@@ -125,14 +125,14 @@ const SignupPage = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                p: 2,
+                p: {sm:0,md:2},
             }}
         >
             <Box
                 sx={{
                     display: 'flex',
                     flexDirection: { xs: 'column', md: 'row' },
-                    borderRadius: 6,
+                    borderRadius: {sm:0,md:6},
                     overflow: 'hidden',
                     boxShadow: 3,
                     maxWidth: 1400,

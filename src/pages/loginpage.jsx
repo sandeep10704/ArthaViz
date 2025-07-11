@@ -117,7 +117,7 @@ const LoginPage = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                p: { sm: 0, md: 2 },
+                
                 backgroundColor: 'white',
             }}
         >
@@ -125,10 +125,10 @@ const LoginPage = () => {
                 sx={{
                     display: 'flex',
                     flexDirection: { xs: 'column', md: 'row' },
-                    borderRadius: 6,
+                    borderRadius: {sm:0,md:6},
                     overflow: 'hidden',
-                    boxShadow: 3,
-                    maxWidth: 1400,
+                    boxShadow: {sm:0,md:3},
+                    maxWidth: 1250,
                     width: '100%',
                     p: 5,
                     backgroundColor: 'white',
@@ -137,7 +137,7 @@ const LoginPage = () => {
 
                 <Box
                     sx={{
-                        flexBasis: { xs: '100%', md: '50%' },
+                        flexBasis: { xs: '100%', md: '40%' },
                         display: { xs: 'none', md: 'block' },
                         background: 'linear-gradient(to bottom, #ff7900, #ffa84c)',
                         color: 'white',
