@@ -34,7 +34,7 @@ const UnderMaintenance = () => {
 
       {/* Text section */}
       <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "10px" }}>
-        Oops! site is under maintenance
+        Oops! this page is under maintenance
       </h1>
       <p style={{ color: "#777", marginBottom: "20px" }}>
         We're working hard to improve your experience.<br />
