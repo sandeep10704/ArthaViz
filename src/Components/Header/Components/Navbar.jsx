@@ -18,6 +18,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ColorPalette from '../../../Assets/ColorPalette';
 import ProfileMenu from './ProfileMenu';
+import { logoutUser } from '../../../store/authSlice';
 
 const menuItems = [
   { label: 'HOME', path: '/' },
@@ -49,6 +50,26 @@ const Navbar = () => {
   };
 
   const isActive = (path) => (location.pathname === path);
+  const handleLogout = () => {
+    dispatch(logoutUser())
+      .unwrap()
+      .then(() => {
+         dispatch(uiActions.showNotification({
+        open: true,
+        message: 'User logout',
+        type: 'error',
+      }));
+        
+        navigate('/login');
+      })
+      .catch((error) => {
+        dispatch(uiActions.showNotification({
+        open: true,
+        message: 'user not logout',
+        type: 'error',
+      }));
+      });
+  };
 
   const handleCartClick = () => {
     if (!isLoggedIn) {
@@ -93,7 +114,7 @@ const Navbar = () => {
                 <ListItemText primary="My Profile" />
               </ListItemButton>
               <ListItemButton onClick={() => {
-                alert('Logged out');
+                handleLogout();
                 navigate('/');
                 setDrawerOpen(false);
               }}>
@@ -214,14 +235,11 @@ const Navbar = () => {
                 >
                   <ShoppingCartOutlinedIcon />
                 </IconButton>
-                <ProfileMenu
-                  onMyProfile={() => navigate('/profile')}
-                  onLogin={() => navigate('/login')}
-                  onLogout={() => {
-                    alert('Logged out');
-                    navigate('/');
-                  }}
-                />
+                  <ProfileMenu
+      onMyProfile={() => navigate('/profile')}
+      onLogin={() => navigate('/login')}
+      onLogout={handleLogout}
+    />
               </Box>
             ) : (
               <IconButton edge="end" onClick={() => setDrawerOpen(true)}>

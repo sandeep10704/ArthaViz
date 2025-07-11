@@ -8,7 +8,8 @@ import {
   signOut,
   GoogleAuthProvider,
   FacebookAuthProvider,
-  signInWithPopup
+  signInWithPopup,
+  onAuthStateChanged
 } from "firebase/auth";
 
 // Your web app's Firebase configuration
@@ -37,5 +38,6 @@ export {
   signOut,
   googleProvider,
   facebookProvider,
-  signInWithPopup
+  signInWithPopup,
+  onAuthStateChanged
 };

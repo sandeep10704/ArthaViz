@@ -8,7 +8,8 @@ import {
   signOut,
   signInWithPopup,
   googleProvider,
-  facebookProvider
+  facebookProvider,
+  onAuthStateChanged
 } from "../firebase";
 
 export const signupUser = createAsyncThunk(
@@ -75,6 +76,22 @@ export const facebookLogin = createAsyncThunk(
   }
 );
 
+export const checkUserSession = createAsyncThunk(
+  'auth/checkUserSession',
+  async (_, thunkAPI) => {
+    return new Promise((resolve) => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          resolve(user);
+        } else {
+          resolve(null);
+        }
+      });
+    });
+  }
+);
+
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: { isLoggedIn: false, user: null, status: 'idle', error: null },
@@ -101,12 +118,22 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.user = action.payload;
       })
+      .addCase(checkUserSession.fulfilled, (state, action) => {
+        if (action.payload) {
+          state.isLoggedIn = true;
+          state.user = action.payload;
+        } else {
+          state.isLoggedIn = false;
+          state.user = null;
+        }
+      })
       .addMatcher(
         (action) => action.type.endsWith('/rejected'),
         (state, action) => {
           state.error = action.payload;
         }
-      );
+      )
+      ;
   },
 });
 
