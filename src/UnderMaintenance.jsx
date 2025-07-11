@@ -23,7 +23,7 @@ const UnderMaintenance = () => {
       {/* Video section */}
       <div style={{ maxWidth: "600px", width: "100%", marginBottom: "30px" }}>
         <video
-          src="https://res.cloudinary.com/dq7lkkucz/video/upload/v1752224070/error_bxhqvo.mp4" // replace with your video path
+          src="https://res.cloudinary.com/dq7lkkucz/video/upload/v1752224070/error_bxhqvo.mp4" 
           autoPlay
           loop
           muted
