@@ -35,7 +35,7 @@ const PostCard = ({ data }) => {
   return (
     <Box
       width={cardWidth}
-      height={expanded ?"500px" : "380px"}
+      height={expanded ?"520px" : "380px"}
       display="flex"
       flexDirection="column"
       gap="10px"
