@@ -1,38 +1,127 @@
 import React, { useState } from 'react';
 import {
-    Box,
-    Typography,
-    TextField,
-    Button,
-    Divider,
-    InputAdornment,
-    IconButton,
-    Avatar
+    Box, Typography, TextField, Button, Divider,
+    InputAdornment, IconButton
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import ImagesAssets from '../Assets/ImagesAssets';
 import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { signupUser, googleLogin, facebookLogin } from '../store/authSlice';
+import { uiActions } from '../store/uiSlice';
 
 const SignupPage = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const navigate = useNavigate();
-
-    const handleTogglePassword = () => {
-        setShowPassword(!showPassword);
+    const [fullName, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const { error } = useSelector((state) => state.auth);
+    const handleTogglePassword = () => setShowPassword(!showPassword);
+    const handleToggleConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
+    const handleFacebookLogin = () => {
+        dispatch(facebookLogin())
+            .unwrap()
+            .then(() => {
+                navigate('/');
+                dispatch(
+                    uiActions.showNotification({
+                        message: 'Logged in with Facebook successfully!',
+                        type: 'success',
+                        open: true,
+                    })
+                );
+            })
+            .catch((err) =>
+                dispatch(
+                    uiActions.showNotification({
+                        message: err?.message || 'Facebook login failed',
+                        type: 'error',
+                        open: true,
+                    })
+                )
+            );
     };
 
-    const handleToggleConfirmPassword = () => {
-        setShowConfirmPassword(!showConfirmPassword);
+    const handleGoogleLogin = () => {
+        dispatch(googleLogin())
+            .unwrap()
+            .then(() => {
+                navigate('/');
+                dispatch(
+                    uiActions.showNotification({
+                        message: 'Logged in with Google successfully!',
+                        type: 'success',
+                        open: true,
+                    })
+                );
+            })
+            .catch((err) =>
+                dispatch(
+                    uiActions.showNotification({
+                        message: err?.message || 'Google login failed',
+                        type: 'error',
+                        open: true,
+                    })
+                )
+            );
+    };
+
+    const handleSignup = () => {
+        if (!fullName || !email || !password || !confirmPassword) {
+            dispatch(
+                uiActions.showNotification({
+                    message: 'Please fill all fields',
+                    type: 'warning',
+                    open: true,
+                })
+            );
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            dispatch(
+                uiActions.showNotification({
+                    message: 'Passwords do not match',
+                    type: 'error',
+                    open: true,
+                })
+            );
+            return;
+        }
+
+        dispatch(signupUser({ email, password }))
+            .unwrap()
+            .then(() => {
+                navigate('/');
+                dispatch(
+                    uiActions.showNotification({
+                        message: 'Signup successful!',
+                        type: 'success',
+                        open: true,
+                    })
+                );
+            })
+            .catch((err) =>
+                dispatch(
+                    uiActions.showNotification({
+                        message: err?.message || 'Signup failed',
+                        type: 'error',
+                        open: true,
+                    })
+                )
+            );
     };
 
     return (
         <Box
             sx={{
                 minHeight: '100vh',
-                
+
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -51,18 +140,18 @@ const SignupPage = () => {
 
                 }}
             >
-               
+
                 < Box
                     sx={{
                         flexBasis: { xs: '100%', md: '50%' },
                         flexGrow: 0,
                         flexShrink: 0,
-                        
+
                         backgroundColor: 'white',
                         '@media (max-width: 600px)': {
                             display: 'none'
                         },
-                        p:5
+                        p: 5
                     }}
                 >
                     <Box sx={{
@@ -177,11 +266,14 @@ const SignupPage = () => {
                         Please sign up to continue
                     </Typography>
 
+
                     <TextField
                         fullWidth
                         label="Full Name"
                         variant="outlined"
                         margin="normal"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
                         InputProps={{ sx: { fontSize: '1.125rem' } }}
                         InputLabelProps={{ sx: { fontSize: '1.125rem' } }}
                     />
@@ -190,6 +282,8 @@ const SignupPage = () => {
                         label="Email address"
                         variant="outlined"
                         margin="normal"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         InputProps={{ sx: { fontSize: '1.125rem' } }}
                         InputLabelProps={{ sx: { fontSize: '1.125rem' } }}
                     />
@@ -199,6 +293,8 @@ const SignupPage = () => {
                         variant="outlined"
                         type={showPassword ? 'text' : 'password'}
                         margin="normal"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         InputProps={{
                             sx: { fontSize: '1.125rem' },
                             endAdornment: (
@@ -217,6 +313,8 @@ const SignupPage = () => {
                         variant="outlined"
                         type={showConfirmPassword ? 'text' : 'password'}
                         margin="normal"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
                         InputProps={{
                             sx: { fontSize: '1.125rem' },
                             endAdornment: (
@@ -233,6 +331,7 @@ const SignupPage = () => {
                     <Button
                         fullWidth
                         variant="contained"
+                        onClick={handleSignup}
                         sx={{
                             bgcolor: '#ff7900',
                             color: 'white',
@@ -246,6 +345,8 @@ const SignupPage = () => {
                     >
                         Signup
                     </Button>
+
+                    {error && <Typography color="error">{error}</Typography>}
 
                     <Divider sx={{ mb: 4.5, fontSize: '1.125rem' }}>Or Signup with</Divider>
 
@@ -261,6 +362,7 @@ const SignupPage = () => {
                             fullWidth
                             variant="outlined"
                             startIcon={<GoogleIcon sx={{ fontSize: '1.5rem' }} />}
+                            onClick={handleGoogleLogin}
                             sx={{
                                 textTransform: 'none',
                                 fontSize: '1.125rem',
@@ -275,6 +377,7 @@ const SignupPage = () => {
                             fullWidth
                             variant="outlined"
                             startIcon={<FacebookIcon sx={{ fontSize: '1.5rem' }} />}
+                            onClick={handleFacebookLogin}
                             sx={{
                                 textTransform: 'none',
                                 fontSize: '1.125rem',

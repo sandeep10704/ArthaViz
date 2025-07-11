@@ -4,8 +4,8 @@ import {
   List, ListItemButton, ListItemText, useMediaQuery, useTheme
 } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'; // ✅ added
-import { uiActions } from '../../../store/uiSlice'; // ✅ adjust path as needed
+import { useSelector, useDispatch } from 'react-redux';
+import { uiActions } from '../../../store/uiSlice'; // adjust path if needed
 
 import '@fontsource/outfit';
 import '@fontsource/outfit/100.css';
@@ -13,7 +13,6 @@ import '@fontsource/outfit/500.css';
 
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -32,7 +31,6 @@ const menuItems = [
 const iconLinks = [
   { icon: <SearchIcon />, path: '/search' },
   { icon: <FavoriteBorderIcon />, path: '/wishlist' },
- 
 ];
 
 const Navbar = () => {
@@ -74,14 +72,7 @@ const Navbar = () => {
         position: 'relative',
       }}
     >
-      {/* Scrollable Menu List */}
-      <Box
-        sx={{
-          overflowY: 'auto',
-          pb: 16,
-          flex: 1,
-        }}
-      >
+      <Box sx={{ overflowY: 'auto', pb: 16, flex: 1 }}>
         <List disablePadding>
           {menuItems.map(({ label, path }) => (
             <ListItemButton
@@ -95,28 +86,28 @@ const Navbar = () => {
           ))}
         </List>
 
-       
         <List disablePadding>
-          <ListItemButton onClick={() => { navigate('/profile'); setDrawerOpen(false); }}>
-            <ListItemText primary="Open Profile" />
-          </ListItemButton>
-          <ListItemButton onClick={() => { navigate('/profile/settings'); setDrawerOpen(false); }}>
-            <ListItemText primary="Profile Settings" />
-          </ListItemButton>
-          <ListItemButton onClick={() => { navigate('/login'); setDrawerOpen(false); }}>
-            <ListItemText primary="Login" />
-          </ListItemButton>
-          <ListItemButton onClick={() => {
-            alert('Logged out');
-            navigate('/');
-            setDrawerOpen(false);
-          }}>
-            <ListItemText primary="Logout" sx={{ color: 'error.main' }} />
-          </ListItemButton>
+          {isLoggedIn ? (
+            <>
+              <ListItemButton onClick={() => { navigate('/profile'); setDrawerOpen(false); }}>
+                <ListItemText primary="My Profile" />
+              </ListItemButton>
+              <ListItemButton onClick={() => {
+                alert('Logged out');
+                navigate('/');
+                setDrawerOpen(false);
+              }}>
+                <ListItemText primary="Logout" sx={{ color: 'error.main' }} />
+              </ListItemButton>
+            </>
+          ) : (
+            <ListItemButton onClick={() => { navigate('/login'); setDrawerOpen(false); }}>
+              <ListItemText primary="Login" />
+            </ListItemButton>
+          )}
         </List>
       </Box>
 
-     
       <Box
         sx={{
           position: 'absolute',
@@ -128,7 +119,6 @@ const Navbar = () => {
           pt: 1,
         }}
       >
-      
         <Box sx={{ px: 2 }}>
           <Typography variant="body2" sx={{ fontFamily: 'Outfit', fontWeight: 100, fontSize: '13px', mb: 0.5 }}>
             Need help? Call us 112233344455
@@ -151,7 +141,6 @@ const Navbar = () => {
               {icon}
             </IconButton>
           ))}
-          
           <IconButton
             onClick={handleCartClick}
             sx={{ color: isActive('/cart') ? ColorPalette.orange : 'inherit' }}
@@ -160,7 +149,6 @@ const Navbar = () => {
           </IconButton>
         </Box>
       </Box>
-
     </Box>
   );
 
@@ -168,7 +156,6 @@ const Navbar = () => {
     <>
       <AppBar position="static" color="inherit" elevation={0}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
-          {/* Logo */}
           <Box sx={{ ml: { xs: 0, sm: 0, md: 10, lg: 15 } }}>
             <Typography
               variant="h6"
@@ -187,7 +174,6 @@ const Navbar = () => {
             </Typography>
           </Box>
 
-          {/* Desktop Menu */}
           {!isMobile && (
             <Box sx={{ display: 'flex', gap: 4 }}>
               {menuItems.map(({ label, path }) => (
@@ -210,7 +196,6 @@ const Navbar = () => {
             </Box>
           )}
 
-          {/* Right Icons / Mobile Menu */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             {!isMobile ? (
               <Box sx={{ mr: { md: 10, lg: 15 }, display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -223,17 +208,14 @@ const Navbar = () => {
                     {icon}
                   </IconButton>
                 ))}
-               
                 <IconButton
                   onClick={handleCartClick}
                   sx={{ color: isActive('/cart') ? ColorPalette.orange : 'inherit' }}
                 >
                   <ShoppingCartOutlinedIcon />
                 </IconButton>
-               
                 <ProfileMenu
-                  onOpenProfile={() => navigate('/profile')}
-                  onProfileSettings={() => navigate('/profile/settings')}
+                  onMyProfile={() => navigate('/profile')}
                   onLogin={() => navigate('/login')}
                   onLogout={() => {
                     alert('Logged out');
@@ -247,11 +229,9 @@ const Navbar = () => {
               </IconButton>
             )}
           </Box>
-
         </Toolbar>
       </AppBar>
 
-      {/* Drawer */}
       <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         {drawerContent}
       </Drawer>

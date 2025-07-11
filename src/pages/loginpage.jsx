@@ -1,35 +1,113 @@
 import React, { useState } from 'react';
 import {
-    Box,
-    Typography,
-    TextField,
-    Button,
-    Divider,
-    InputAdornment,
-    IconButton,
+    Box, Typography, TextField, Button, Divider,
+    InputAdornment, IconButton
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux'; 
-import { authActions } from '../store/authSlice';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { facebookLogin, googleLogin, loginUser } from '../store/authSlice';
+import { uiActions } from '../store/uiSlice';
 
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const dispatch = useDispatch(); 
+    const dispatch = useDispatch();
+
+
+    const { error } = useSelector((state) => state.auth);
+
+
+
+    const handleGoogleLogin = () => {
+        dispatch(googleLogin())
+            .unwrap()
+            .then(() => {
+                navigate('/');
+                dispatch(
+                    uiActions.showNotification({
+                        message: 'Logged in with Google successfully!',
+                        type: 'success',
+                        open: true,
+                    })
+                );
+            })
+            .catch((err) =>
+                dispatch(
+                    uiActions.showNotification({
+                        message: err?.message || 'Google login failed',
+                        type: 'error',
+                        open: true,
+                    })
+                )
+            );
+    };
+    const handleFacebookLogin = () => {
+        dispatch(facebookLogin())
+            .unwrap()
+            .then(() => {
+                navigate('/');
+                dispatch(
+                    uiActions.showNotification({
+                        message: 'Logged in with Facebook successfully!',
+                        type: 'success',
+                        open: true,
+                    })
+                );
+            })
+            .catch((err) =>
+                dispatch(
+                    uiActions.showNotification({
+                        message: err?.message || 'Facebook login failed',
+                        type: 'error',
+                        open: true,
+                    })
+                )
+            );
+    };
+
+
+    const handleLogin = () => {
+        if (!email || !password) {
+            dispatch(
+                uiActions.showNotification({
+                    message: 'Please enter both email and password',
+                    type: 'warning',
+                    open: true,
+                })
+            );
+            return;
+        }
+
+        dispatch(loginUser({ email, password }))
+            .unwrap()
+            .then(() => {
+                navigate('/');
+                dispatch(
+                    uiActions.showNotification({
+                        message: 'Login successful!',
+                        type: 'success',
+                        open: true,
+                    })
+                );
+            })
+            .catch((err) =>
+                dispatch(
+                    uiActions.showNotification({
+                        message: err?.message || 'Login failed',
+                        type: 'error',
+                        open: true,
+                    })
+                )
+            );
+    };
 
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
-    };
-
-    const handleLogin = () => {
-       
-        dispatch(authActions.login());
-
-        navigate('/');
     };
 
     return (
@@ -56,7 +134,7 @@ const LoginPage = () => {
                     backgroundColor: 'white',
                 }}
             >
-              
+
                 <Box
                     sx={{
                         flexBasis: { xs: '100%', md: '50%' },
@@ -67,7 +145,7 @@ const LoginPage = () => {
                         borderRadius: 6,
                     }}
                 >
-                    
+
                     <Box display="flex" flexDirection="column" justifyContent="space-between" height="100%">
                         <Box>
                             <Typography variant="h2" fontWeight="bold" sx={{ mb: 2 }}>
@@ -175,6 +253,8 @@ const LoginPage = () => {
                         label="Email address"
                         variant="outlined"
                         margin="normal"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         InputProps={{ sx: { fontSize: '1.125rem' } }}
                         InputLabelProps={{ sx: { fontSize: '1.125rem' } }}
                     />
@@ -184,6 +264,8 @@ const LoginPage = () => {
                         variant="outlined"
                         type={showPassword ? 'text' : 'password'}
                         margin="normal"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         InputProps={{
                             sx: { fontSize: '1.125rem' },
                             endAdornment: (
@@ -197,16 +279,10 @@ const LoginPage = () => {
                         InputLabelProps={{ sx: { fontSize: '1.125rem' } }}
                     />
 
-                    <Box textAlign="right" mb={3} width="100%">
-                        <a href="#" style={{ color: 'grey', textDecoration: 'none', fontSize: '1.3125rem' }}>
-                            Forgot password?
-                        </a>
-                    </Box>
-
                     <Button
                         fullWidth
                         variant="contained"
-                        onClick={handleLogin} 
+                        onClick={handleLogin}
                         sx={{
                             bgcolor: '#ff7900',
                             color: 'white',
@@ -220,6 +296,8 @@ const LoginPage = () => {
                     >
                         Login
                     </Button>
+
+                    {error && <Typography color="error">{error}</Typography>}
 
                     <Divider sx={{ mb: 4.5, fontSize: '1.125rem' }}>Or Login with</Divider>
 
@@ -235,6 +313,7 @@ const LoginPage = () => {
                             fullWidth
                             variant="outlined"
                             startIcon={<GoogleIcon sx={{ fontSize: '1.5rem' }} />}
+                            onClick={handleGoogleLogin}
                             sx={{
                                 textTransform: 'none',
                                 fontSize: '1.125rem',
@@ -249,6 +328,7 @@ const LoginPage = () => {
                             fullWidth
                             variant="outlined"
                             startIcon={<FacebookIcon sx={{ fontSize: '1.5rem' }} />}
+                            onClick={handleFacebookLogin}
                             sx={{
                                 textTransform: 'none',
                                 fontSize: '1.125rem',

@@ -13,20 +13,26 @@ const FooterLayout = lazy(() => import("./Components/Footer/FooterLayout"));
 
 const Layout = () => {
   const location = useLocation();
-    
+     const notification = useSelector(state => state.ui.notification);
 
 
   if (location.pathname === "/login") {
-    return <Outlet />;
+    return <> <Outlet />
+    {notification &&
+        <Notification type={notification.type} message={notification.message} />
+      }</>;
   }
   if (location.pathname === "/signup") {
-    return <Outlet />;
+    return  <> <Outlet />
+    {notification &&
+        <Notification type={notification.type} message={notification.message} />
+      }</>;
   }
 
   return (
     <>
      
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       
       <Suspense fallback={<LoadingScreen />}>
         <HeaderLayout />

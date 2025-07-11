@@ -28,9 +28,9 @@ const styles = {
   },
 };
 
-const ProfileMenu = ({ onOpenProfile, onProfileSettings, onLogin, onLogout }) => {
+const ProfileMenu = ({ onMyProfile, onLogin, onLogout }) => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn); // ✅ get login state
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
   const handleIconClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -61,24 +61,18 @@ const ProfileMenu = ({ onOpenProfile, onProfileSettings, onLogin, onLogout }) =>
         PaperProps={{ sx: styles.popover }}
       >
         <Box>
-          <Typography onClick={() => { onOpenProfile(); handleClose(); }} sx={styles.menuItem}>
-            Open Profile
-          </Typography>
-          <Typography onClick={() => { onProfileSettings(); handleClose(); }} sx={styles.menuItem}>
-            Profile Settings
-          </Typography>
-
-         
-          {!isLoggedIn && (
+          {isLoggedIn ? (
+            <>
+              <Typography onClick={() => { onMyProfile(); handleClose(); }} sx={styles.menuItem}>
+                My Profile
+              </Typography>
+              <Typography onClick={() => { onLogout(); handleClose(); }} sx={styles.logoutItem}>
+                Logout
+              </Typography>
+            </>
+          ) : (
             <Typography onClick={() => { onLogin(); handleClose(); }} sx={styles.menuItem}>
               Login
-            </Typography>
-          )}
-
-          
-          {isLoggedIn && (
-            <Typography onClick={() => { onLogout(); handleClose(); }} sx={styles.logoutItem}>
-              Logout
             </Typography>
           )}
         </Box>
