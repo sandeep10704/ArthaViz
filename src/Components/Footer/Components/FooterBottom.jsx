@@ -35,7 +35,7 @@ const FooterBottom = () => (
       <Box component="img" src={ImagesAssets.PayPal} alt="PayPal" sx={commonImageStyles} />
     </Box>
     <Box>
-      © Copyright 2024 ShopLite. Design by <Link href="#">TemplatesJungle</Link>
+      © Copyright 2025 ShopLite. Design by <Link href="https://github.com/sandeep10704">Sandy</Link>
     </Box>
   </Box>
 );

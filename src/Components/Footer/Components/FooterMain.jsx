@@ -149,7 +149,7 @@ const FooterMain = () => (
           </Typography>
 
           <Link href="mailto:yourinfo@gmail.com" underline="hover">
-            yourinfo@gmail.com
+            saivenktasandeep5@gmail.com
           </Link>
 
           <Typography variant="body1" mt={2} sx={{ fontWeight: 200 }}>
