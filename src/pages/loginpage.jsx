@@ -350,6 +350,7 @@ const LoginPage = () => {
                             Signup
                         </span>
                     </Typography>
+                    
                 </Box>
             </Box>
         </Box>
