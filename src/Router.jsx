@@ -15,6 +15,7 @@ import PostsLayout from "./Components/Body/Blogs/Posts/PostsLayout.jsx";
 import PostLayout from "./Components/Body/Blogs/Post/PostLayout.jsx";
 import Loginpage from "./pages/loginpage.jsx"
 import SignupPage from "./pages/SignupPage.jsx";
+import UnderMaintenance from "./UnderMaintenance.jsx";
 
 
 
@@ -22,6 +23,7 @@ const Router = createBrowserRouter([
  {
     path: "/",
     element: <Layout />,
+    errorElement:<UnderMaintenance/>,
     children: [
       
       { index: true, element: <HomeLayout /> },
