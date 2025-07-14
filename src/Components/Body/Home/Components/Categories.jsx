@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import { Box, useMediaQuery } from "@mui/material";
+import { Box, useMediaQuery, Fade } from "@mui/material";
 import TextHeading from "../../../CommonComponents/TextHeading";
 import Carousel from "../../../CommonComponents/Carousel";
 import Categoriescard from "./Categoriescard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../../../store/Categories-slice";
-
 
 function Categories() {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
@@ -25,7 +24,7 @@ function Categories() {
       data: {
         image: post.image,
         text: post.text,
-        id:post.id,
+        id: post.id,
       }
     }
   }));
@@ -60,7 +59,16 @@ function Categories() {
           }}
         >
           {formattedPosts.map(({ Component, props }, index) => (
-            <Component key={index} {...props} />
+            <Fade
+              in={true}
+              timeout={1500}
+              style={{ transitionDelay: `${index * 400}ms` }} 
+              key={props.data.id}
+            >
+              <div>
+                <Component {...props} />
+              </div>
+            </Fade>
           ))}
         </Box>
       )}

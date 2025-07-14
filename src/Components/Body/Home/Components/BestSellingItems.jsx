@@ -1,4 +1,4 @@
-import { Box, useMediaQuery } from "@mui/material";
+import { Box, Fade, useMediaQuery } from "@mui/material";
 import TextHeading from "../../../CommonComponents/TextHeading";
 import Carousel from "../../../CommonComponents/Carousel";
 import ProductCard from '../../../CommonComponents/ProductCard';
@@ -26,7 +26,7 @@ function BestSellingItems() {
         image: post.image,
         text: post.text,
         amount: post.amount,
-        id:post.id,
+        id: post.id,
       }
     }
   }));
@@ -44,7 +44,7 @@ function BestSellingItems() {
       </Box>
 
       {isSmallScreen ? (
-        <Box width="350px" mx="auto"> 
+        <Box width="350px" mx="auto">
           <Carousel items={formattedPosts} itemsToShow={2} />
         </Box>
       ) : (
@@ -61,7 +61,16 @@ function BestSellingItems() {
           }}
         >
           {formattedPosts.map(({ Component, props }, index) => (
-            <Component key={index} {...props} />
+            <Fade
+              in={true}
+              timeout={2000}
+              style={{ transitionDelay: `${index * 500}ms` }} 
+              key={index}
+            >
+              <div>
+                <Component {...props} />
+              </div>
+            </Fade>
           ))}
         </Box>
       )}

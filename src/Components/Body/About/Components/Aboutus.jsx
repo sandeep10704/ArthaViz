@@ -1,9 +1,24 @@
-import React from 'react';
-import { Box, Typography, Button, useMediaQuery } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 import CustomButton from '../../../CommonComponents/CustomButton';
 
 const Aboutus = () => {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
+
+  const fullText = `Risus augue curabitur diam senectus congue velit et. Sed vitae metus nibh sit era. Nulla adipiscing pharetra pellentesque maecenas odio eros at. Et libero vulputate amet duis erat volutpat vitae eget. Sed vitae metus nibh sit era. Nulla adipiscing pharetra eros at.
+Nulla adipiscing pharetra pellentesque maecenas odio eros at. Et libero vulputate amet duis erat volutpat vitae eget. Quam libero etiam et in ac at quis. Risus augue curabitur diam senectus congue velit et.`;
+
+  const [displayedText, setDisplayedText] = useState('');
+
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      setDisplayedText((prev) => prev + fullText[index]);
+      index++;
+      if (index >= fullText.length) clearInterval(interval);
+    }, 20); // typing speed in ms
+    return () => clearInterval(interval);
+  }, [fullText]);
 
   return (
     <Box
@@ -41,8 +56,6 @@ const Aboutus = () => {
         ></iframe>
       </Box>
 
-
-
       <Box
         sx={{
           width: isSmallScreen ? '100%' : '600px',
@@ -76,10 +89,10 @@ const Aboutus = () => {
             lineHeight: '150%',
             letterSpacing: '1%',
             textAlign: isSmallScreen ? 'center' : 'left',
+            whiteSpace: 'pre-line', 
           }}
         >
-          Risus augue curabitur diam senectus congue velit et. Sed vitae metus nibh sit era. Nulla adipiscing pharetra pellentesque maecenas odio eros at. Et libero vulputate amet duis erat volutpat vitae eget. Sed vitae metus nibh sit era. Nulla adipiscing pharetra eros at.
-          Nulla adipiscing pharetra pellentesque maecenas odio eros at. Et libero vulputate amet duis erat volutpat vitae eget. Quam libero etiam et in ac at quis. Risus augue curabitur diam senectus congue velit et.
+          {displayedText}
         </Typography>
 
         <Box sx={{ width: 'auto', display: 'flex', justifyContent: isSmallScreen ? 'center' : 'flex-start' }}>

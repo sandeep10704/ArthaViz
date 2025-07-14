@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Typography, Pagination, Select, MenuItem } from "@mui/material";
+import { Box, Grid, Typography, Pagination, Select, MenuItem, Zoom } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import PostCard from "../../../../CommonComponents/PostCard";
 import ColorPalette from "../../../../../Assets/ColorPalette";
@@ -40,15 +40,29 @@ const PostsMenu = () => {
 
       <Box sx={{ padding: { sm: "0 100px 0 0", md: "0 40px" } }}>
         <Grid container spacing={2}>
-          {currentPosts.map((post) => (
+          {currentPosts.map((post, index) => (
             <Grid item xs={12} sm={6} md={3} key={post.id}>
-              <PostCard data={post} />
+              <Zoom
+                in={true}
+                style={{ transitionDelay: `${index * 200}ms` }}
+              >
+                <Box
+                  sx={{
+                    transition: 'transform 0.3s ease-in-out',
+                    '&:hover': {
+                      transform: 'scale(1.05)',
+                    },
+                  }}
+                >
+                  <PostCard data={post} />
+                </Box>
+              </Zoom>
             </Grid>
           ))}
         </Grid>
       </Box>
 
-    
+
       {pageCount > 1 && (
         <Box sx={{ display: "flex", justifyContent: "center", marginTop: "20px", padding: "10px" }}>
           <Pagination

@@ -7,7 +7,8 @@ import {
   Select,
   MenuItem,
   Grid,
-  Pagination
+  Pagination,
+  Zoom
 } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -34,7 +35,7 @@ const ProductShow = () => {
 
   return (
     <Box sx={{ padding: '0 0 0 20px', maxWidth: '1000px', margin: '0 auto' }}>
-      
+
       <Box
         sx={{
           display: 'flex',
@@ -53,7 +54,7 @@ const ProductShow = () => {
         </Select>
       </Box>
 
-     
+
       <Box sx={{ padding: { sm: '0 100px 0 0', md: '0 40px' } }}>
         <Grid container spacing={2}>
           {currentProducts.length === 0 ? (
@@ -61,16 +62,30 @@ const ProductShow = () => {
               No products found.
             </Typography>
           ) : (
-            currentProducts.map((product) => (
+            currentProducts.map((product, index) => (
               <Grid item xs={12} sm={6} md={3} key={product.id}>
-                <ProductCard data={product} />
+                <Zoom
+                  in={true}
+                  style={{ transitionDelay: `${index * 200}ms` }}
+                >
+                  <Box
+                    sx={{
+                      transition: 'transform 0.3s ease-in-out',
+                      '&:hover': {
+                        transform: 'scale(1.05)',
+                      },
+                    }}
+                  >
+                    <ProductCard data={product} />
+                  </Box>
+                </Zoom>
               </Grid>
             ))
           )}
         </Grid>
       </Box>
 
-     
+
       {pageCount > 1 && (
         <Box
           sx={{

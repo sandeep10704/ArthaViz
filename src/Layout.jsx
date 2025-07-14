@@ -32,7 +32,7 @@ const Layout = () => {
   return (
     <>
      
-      {/* <ScrollToTop /> */}
+      <ScrollToTop />
       
       <Suspense fallback={<LoadingScreen />}>
         <HeaderLayout />
