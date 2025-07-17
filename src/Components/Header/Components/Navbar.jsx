@@ -25,7 +25,16 @@ const menuItems = [
   { label: 'ABOUT', path: '/about' },
   { label: 'SHOP', path: '/shop' },
   { label: 'BLOGS', path: '/blogs' },
-  { label: 'PAGES', path: '/pages' },
+  {
+    label: 'PAGES',
+    children: [
+      { label: 'Login', path: '/login' },
+      { label: 'Signup', path: '/signup' },
+      { label: 'Add Product', path: '/addproduct' },
+      { label: 'Add Blog', path: '/addblog' },
+      { label: 'Profile', path: '/profile' },
+    ]
+  },
   { label: 'CONTACT', path: '/contact' },
 ];
 
@@ -38,6 +47,7 @@ const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [pagesOpen, setPagesOpen] = useState(false); // For mobile drawer
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -50,24 +60,24 @@ const Navbar = () => {
   };
 
   const isActive = (path) => (location.pathname === path);
+
   const handleLogout = () => {
     dispatch(logoutUser())
       .unwrap()
       .then(() => {
-         dispatch(uiActions.showNotification({
-        open: true,
-        message: 'User logout',
-        type: 'error',
-      }));
-        
+        dispatch(uiActions.showNotification({
+          open: true,
+          message: 'User logout',
+          type: 'error',
+        }));
         navigate('/login');
       })
-      .catch((error) => {
+      .catch(() => {
         dispatch(uiActions.showNotification({
-        open: true,
-        message: 'user not logout',
-        type: 'error',
-      }));
+          open: true,
+          message: 'User not logout',
+          type: 'error',
+        }));
       });
   };
 
@@ -95,15 +105,51 @@ const Navbar = () => {
     >
       <Box sx={{ overflowY: 'auto', pb: 16, flex: 1 }}>
         <List disablePadding>
-          {menuItems.map(({ label, path }) => (
-            <ListItemButton
-              key={label}
-              onClick={() => handleNavigate(path)}
-              selected={isActive(path)}
-            >
-              <ListItemText primary={label} />
-              {label === 'PAGES' && <ArrowDropDownIcon />}
-            </ListItemButton>
+          {menuItems.map((item) => (
+            <React.Fragment key={item.label}>
+              {item.label === 'PAGES' ? (
+                <>
+                  <ListItemButton onClick={() => setPagesOpen(!pagesOpen)}>
+                    <ListItemText primary={item.label} />
+                    <ArrowDropDownIcon />
+                  </ListItemButton>
+                  {pagesOpen && (
+                    <List disablePadding sx={{ pl: 2 }}>
+                      {item.children
+                        .filter(child => {
+                          if (isLoggedIn && (child.label === 'Login' || child.label === 'Signup')) {
+                            return false; 
+                          }
+                          return true;
+                        })
+                        .map((child) => (
+                          <ListItemButton
+                            key={child.label}
+                            onClick={() => {
+                              handleNavigate(child.path);
+                              setDrawerOpen(false);
+                            }}
+                            selected={isActive(child.path)}
+                          >
+                            <ListItemText primary={child.label} />
+                          </ListItemButton>
+                        ))}
+
+                    </List>
+                  )}
+                </>
+              ) : (
+                <ListItemButton
+                  onClick={() => {
+                    handleNavigate(item.path);
+                    setDrawerOpen(false);
+                  }}
+                  selected={isActive(item.path)}
+                >
+                  <ListItemText primary={item.label} />
+                </ListItemButton>
+              )}
+            </React.Fragment>
           ))}
         </List>
 
@@ -197,21 +243,69 @@ const Navbar = () => {
 
           {!isMobile && (
             <Box sx={{ display: 'flex', gap: 4 }}>
-              {menuItems.map(({ label, path }) => (
-                <Box
-                  key={label}
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    cursor: 'pointer',
-                    fontFamily: "outfit",
-                    color: isActive(path) ? ColorPalette.orange : '#333',
-                    fontWeight: isActive(path) ? 'bold' : 400,
-                  }}
-                  onClick={() => handleNavigate(path)}
-                >
-                  <Typography variant="body1" sx={{ fontFamily: 'Outfit', fontWeight: isActive(path) ? 400 : 200 }}>{label}</Typography>
-                  {label === 'PAGES' && <ArrowDropDownIcon fontSize="small" />}
+              {menuItems.map((item) => (
+                <Box key={item.label} sx={{
+                  position: 'relative',
+                  '&:hover .dropdown': { display: 'flex' },
+                }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      cursor: 'pointer',
+                      fontFamily: "outfit",
+                      color: isActive(item.path) ? ColorPalette.orange : '#333',
+                      fontWeight: isActive(item.path) ? 'bold' : 400,
+                    }}
+                    onClick={() => {
+                      if (item.path) handleNavigate(item.path);
+                    }}
+                  >
+                    <Typography variant="body1" sx={{ fontFamily: 'Outfit', fontWeight: isActive(item.path) ? 400 : 200 }}>
+                      {item.label}
+                    </Typography>
+                    {item.children && <ArrowDropDownIcon fontSize="small" />}
+                  </Box>
+
+                  {item.children && (
+                    <Box
+                      className="dropdown"
+                      sx={{
+                        position: 'absolute',
+                        top: '100%',
+                        left: 0,
+                        bgcolor: 'white',
+                        boxShadow: 3,
+                        display: 'none',
+                        flexDirection: 'column',
+                        zIndex: 10,
+                      }}
+                    >
+                      {item.children
+                        .filter(child => {
+                          if (isLoggedIn && (child.label === 'Login' || child.label === 'Signup')) {
+                            return false;
+                          }
+                          return true;
+                        })
+                        .map((child) => (
+                          <Box
+                            key={child.label}
+                            sx={{
+                              px: 2,
+                              py: 1,
+                              cursor: 'pointer',
+                              '&:hover': { bgcolor: '#f0f0f0' },
+                              fontFamily: 'Outfit',
+                            }}
+                            onClick={() => handleNavigate(child.path)}
+                          >
+                            {child.label}
+                          </Box>
+                        ))}
+
+                    </Box>
+                  )}
                 </Box>
               ))}
             </Box>
@@ -235,11 +329,11 @@ const Navbar = () => {
                 >
                   <ShoppingCartOutlinedIcon />
                 </IconButton>
-                  <ProfileMenu
-      onMyProfile={() => navigate('/profile')}
-      onLogin={() => navigate('/login')}
-      onLogout={handleLogout}
-    />
+                <ProfileMenu
+                  onMyProfile={() => navigate('/profile')}
+                  onLogin={() => navigate('/login')}
+                  onLogout={handleLogout}
+                />
               </Box>
             ) : (
               <IconButton edge="end" onClick={() => setDrawerOpen(true)}>

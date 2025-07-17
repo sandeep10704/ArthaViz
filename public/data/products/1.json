@@ -11,6 +11,8 @@
     "sku": "1223",
     "category": ["Phone", "Screen Touch"],
     "tags": ["Classic", "Modern"],
+    "brand": "Apple",
+
     "images": [
       "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie01.png",
       "https://res.cloudinary.com/dq7lkkucz/image/upload/Categorie02.png",

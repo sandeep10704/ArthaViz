@@ -94,7 +94,7 @@ const SignupPage = () => {
             return;
         }
 
-        dispatch(signupUser({ email, password }))
+        dispatch(signupUser({ email, password, fullName }))
             .unwrap()
             .then(() => {
                 navigate('/');
@@ -125,14 +125,14 @@ const SignupPage = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                p: {sm:0,md:2},
+                p: { sm: 0, md: 2 },
             }}
         >
             <Box
                 sx={{
                     display: 'flex',
                     flexDirection: { xs: 'column', md: 'row' },
-                    borderRadius: {sm:0,md:6},
+                    borderRadius: { sm: 0, md: 6 },
                     overflow: 'hidden',
                     boxShadow: 3,
                     maxWidth: 1400,

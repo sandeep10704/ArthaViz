@@ -9,20 +9,29 @@ import {
   signInWithPopup,
   googleProvider,
   facebookProvider,
-  onAuthStateChanged
+  onAuthStateChanged,
+  db
 } from "../firebase";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 
-export const signupUser = createAsyncThunk(
-  'auth/signupUser',
-  async ({ email, password }, thunkAPI) => {
+export const fetchUserProfile = createAsyncThunk(
+  'auth/fetchUserProfile',
+  async (uid, thunkAPI) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      return userCredential.user;
+      const docRef = doc(db, "users", uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        return docSnap.data();
+      } else {
+        return thunkAPI.rejectWithValue("No user profile found");
+      }
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
 
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
@@ -54,7 +63,22 @@ export const googleLogin = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      return result.user;
+      const user = result.user;
+
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (!userSnap.exists()) {
+        await setDoc(userRef, {
+          fullName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          provider: "google",
+          createdAt: new Date()
+        });
+      }
+
+      return user;
     } catch (error) {
       console.error("Google login error:", error);
       return thunkAPI.rejectWithValue(error.message);
@@ -62,19 +86,36 @@ export const googleLogin = createAsyncThunk(
   }
 );
 
+
 // Facebook Login
 export const facebookLogin = createAsyncThunk(
   'auth/facebookLogin',
   async (_, thunkAPI) => {
     try {
       const result = await signInWithPopup(auth, facebookProvider);
-      return result.user;
+      const user = result.user;
+
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (!userSnap.exists()) {
+        await setDoc(userRef, {
+          fullName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          provider: "facebook",
+          createdAt: new Date()
+        });
+      }
+
+      return user;
     } catch (error) {
       console.error("Facebook login error:", error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
 
 export const checkUserSession = createAsyncThunk(
   'auth/checkUserSession',
@@ -90,11 +131,44 @@ export const checkUserSession = createAsyncThunk(
     });
   }
 );
+// signupUser updated
+export const signupUser = createAsyncThunk(
+  'auth/signupUser',
+  async ({ email, password, fullName }, thunkAPI) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Save additional info to Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        fullName,
+        email,
+        createdAt: new Date()
+      });
+
+      return { ...user, fullName };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const updateUserProfile = createAsyncThunk(
+  'auth/updateUserProfile',
+  async ({ uid, data }, thunkAPI) => {
+    try {
+      const userRef = doc(db, "users", uid);
+      await updateDoc(userRef, data);
+      return data; // return updated data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 
 const authSlice = createSlice({
   name: 'auth',
-  initialState: { isLoggedIn: false, user: null, status: 'idle', error: null },
+  initialState: { isLoggedIn: false, user: null, userProfile: null, status: 'idle', error: null },
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -127,6 +201,17 @@ const authSlice = createSlice({
           state.user = null;
         }
       })
+      .addCase(fetchUserProfile.fulfilled, (state, action) => {
+        state.userProfile = action.payload;
+      })
+      .addCase(updateUserProfile.fulfilled, (state, action) => {
+        state.userProfile = {
+          ...state.userProfile,
+          ...action.payload
+        };
+      })
+
+
       .addMatcher(
         (action) => action.type.endsWith('/rejected'),
         (state, action) => {

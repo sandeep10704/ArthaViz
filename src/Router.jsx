@@ -1,54 +1,149 @@
-
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./Layout.jsx";
-import AboutLayout from "./Components/Body/About/AboutLayout.jsx";
-import BlogsLayout from "./Components/Body/Blogs/BlogsLayout.jsx";
-import CartLayout from "./Components/Body/Cart/CartLayout.jsx";
-import ContactLayout from "./Components/Body/Contact/ContactLayout.jsx";
-import HomeLayout from "./Components/Body/Home/HomeLayout.jsx";
-import ShopLayout from "./Components/Body/Shop/ShopLayout.jsx";
-import MainShopLayout from "./Components/Body/Shop/MainShop/MainShopLayout.jsx";
-import ProductShopLayout from "./Components/Body/Shop/ProductShop/ProductShopLayout.jsx";
-import CheckoutLayout from "./Components/Body/Checkout/CheckoutLayout.jsx";
-import PostsLayout from "./Components/Body/Blogs/Posts/PostsLayout.jsx";
-import PostLayout from "./Components/Body/Blogs/Post/PostLayout.jsx";
-import Loginpage from "./pages/loginpage.jsx"
-import SignupPage from "./pages/SignupPage.jsx";
 import UnderMaintenance from "./UnderMaintenance.jsx";
+import LoadingScreen from "./Components/CommonComponents/LoadingScreen.jsx";
 
-
+// Lazy imports for all routes
+const AboutLayout = lazy(() => import("./Components/Body/About/AboutLayout.jsx"));
+const BlogsLayout = lazy(() => import("./Components/Body/Blogs/BlogsLayout.jsx"));
+const CartLayout = lazy(() => import("./Components/Body/Cart/CartLayout.jsx"));
+const ContactLayout = lazy(() => import("./Components/Body/Contact/ContactLayout.jsx"));
+const HomeLayout = lazy(() => import("./Components/Body/Home/HomeLayout.jsx"));
+const ShopLayout = lazy(() => import("./Components/Body/Shop/ShopLayout.jsx"));
+const MainShopLayout = lazy(() => import("./Components/Body/Shop/MainShop/MainShopLayout.jsx"));
+const ProductShopLayout = lazy(() => import("./Components/Body/Shop/ProductShop/ProductShopLayout.jsx"));
+const CheckoutLayout = lazy(() => import("./Components/Body/Checkout/CheckoutLayout.jsx"));
+const PostsLayout = lazy(() => import("./Components/Body/Blogs/Posts/PostsLayout.jsx"));
+const PostLayout = lazy(() => import("./Components/Body/Blogs/Post/PostLayout.jsx"));
+const Loginpage = lazy(() => import("./pages/loginpage.jsx"));
+const SignupPage = lazy(() => import("./pages/SignupPage.jsx"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage.jsx"));
 
 const Router = createBrowserRouter([
- {
+  {
     path: "/",
     element: <Layout />,
-    errorElement:<UnderMaintenance/>,
+    errorElement: <UnderMaintenance />,
     children: [
-      
-      { index: true, element: <HomeLayout /> },
-      {path:"login", element:<Loginpage/>},
-      {path:"signup", element:<SignupPage/>},
-      { path: "about", element: <AboutLayout /> },
-      { path: "blogs",
-        element: <BlogsLayout />,
-        children:[
-          { index: true ,element:<PostsLayout/>},
-          {path:":id",element:<PostLayout/>}
-        ] },
-      { path: "cart", element: <CartLayout /> },
-      { path: "contact", element: <ContactLayout /> },
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<LoadingScreen/>}>
+            <HomeLayout />
+          </Suspense>
+        )
+      },
+      {
+        path: "login",
+        element: (
+          <Suspense fallback={<LoadingScreen/>}>
+            <Loginpage />
+          </Suspense>
+        )
+      },
+      {
+        path: "signup",
+        element: (
+          <Suspense fallback={<LoadingScreen/>}>
+            <SignupPage />
+          </Suspense>
+        )
+      },
+      {
+        path: "profile",
+        element: (
+          <Suspense fallback={<LoadingScreen/>}>
+            <ProfilePage />
+          </Suspense>
+        )
+      },
+      {
+        path: "about",
+        element: (
+          <Suspense fallback={<LoadingScreen/>}>
+            <AboutLayout />
+          </Suspense>
+        )
+      },
+      {
+        path: "blogs",
+        element: (
+          <Suspense fallback={<LoadingScreen/>}>
+            <BlogsLayout />
+          </Suspense>
+        ),
+        children: [
+          {
+            index: true,
+            element: (
+              <Suspense fallback={<LoadingScreen/>}>
+                <PostsLayout />
+              </Suspense>
+            )
+          },
+          {
+            path: ":id",
+            element: (
+              <Suspense fallback={<LoadingScreen/>}>
+                <PostLayout />
+              </Suspense>
+            )
+          }
+        ]
+      },
+      {
+        path: "cart",
+        element: (
+          <Suspense fallback={<LoadingScreen/>}>
+            <CartLayout />
+          </Suspense>
+        )
+      },
+      {
+        path: "contact",
+        element: (
+          <Suspense fallback={<LoadingScreen/>}>
+            <ContactLayout />
+          </Suspense>
+        )
+      },
       {
         path: "shop",
-        element: <ShopLayout />,
+        element: (
+          <Suspense fallback={<LoadingScreen/>}>
+            <ShopLayout />
+          </Suspense>
+        ),
         children: [
-          { index: true, element: <MainShopLayout /> },
-          { path: ":id", element: <ProductShopLayout /> },
-        ],
+          {
+            index: true,
+            element: (
+              <Suspense fallback={<LoadingScreen/>}>
+                <MainShopLayout />
+              </Suspense>
+            )
+          },
+          {
+            path: ":id",
+            element: (
+              <Suspense fallback={<LoadingScreen/>}>
+                <ProductShopLayout />
+              </Suspense>
+            )
+          }
+        ]
       },
-      {path:"checkout",element:<CheckoutLayout/>},
-    ],
-  },
+      {
+        path: "checkout",
+        element: (
+          <Suspense fallback={<LoadingScreen/>}>
+            <CheckoutLayout />
+          </Suspense>
+        )
+      }
+    ]
+  }
 ]);
 
 export default Router;
