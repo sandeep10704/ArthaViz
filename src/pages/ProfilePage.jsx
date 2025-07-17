@@ -2,10 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { Avatar, Button, TextField, Select, MenuItem } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserProfile, updateUserProfile } from '../store/authSlice';
+import SingleImageUpload from '../Components/CommonComponents/SingleImageUpload';
 
 function ProfilePage() {
   const dispatch = useDispatch();
   const { user, userProfile } = useSelector(state => state.auth);
+  const [photoURL, setPhotoURL] = useState("");
+
+
+
+  const handleProfileImageUpload = (url) => {
+    setPhotoURL(url); // ✅ only set local state, do not update Firestore here
+  };
+
 
   // Local states for form fields
   const [editMode, setEditMode] = useState(false);
@@ -31,8 +40,10 @@ function ProfilePage() {
       setCountry(userProfile.country || "");
       setLanguage(userProfile.language || "");
       setTimeZone(userProfile.timeZone || "");
+      setPhotoURL(userProfile.photoURL || ""); 
     }
   }, [userProfile]);
+
 
   const handleSave = () => {
     if (user?.uid) {
@@ -43,11 +54,13 @@ function ProfilePage() {
         country,
         language,
         timeZone,
+        photoURL,
       };
       dispatch(updateUserProfile({ uid: user.uid, data: updatedData }));
       setEditMode(false);
     }
   };
+
 
   const styles = {
     container: {
@@ -117,23 +130,31 @@ function ProfilePage() {
           <div style={styles.info}>
             <Avatar
               alt={fullName || "User"}
-              src="https://via.placeholder.com/120"
+              src={userProfile?.photoURL || "https://via.placeholder.com/120"}
               sx={{ width: 64, height: 64 }}
             />
+
             <div>
               <h3 style={styles.name}>{fullName || "Loading..."}</h3>
               <p style={styles.email}>{userProfile?.email || "Loading..."}</p>
             </div>
           </div>
+
           {editMode ? (
             <Button variant="contained" onClick={handleSave}>Save</Button>
           ) : (
             <Button variant="contained" onClick={() => setEditMode(true)}>Edit</Button>
           )}
         </div>
+        <div style={{ display: "flex", justifyContent: "left", margin: "8px 0" }}>
+          {editMode && (
+            <SingleImageUpload onUpload={handleProfileImageUpload} />
+          )}
+        </div>
 
         <div style={styles.form}>
           <div style={styles.formGroup}>
+
             <label style={styles.label}>Full Name</label>
             <TextField
               placeholder="Your Full Name"

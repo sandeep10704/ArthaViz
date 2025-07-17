@@ -143,6 +143,7 @@ export const signupUser = createAsyncThunk(
       await setDoc(doc(db, "users", user.uid), {
         fullName,
         email,
+        photoURL: "https://via.placeholder.com/120", // default avatar
         createdAt: new Date()
       });
 
