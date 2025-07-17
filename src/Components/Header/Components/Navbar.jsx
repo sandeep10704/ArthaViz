@@ -92,6 +92,21 @@ const Navbar = () => {
       navigate('/cart');
     }
   };
+  const handleClickwithoutlogin = (path) => {
+    if (path === '/login' || path === '/signup') {
+      navigate(path);
+    } else if (!isLoggedIn) {
+      dispatch(uiActions.showNotification({
+        open: true,
+        message: 'Please login to view those pages',
+        type: 'error',
+      }));
+    } else {
+      navigate(path);
+    }
+  };
+
+
 
   const drawerContent = (
     <Box
@@ -118,7 +133,7 @@ const Navbar = () => {
                       {item.children
                         .filter(child => {
                           if (isLoggedIn && (child.label === 'Login' || child.label === 'Signup')) {
-                            return false; 
+                            return false;
                           }
                           return true;
                         })
@@ -244,24 +259,28 @@ const Navbar = () => {
           {!isMobile && (
             <Box sx={{ display: 'flex', gap: 4 }}>
               {menuItems.map((item) => (
-                <Box key={item.label} sx={{
-                  position: 'relative',
-                  '&:hover .dropdown': { display: 'flex' },
-                }}>
+                <Box
+                  key={item.label}
+                  sx={{
+                    position: 'relative',
+                    '&:hover .dropdown': { display: 'flex', opacity: 1, transform: 'translateY(0px)' },
+                  }}
+                >
                   <Box
                     sx={{
                       display: 'flex',
                       alignItems: 'center',
                       cursor: 'pointer',
-                      fontFamily: "outfit",
+                      fontFamily: 'Outfit',
                       color: isActive(item.path) ? ColorPalette.orange : '#333',
-                      fontWeight: isActive(item.path) ? 'bold' : 400,
+                      fontWeight: isActive(item.path) ? 600 : 300,
+                      transition: 'color 0.3s',
                     }}
                     onClick={() => {
                       if (item.path) handleNavigate(item.path);
                     }}
                   >
-                    <Typography variant="body1" sx={{ fontFamily: 'Outfit', fontWeight: isActive(item.path) ? 400 : 200 }}>
+                    <Typography variant="body1" sx={{ fontFamily: 'Outfit', fontWeight: isActive(item.path) ? 600 : 400 }}>
                       {item.label}
                     </Typography>
                     {item.children && <ArrowDropDownIcon fontSize="small" />}
@@ -279,6 +298,12 @@ const Navbar = () => {
                         display: 'none',
                         flexDirection: 'column',
                         zIndex: 10,
+                        minWidth: 160,
+                        borderRadius: 1,
+                        overflow: 'hidden',
+                        opacity: 0,
+                        transform: 'translateY(10px)',
+                        transition: 'all 0.5s ease',
                       }}
                     >
                       {item.children
@@ -295,20 +320,22 @@ const Navbar = () => {
                               px: 2,
                               py: 1,
                               cursor: 'pointer',
-                              '&:hover': { bgcolor: '#f0f0f0' },
+                              '&:hover': { bgcolor: '#e8e8e8' },
                               fontFamily: 'Outfit',
+                              fontSize: 18,
+                              transition: 'background 0.5s',
                             }}
-                            onClick={() => handleNavigate(child.path)}
+                            onClick={() => handleClickwithoutlogin(child.path)}
                           >
                             {child.label}
                           </Box>
                         ))}
-
                     </Box>
                   )}
                 </Box>
               ))}
             </Box>
+
           )}
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
