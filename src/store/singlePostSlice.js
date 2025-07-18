@@ -6,7 +6,7 @@ export const fetchSinglePostById = createAsyncThunk(
   'singlePost/fetchSinglePostById',
   async (Id, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`/data/posts/${Id}.json`);
+      const response = await axios.get(`https://arthaserve-1.onrender.com/blogs/${Id}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);

@@ -41,7 +41,7 @@ const ProductShopLayout = () => {
       {reviews.map((review, index) => (
         <ProductReviewCard key={index} review={review} />
       ))}
-      <ReviewForm />
+      <ReviewForm id={id}/>
       <Box sx={{ mx: "auto" }}>
         <RelatedItems />
       </Box>

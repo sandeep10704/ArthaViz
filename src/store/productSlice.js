@@ -7,7 +7,7 @@ import axios from 'axios';
 export const fetchProductData = createAsyncThunk(
   'products/fetchProductData',
   async () => {
-    const response = await axios.get('/data/products.json');
+    const response = await axios.get('https://arthaserve-1.onrender.com/products');
     return response.data;
   }
 );

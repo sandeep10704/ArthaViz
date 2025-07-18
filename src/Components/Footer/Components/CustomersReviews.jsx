@@ -34,8 +34,8 @@ const CustomersReviews = () => {
   const formattedReviews = reviews.map((review) => ({
     Component: ReviewCard,
     props: {
-      text: review.text,
-      name: review.name,
+      text: review.reviewText,
+      name: review.customerName,
       stars: review.stars,
       width: cardWidth
     }

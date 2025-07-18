@@ -26,7 +26,7 @@ export const uploadImages = createAsyncThunk(
 export const postProduct = createAsyncThunk(
   'product/postProduct',
   async (productData) => {
-    const res = await axios.post('http://localhost:8080/products', productData);
+    const res = await axios.post('https://arthaserve-1.onrender.com/products', productData);
     console.log(productData);
     
     return res.data;

@@ -12,6 +12,7 @@ import singlePostReducer from "./singlePostSlice";
 import cartReducer from "./cartSlice";
 import uiReducer from "./uiSlice";
 import authReducer from "./authSlice";
+import blogReducer from "./addBlogSlice";
 
 const store = configureStore({
   reducer: {
@@ -28,6 +29,7 @@ const store = configureStore({
     cart: cartReducer,
     ui: uiReducer,
     auth: authReducer,
+     blog: blogReducer,
   },
 });
 

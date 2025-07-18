@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 export const fetchLastPosts = createAsyncThunk("LastPost/fetchLastPosts", async () => {
-  const response = await axios.get("/data/lastestpost.json");
+  const response = await axios.get("https://arthaserve-1.onrender.com/blogs/posts/sorted");
   return response.data;
 });
 

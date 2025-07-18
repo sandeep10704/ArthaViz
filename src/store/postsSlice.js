@@ -5,7 +5,7 @@ import axios from 'axios';
 export const fetchPostData = createAsyncThunk(
   'posts/fetchPostData',
   async () => {
-    const response = await axios.get('/data/posts.json');
+    const response = await axios.get('https://arthaserve-1.onrender.com/blogs');
     return response.data;
   }
 );

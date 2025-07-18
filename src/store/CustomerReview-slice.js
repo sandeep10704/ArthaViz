@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 export const fetchCustomerReviews = createAsyncThunk("CustomerReviews/fetchCustomerReviews", async () => {
-  const response = await axios.get("/data/customerreviews.json");
+  const response = await axios.get("https://arthaserve-1.onrender.com/home/reviews");
   return response.data; 
 });
 

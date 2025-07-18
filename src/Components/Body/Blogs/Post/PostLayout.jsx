@@ -31,7 +31,7 @@ const PostLayout = () => {
         nextArticle={post.nextArticle}
       />
       <CommentsSection comments={post.comments} />
-      <CommentForm />
+      <CommentForm id={id} />
     </div>
   );
 };

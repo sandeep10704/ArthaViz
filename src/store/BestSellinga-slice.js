@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 export const fetchBestSelling = createAsyncThunk("BestSelling/fetchBestSelling", async () => {
-  const response = await axios.get("/data/bestselling.json");
+  const response = await axios.get("https://arthaserve-1.onrender.com/products/top-selling");
   return response.data; 
 });
 
