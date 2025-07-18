@@ -1,16 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import LastPostReducer from "./LastPost-slice";
-import customerReviewReducer from "./CustomerReview-slice"
-import bestSellingReducer from "./BestSellinga-slice"
-import categoriesReducer from "./Categories-slice"
-import itemsReducer from "./Items-slice"
-import productReducer from "./productSlice"
-import postsReducer from "./postsSlice"
-import singleProductReducer from "./singleProductSlice"
-import singlePostReducer from "./singlePostSlice"
-import cartReducer from "./cartSlice"
-import uiReducer from './uiSlice'
-import authReducer from './authSlice'
+import customerReviewReducer from "./CustomerReview-slice";
+import bestSellingReducer from "./BestSellinga-slice";
+import categoriesReducer from "./Categories-slice";
+import itemsReducer from "./Items-slice";
+import productReducer from "./productSlice"; 
+import productAddReducer from "./ProductAddSlice"; 
+import postsReducer from "./postsSlice";
+import singleProductReducer from "./singleProductSlice";
+import singlePostReducer from "./singlePostSlice";
+import cartReducer from "./cartSlice";
+import uiReducer from "./uiSlice";
+import authReducer from "./authSlice";
 
 const store = configureStore({
   reducer: {
@@ -20,12 +21,13 @@ const store = configureStore({
     BestSelling: bestSellingReducer,
     Categories: categoriesReducer,
     products: productReducer,
+    product: productAddReducer,
     posts: postsReducer,
     singleProduct: singleProductReducer,
     singlePost: singlePostReducer,
     cart: cartReducer,
     ui: uiReducer,
-    auth:authReducer
+    auth: authReducer,
   },
 });
 

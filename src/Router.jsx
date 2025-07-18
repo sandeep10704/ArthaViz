@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "./Layout.jsx";
 import UnderMaintenance from "./UnderMaintenance.jsx";
 import LoadingScreen from "./Components/CommonComponents/LoadingScreen.jsx";
+import AddProductPage from "./pages/AddProductPage.jsx";
 
 // Lazy imports for all routes
 const AboutLayout = lazy(() => import("./Components/Body/About/AboutLayout.jsx"));
@@ -55,6 +56,14 @@ const Router = createBrowserRouter([
         element: (
           <Suspense fallback={<LoadingScreen/>}>
             <ProfilePage />
+          </Suspense>
+        )
+      },
+      {
+        path: "addproduct",
+        element: (
+          <Suspense fallback={<LoadingScreen/>}>
+            <AddProductPage/>
           </Suspense>
         )
       },
