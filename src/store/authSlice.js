@@ -169,7 +169,7 @@ export const updateUserProfile = createAsyncThunk(
 
 const authSlice = createSlice({
   name: 'auth',
-  initialState: { isLoggedIn: false, user: null, userProfile: null, status: 'idle', error: null },
+  initialState: { isLoggedIn: false, user: null, userProfile: null, status: 'idle', error: null,adminEmail: 'admin@shoplite.com' },
   reducers: {},
   extraReducers: (builder) => {
     builder

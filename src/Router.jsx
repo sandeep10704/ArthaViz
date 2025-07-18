@@ -7,6 +7,7 @@ import AddProductPage from "./pages/AddProductPage.jsx";
 import AddBlogPage from "./pages/AddBlogPage.jsx";
 import AddReview from "./pages/AddReview.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
+import AdminProtectedRoute from "./AdminProtectedRoute.jsx";
 
 // Lazy imports for all routes
 const AboutLayout = lazy(() => import("./Components/Body/About/AboutLayout.jsx"));
@@ -23,6 +24,7 @@ const PostLayout = lazy(() => import("./Components/Body/Blogs/Post/PostLayout.js
 const Loginpage = lazy(() => import("./pages/loginpage.jsx"));
 const SignupPage = lazy(() => import("./pages/SignupPage.jsx"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage.jsx"));
+
 
 const Router = createBrowserRouter([
   {
@@ -69,7 +71,9 @@ const Router = createBrowserRouter([
         element: (
           <Suspense fallback={<LoadingScreen/>}>
           <ProtectedRoute> 
+          <AdminProtectedRoute> 
             <AddProductPage/>
+            </AdminProtectedRoute>
             </ProtectedRoute>
             
           </Suspense>
@@ -81,7 +85,9 @@ const Router = createBrowserRouter([
           <Suspense fallback={<LoadingScreen/>}>
             
             <ProtectedRoute> 
+            <AdminProtectedRoute> 
             <AddBlogPage/>
+            </AdminProtectedRoute>
             </ProtectedRoute>
           </Suspense>
         )
