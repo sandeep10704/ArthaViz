@@ -5,6 +5,8 @@ import UnderMaintenance from "./UnderMaintenance.jsx";
 import LoadingScreen from "./Components/CommonComponents/LoadingScreen.jsx";
 import AddProductPage from "./pages/AddProductPage.jsx";
 import AddBlogPage from "./pages/AddBlogPage.jsx";
+import AddReview from "./pages/AddReview.jsx";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 
 // Lazy imports for all routes
 const AboutLayout = lazy(() => import("./Components/Body/About/AboutLayout.jsx"));
@@ -56,7 +58,9 @@ const Router = createBrowserRouter([
         path: "profile",
         element: (
           <Suspense fallback={<LoadingScreen/>}>
+          <ProtectedRoute> 
             <ProfilePage />
+            </ProtectedRoute>
           </Suspense>
         )
       },
@@ -64,7 +68,10 @@ const Router = createBrowserRouter([
         path: "addproduct",
         element: (
           <Suspense fallback={<LoadingScreen/>}>
+          <ProtectedRoute> 
             <AddProductPage/>
+            </ProtectedRoute>
+            
           </Suspense>
         )
       },
@@ -72,7 +79,20 @@ const Router = createBrowserRouter([
         path: "addblog",
         element: (
           <Suspense fallback={<LoadingScreen/>}>
+            
+            <ProtectedRoute> 
             <AddBlogPage/>
+            </ProtectedRoute>
+          </Suspense>
+        )
+      },
+      {
+        path: "addreview",
+        element: (
+          <Suspense fallback={<LoadingScreen/>}>
+            <ProtectedRoute> 
+            <AddReview/> 
+            </ProtectedRoute>
           </Suspense>
         )
       },
@@ -114,7 +134,10 @@ const Router = createBrowserRouter([
         path: "cart",
         element: (
           <Suspense fallback={<LoadingScreen/>}>
+          <ProtectedRoute> 
             <CartLayout />
+            </ProtectedRoute>
+            
           </Suspense>
         )
       },
@@ -156,7 +179,10 @@ const Router = createBrowserRouter([
         path: "checkout",
         element: (
           <Suspense fallback={<LoadingScreen/>}>
-            <CheckoutLayout />
+          <ProtectedRoute> 
+           <CheckoutLayout />
+            </ProtectedRoute>
+            
           </Suspense>
         )
       }

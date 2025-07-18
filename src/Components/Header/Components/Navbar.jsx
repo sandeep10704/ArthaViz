@@ -33,6 +33,7 @@ const menuItems = [
       { label: 'Add Product', path: '/addproduct' },
       { label: 'Add Blog', path: '/addblog' },
       { label: 'Profile', path: '/profile' },
+      { label: 'Add Shop Review', path: '/addreview' },
     ]
   },
   { label: 'CONTACT', path: '/contact' },
@@ -47,7 +48,7 @@ const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [pagesOpen, setPagesOpen] = useState(false); // For mobile drawer
+  const [pagesOpen, setPagesOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -141,7 +142,7 @@ const Navbar = () => {
                           <ListItemButton
                             key={child.label}
                             onClick={() => {
-                              handleNavigate(child.path);
+                               handleClickwithoutlogin(child.path);
                               setDrawerOpen(false);
                             }}
                             selected={isActive(child.path)}
