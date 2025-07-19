@@ -1,65 +1,100 @@
+// SingleImageUpload.js
+
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button, Avatar } from '@mui/material';
+import { Box, Stack, Button, Avatar, CircularProgress, Typography, Alert } from '@mui/material';
+import { PhotoCamera } from '@mui/icons-material';
 
-const SingleImageUpload = ({ onUpload }) => {
-  const [imageUrl, setImageUrl] = useState("");
+const SingleImageUpload = ({ value, onUpload }) => {
   const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
+    // Basic file type validation
+    if (!file.type.startsWith('image/')) {
+        setError('Please select a valid image file.');
+        return;
+    }
+
     setUploading(true);
-    const fileNameWithoutExtension = file.name.split('.').slice(0, -1).join('.');
+    setError(null);
+    
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('upload_preset', 'shop_upload_preset');
-    formData.append('public_id', fileNameWithoutExtension);
+    formData.append('upload_preset', 'shop_upload_preset'); // Replace with your preset
 
     try {
       const res = await axios.post(
-        'https://api.cloudinary.com/v1_1/dq7lkkucz/image/upload',
+        'https://api.cloudinary.com/v1_1/dq7lkkucz/image/upload', // Replace with your Cloudinary URL
         formData
       );
       const url = res.data.secure_url;
-      setImageUrl(url);
-      console.log("Uploaded image URL:", url);
-
-      // Pass the uploaded URL to parent if needed
-      if (onUpload) onUpload(url);
+      if (onUpload) {
+        onUpload(url);
+      }
     } catch (err) {
-      console.error(err);
+      console.error("Upload failed:", err);
+      setError('Upload failed. Please try again.');
     } finally {
       setUploading(false);
     }
   };
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleImageUpload}
-        style={{ display: 'none' }}
-        id="single-image-upload"
-      />
-      <label htmlFor="single-image-upload">
-        <Button variant="contained" component="span" disabled={uploading}>
-          {uploading ? "Uploading..." : "Upload Image"}
-        </Button>
-      </label>
-
-      {imageUrl && (
-        <div style={{ marginTop: '10px' }}>
-          <Avatar
-            src={imageUrl}
-            alt="Uploaded"
-            sx={{ width: 80, height: 80, margin: 'auto' }}
+    <Stack spacing={2} alignItems="center">
+      <Box sx={{ position: 'relative' }}>
+        <Avatar
+          src={value}
+          alt="Profile"
+          sx={{
+            width: 120,
+            height: 120,
+            border: '2px solid',
+            borderColor: 'divider',
+            opacity: uploading ? 0.5 : 1,
+          }}
+        >
+          {/* Fallback Icon if no image */}
+          <PhotoCamera sx={{ width: 60, height: 60, color: 'text.secondary' }} />
+        </Avatar>
+        {uploading && (
+          <CircularProgress
+            size={40}
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              marginTop: '-20px',
+              marginLeft: '-20px',
+            }}
           />
-        </div>
-      )}
-    </div>
+        )}
+      </Box>
+
+      <Button
+        variant="outlined"
+        component="label"
+        disabled={uploading}
+        startIcon={<PhotoCamera />}
+      >
+        {value ? 'Change Photo' : 'Upload Photo'}
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageUpload}
+          hidden
+        />
+      </Button>
+
+      {error && <Alert severity="error" sx={{ width: '100%' }}>{error}</Alert>}
+      
+      <Typography variant="caption" color="text.secondary">
+        JPG, PNG, or GIF. Max size of 5MB.
+      </Typography>
+    </Stack>
   );
 };
 

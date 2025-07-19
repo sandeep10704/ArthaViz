@@ -13,6 +13,8 @@ import cartReducer from "./cartSlice";
 import uiReducer from "./uiSlice";
 import authReducer from "./authSlice";
 import blogReducer from "./addBlogSlice";
+import checkoutReducer from "./checkoutSlice"
+
 
 const store = configureStore({
   reducer: {
@@ -30,6 +32,7 @@ const store = configureStore({
     ui: uiReducer,
     auth: authReducer,
      blog: blogReducer,
+     checkout: checkoutReducer,
   },
 });
 

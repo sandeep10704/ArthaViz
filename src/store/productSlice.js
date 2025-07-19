@@ -26,7 +26,7 @@ const productSlice = createSlice({
       pageCount: 1,
       totalProducts: 0,
     },
-    status: 'idle',
+    status: 'loading',
     error: null,
   },
   reducers: {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Box, Grid } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import SearchBox from '../../../CommonComponents/SearchBox';
@@ -9,14 +9,21 @@ import {
   updateSelectedFilters,
   applyFilterAndPaginate,
 } from "../../../../store/productSlice";
+import LoadingScreen from "../../../CommonComponents/LoadingScreen";
 
 const MainShopLayout = () => {
   const dispatch = useDispatch();
-  const { filters, selectedFilters } = useSelector((state) => state.products);
+
+  const products = useSelector((state) => state.products);
+  const { filters, selectedFilters, status } = products;
 
   useEffect(() => {
     dispatch(fetchProductData());
   }, [dispatch]);
+
+  if (status === "loading") {
+    return <LoadingScreen />;
+  }
 
   const handleFilterChange = (newSelectedFilters) => {
     dispatch(updateSelectedFilters(newSelectedFilters));

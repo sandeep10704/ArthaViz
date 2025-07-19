@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { useParams } from 'react-router-dom';
 
 import GadgetArticle from './Components/GadgetArticle';
@@ -8,6 +7,7 @@ import CommentForm from './Components/CommentForm';
 import CommentsSection from './Components/CommentsSection.jsx';
 import ArticleNavBar from './Components/ArticleNavBar.jsx';
 import { fetchSinglePostById } from '../../../../store/singlePostSlice.js';
+import LoadingScreen from "../../../CommonComponents/LoadingScreen";
 
 const PostLayout = () => {
   const { id } = useParams();
@@ -18,7 +18,7 @@ const PostLayout = () => {
     dispatch(fetchSinglePostById(id));
   }, [dispatch, id]);
 
-  if (loading) return <p>Loading post...</p>;
+  if (loading) return <LoadingScreen text="Loading post..." />;
   if (error) return <p>Error: {error}</p>;
   if (!post) return null;
 

@@ -13,14 +13,14 @@ import CustomButton from '../../../../CommonComponents/CustomButton';
 import { useNavigate } from 'react-router';
 import { addProductToCart } from '../../../../../store/cartSlice';
 
-const ProductShowCard = ({ product,Id }) => {
+const ProductShowCard = ({ product, Id }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleClickOfAddToCartButton = () => {
     dispatch(addProductToCart({ Id, quantity }));
   };
 
-  
+
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState(null);
   const [image, setImage] = useState(product?.images ? product.images[0] : null);
@@ -122,7 +122,24 @@ const ProductShowCard = ({ product,Id }) => {
         {/* Right Side */}
         <Grid item xs={12} md={6}>
           <Box sx={{ width: "auto", padding: { sm: "0 10px", md: "0 30px" } }}>
-            <Typography variant="h4" sx={{ textTransform: "uppercase", fontWeight: 300, fontFamily: "Outfit" }}>{product.name}</Typography>
+            <Typography
+              variant="h5"
+              sx={{ textTransform: "uppercase", fontWeight: 400, fontFamily: "Outfit" }}
+            >
+              {product.name
+                .toUpperCase()
+                .split(/\s+/) // split by words
+                .reduce((lines, word, i, words) => {
+                  if (i % 5 === 0) lines.push(words.slice(i, i + 5).join(" "));
+                  return lines;
+                }, [])
+                .slice(0, 3) // take only first three lines
+                .map((line, index) => (
+                  <div key={index}>{line}</div>
+                ))}
+            </Typography>
+
+
             <Typography variant="h6" color={ColorPalette.orange}>${product.price.toFixed(2)}</Typography>
 
             <Box sx={{ display: 'flex', alignItems: 'center' }}>

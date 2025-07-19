@@ -169,10 +169,18 @@ export const updateUserProfile = createAsyncThunk(
 
 const authSlice = createSlice({
   name: 'auth',
-  initialState: { isLoggedIn: false, user: null, userProfile: null, status: 'idle', error: null,adminEmail: 'admin@shoplite.com' },
+  initialState: { 
+    isLoggedIn: false, 
+    user: null, 
+    userProfile: null, 
+    status: 'loading', // 'idle' | 'loading' | 'succeeded' | 'failed'
+    error: null,
+    adminEmail: 'admin@shoplite.com' 
+  },
   reducers: {},
   extraReducers: (builder) => {
     builder
+      // Add specific fulfilled cases first to handle data payloads
       .addCase(signupUser.fulfilled, (state, action) => {
         state.isLoggedIn = true;
         state.user = action.payload;
@@ -184,6 +192,7 @@ const authSlice = createSlice({
       .addCase(logoutUser.fulfilled, (state) => {
         state.isLoggedIn = false;
         state.user = null;
+        state.userProfile = null; // Also clear profile on logout
       })
       .addCase(googleLogin.fulfilled, (state, action) => {
         state.isLoggedIn = true;
@@ -200,6 +209,7 @@ const authSlice = createSlice({
         } else {
           state.isLoggedIn = false;
           state.user = null;
+          state.userProfile = null; // Clear profile if no session
         }
       })
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
@@ -212,15 +222,29 @@ const authSlice = createSlice({
         };
       })
 
-
+      // ✅ Use matchers to handle generic loading states for ALL thunks
+      .addMatcher(
+        (action) => action.type.endsWith('/pending'),
+        (state) => {
+          state.status = 'loading';
+          state.error = null; // Clear previous errors
+        }
+      )
+      .addMatcher(
+        (action) => action.type.endsWith('/fulfilled'),
+        (state) => {
+          state.status = 'succeeded';
+        }
+      )
       .addMatcher(
         (action) => action.type.endsWith('/rejected'),
         (state, action) => {
-          state.error = action.payload;
+          state.status = 'failed';
+          state.error = action.payload; // payload from rejectWithValue
         }
-      )
-      ;
+      );
   },
 });
+
 
 export default authSlice.reducer;

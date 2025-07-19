@@ -52,7 +52,7 @@ export const addProductToCart = createAsyncThunk(
     }
 
     try {
-      const response = await axios.get('/data/products.json');
+      const response = await axios.get('https://arthaserve-1.onrender.com/products');
       const products = response.data.products;
       const product = products.find(p => p.id === Number(Id));
 
@@ -66,7 +66,7 @@ export const addProductToCart = createAsyncThunk(
       }
 
       const newItem = {
-        id: product.id,
+        id: String(product.id), // ✅ Ensure id is string
         name: product.text,
         price: parseFloat(product.amount.replace("$", "")),
         image: product.image,
@@ -79,7 +79,7 @@ export const addProductToCart = createAsyncThunk(
 
       if (cartSnap.exists()) {
         const items = cartSnap.data().items;
-        const existing = items.find(i => i.id === newItem.id);
+        const existing = items.find(i => String(i.id) === newItem.id);
         if (existing) {
           existing.quantity += newItem.quantity;
         } else {
@@ -125,7 +125,7 @@ export const removeFromCart = createAsyncThunk(
 
     if (cartSnap.exists()) {
       let items = cartSnap.data().items;
-      items = items.filter(i => i.id !== id);
+      items = items.filter(i => String(i.id) !== String(id)); // ✅ Convert to string for comparison
       await setDoc(cartRef, { items });
       return id;
     }
@@ -147,7 +147,7 @@ export const updateQuantity = createAsyncThunk(
 
     if (cartSnap.exists()) {
       let items = cartSnap.data().items;
-      const item = items.find(i => i.id === id);
+      const item = items.find(i => String(i.id) === String(id));
       if (item) {
         item.quantity = quantity;
         await setDoc(cartRef, { items });
@@ -173,7 +173,7 @@ const cartSlice = createSlice({
         state.cartItems = action.payload;
       })
       .addCase(addProductToCart.fulfilled, (state, action) => {
-        const existingItem = state.cartItems.find(item => item.id === action.payload.id);
+        const existingItem = state.cartItems.find(item => String(item.id) === String(action.payload.id));
         if (existingItem) {
           existingItem.quantity += action.payload.quantity;
         } else {
@@ -181,11 +181,11 @@ const cartSlice = createSlice({
         }
       })
       .addCase(removeFromCart.fulfilled, (state, action) => {
-        state.cartItems = state.cartItems.filter(item => item.id !== action.payload);
+        state.cartItems = state.cartItems.filter(item => String(item.id) !== String(action.payload));
       })
       .addCase(updateQuantity.fulfilled, (state, action) => {
         const { id, quantity } = action.payload;
-        const item = state.cartItems.find(i => i.id === id);
+        const item = state.cartItems.find(i => String(i.id) === String(id));
         if (item) item.quantity = quantity;
       })
       .addMatcher(
@@ -196,10 +196,38 @@ const cartSlice = createSlice({
       );
   }
 });
+export const clearCartInFirestore = createAsyncThunk(
+  'cart/clearCartInFirestore',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const user = state.auth.user;
+    if (!user) throw new Error('User not logged in');
+
+    try {
+      const cartRef = doc(db, "carts", user.uid);
+      await setDoc(cartRef, { items: [] });
+
+      // Dispatch clearCart reducer to clear Redux state
+      thunkAPI.dispatch(cartSlice.actions.clearCart());
+
+      thunkAPI.dispatch(uiActions.showNotification({
+        open: true,
+        message: 'Cart cleared successfully!',
+        type: 'success',
+      }));
+
+      return [];
+
+    } catch (error) {
+      thunkAPI.dispatch(uiActions.showNotification({
+        open: true,
+        message: 'Failed to clear cart.',
+        type: 'error',
+      }));
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 export const { clearCart } = cartSlice.actions;
-
-
-
-
 export default cartSlice.reducer;

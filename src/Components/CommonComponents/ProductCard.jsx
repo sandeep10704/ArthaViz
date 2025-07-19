@@ -28,7 +28,17 @@ const ProductCard = ({ data }) => {
   const handleCardClick = () => {
     navigate(`/shop/${data.id}`); 
   };
+let text = data.text.trim();
+let words = text.split(/\s+/);
+let tilte = '';
 
+for (let word of words) {
+  if ((tilte + ' ' + word).trim().length <= 10) {
+    tilte = (tilte+ ' ' + word).trim();
+  } else {
+    break;
+  }
+}
   return (
     <Box
       onClick={handleCardClick} 
@@ -83,7 +93,7 @@ const ProductCard = ({ data }) => {
             textTransform: "capitalize",
           }}
         >
-          {data.text}
+          {tilte}
         </Typography>
 
         <Typography

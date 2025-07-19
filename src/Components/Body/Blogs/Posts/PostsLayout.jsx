@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { Box, Grid } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+
 import SearchBox from '../../../CommonComponents/SearchBox';
 import Filters from '../../../CommonComponents/Filters';
 import PostsMenu from './Components/PostsMenu';
-import { useDispatch, useSelector } from 'react-redux';
+import LoadingScreen from '../../../CommonComponents/LoadingScreen';
+
 import {
   fetchPostData,
   updateSelectedFilters,
@@ -12,7 +15,7 @@ import {
 
 const PostsLayout = () => {
   const dispatch = useDispatch();
-  const { filters, selectedFilters } = useSelector((state) => state.posts);
+  const { filters, selectedFilters, status } = useSelector((state) => state.posts);
 
   useEffect(() => {
     dispatch(fetchPostData());
@@ -23,13 +26,32 @@ const PostsLayout = () => {
     dispatch(applyFilterAndPaginate(newFilters));
   };
 
+  if (status === "loading") {
+    return <LoadingScreen text="Loading posts..." />;
+  }
+
   return (
     <Box sx={{ flexGrow: 1, padding: '16px' }}>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={3} sx={{ order: { xs: 1, md: 1 }, display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <Grid
+          item
+          xs={12}
+          md={3}
+          sx={{
+            order: { xs: 1, md: 1 },
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '16px',
+          }}
+        >
           <SearchBox />
-          <Filters data={filters} selectedFilters={selectedFilters} onFilterChange={handleFilterChange} />
+          <Filters
+            data={filters}
+            selectedFilters={selectedFilters}
+            onFilterChange={handleFilterChange}
+          />
         </Grid>
+
         <Grid item xs={12} md={9} sx={{ order: { xs: 2, md: 2 } }}>
           <PostsMenu />
         </Grid>

@@ -24,7 +24,7 @@ const postsSlice = createSlice({
       pageCount: 1,
       totalPosts: 0,
     },
-    status: 'idle',
+    status: 'loading',
     error: null,
   },
   reducers: {
