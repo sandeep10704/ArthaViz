@@ -209,7 +209,7 @@ const authSlice = createSlice({
         } else {
           state.isLoggedIn = false;
           state.user = null;
-          state.userProfile = null; // Clear profile if no session
+          state.userProfile = null; 
         }
       })
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
@@ -222,12 +222,12 @@ const authSlice = createSlice({
         };
       })
 
-      // ✅ Use matchers to handle generic loading states for ALL thunks
+    
       .addMatcher(
         (action) => action.type.endsWith('/pending'),
         (state) => {
           state.status = 'loading';
-          state.error = null; // Clear previous errors
+          state.error = null; 
         }
       )
       .addMatcher(
@@ -240,7 +240,7 @@ const authSlice = createSlice({
         (action) => action.type.endsWith('/rejected'),
         (state, action) => {
           state.status = 'failed';
-          state.error = action.payload; // payload from rejectWithValue
+          state.error = action.payload; 
         }
       );
   },

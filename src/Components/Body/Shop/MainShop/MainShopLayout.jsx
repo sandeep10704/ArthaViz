@@ -17,9 +17,12 @@ const MainShopLayout = () => {
   const products = useSelector((state) => state.products);
   const { filters, selectedFilters, status } = products;
 
-  useEffect(() => {
+ useEffect(() => {
+  if (products.allProducts.length === 0) {
     dispatch(fetchProductData());
-  }, [dispatch]);
+  }
+}, [dispatch, products.allProducts.length]);
+
 
   if (status === "loading") {
     return <LoadingScreen />;

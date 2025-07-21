@@ -5,6 +5,7 @@ import Carousel from '../../CommonComponents/Carousel';
 import ReviewCard from './ReviewCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCustomerReviews } from '../../../store/CustomerReview-slice';
+import LoadingScreen from '../../CommonComponents/LoadingScreen'
 
 
 const CustomersReviews = () => {
@@ -18,7 +19,7 @@ const CustomersReviews = () => {
     dispatch(fetchCustomerReviews());
   }, [dispatch]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingScreen/>;
   if (error) return <p>Error: {error.message}</p>;
 
   // Decide number of items to show based on screen size

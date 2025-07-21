@@ -5,6 +5,7 @@ import ProductCard from '../../../CommonComponents/ProductCard';
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBestSelling } from "../../../../store/BestSellinga-slice";
+import LoadingScreen from '../../../CommonComponents/LoadingScreen'
 
 
 function BestSellingItems() {
@@ -16,7 +17,7 @@ function BestSellingItems() {
     dispatch(fetchBestSelling());
   }, [dispatch]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingScreen/>;
   if (error) return <p>Error: {error.message}</p>;
 
   const formattedPosts = posts.map((post) => ({

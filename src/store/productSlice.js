@@ -1,8 +1,7 @@
-
+// src/store/productSlice.js
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
 
 export const fetchProductData = createAsyncThunk(
   'products/fetchProductData',
@@ -20,6 +19,7 @@ const productSlice = createSlice({
     currentProducts: [],
     filters: [],
     selectedFilters: {},
+    sortBy: 'default', // ✅ sorting state
     pagination: {
       itemsPerPage: 12,
       currentPage: 1,
@@ -30,15 +30,14 @@ const productSlice = createSlice({
     error: null,
   },
   reducers: {
-    
     updateSelectedFilters: (state, action) => {
       state.selectedFilters = action.payload;
     },
 
-   
-    applyFilterAndPaginate: (state, action) => {
-      const selected = action.payload;
-      const filtered = state.allProducts.filter((product) => {
+    applyFilterAndPaginate: (state) => {
+      const selected = state.selectedFilters;
+
+      let filtered = state.allProducts.filter((product) => {
         const category = selected["Categories"] || [];
         const tags = selected["Tags"] || [];
         const brands = selected["Brands"] || [];
@@ -52,13 +51,36 @@ const productSlice = createSlice({
         return matchCategory && matchTags && matchBrand && matchPrice;
       });
 
+      // ✅ apply sorting
+      if (state.sortBy === 'price-low-high') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (state.sortBy === 'price-high-low') {
+        filtered.sort((a, b) => b.price - a.price);
+      }
+
       state.filteredProducts = filtered;
       state.pagination.pageCount = Math.ceil(filtered.length / state.pagination.itemsPerPage);
       state.pagination.currentPage = 1;
       state.currentProducts = filtered.slice(0, state.pagination.itemsPerPage);
     },
 
-  
+    setSortBy: (state, action) => {
+      state.sortBy = action.payload;
+
+      // Reapply sorting and pagination
+      let sorted = [...state.filteredProducts];
+      if (state.sortBy === 'price-low-high') {
+        sorted.sort((a, b) => a.price - b.price);
+      } else if (state.sortBy === 'price-high-low') {
+        sorted.sort((a, b) => b.price - a.price);
+      }
+
+      state.filteredProducts = sorted;
+      state.pagination.pageCount = Math.ceil(sorted.length / state.pagination.itemsPerPage);
+      state.pagination.currentPage = 1;
+      state.currentProducts = sorted.slice(0, state.pagination.itemsPerPage);
+    },
+
     setPage: (state, action) => {
       const newPage = action.payload;
       state.pagination.currentPage = newPage;
@@ -98,7 +120,8 @@ const productSlice = createSlice({
 export const {
   applyFilterAndPaginate,
   updateSelectedFilters,
-  setPage
+  setPage,
+  setSortBy, 
 } = productSlice.actions;
 
 export default productSlice.reducer;

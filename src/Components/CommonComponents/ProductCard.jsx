@@ -3,66 +3,63 @@ import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import '@fontsource/outfit/300.css';
 import ColorPalette from "../../Assets/ColorPalette";
 import { cardHoverStyle, imageHoverBoxStyle } from "../../Assets/CommonCss";
-import { useNavigate } from "react-router-dom"; // ✅ import useNavigate
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ data }) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const navigate = useNavigate(); // ✅ initialize navigate
+  const navigate = useNavigate();
 
-  const width = 205; 
+  const width = 205;
   const height = 230;
-  const imgWidth = 140;
   const imgHeight = 130;
-  const imgTop = 20;
-  const imgLeft =27;
-  const textTop = 150;
-  const textWidth = 292;
-  const textHeight = 61;
   const fontSize = 21;
   const gap = 9;
 
   const scale = isSmallScreen ? 0.5 : 1;
 
-
   const handleCardClick = () => {
-    navigate(`/shop/${data.id}`); 
+    navigate(`/shop/${data.id}`);
   };
-let text = data.text.trim();
-let words = text.split(/\s+/);
-let tilte = '';
 
-for (let word of words) {
-  if ((tilte + ' ' + word).trim().length <= 10) {
-    tilte = (tilte+ ' ' + word).trim();
-  } else {
-    break;
+  let text = data.text.trim();
+  let words = text.split(/\s+/);
+  let title = '';
+
+  for (let word of words) {
+    if ((title + ' ' + word).trim().length <= 10) {
+      title = (title + ' ' + word).trim();
+    } else {
+      break;
+    }
   }
-}
+
   return (
     <Box
-      onClick={handleCardClick} 
+      onClick={handleCardClick}
       sx={{
-        position: "relative",
         width: `${width * scale}px`,
         height: `${height * scale}px`,
         border: "1px solid #ccc",
         borderRadius: "8px",
         overflow: "hidden",
         cursor: "pointer",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        paddingTop: `${20 * scale}px`,
+        gap: `${gap * scale}px`,
         ...cardHoverStyle,
       }}
     >
-      <Box sx={{...imageHoverBoxStyle}}> 
+      <Box sx={{ ...imageHoverBoxStyle, display: "flex", justifyContent: "center" }}>
         <Box
           component="img"
           src={data.image}
           alt="Card Image"
           sx={{
-            position: "absolute",
-            top: `${imgTop * scale}px`,
-            left: `${imgLeft * scale}px`,
-            width: `${imgWidth * scale}px`,
+            width: "auto",
             height: `${imgHeight * scale}px`,
           }}
         />
@@ -70,16 +67,13 @@ for (let word of words) {
 
       <Box
         sx={{
-          position: "absolute",
-          top: `${textTop * scale}px`,
-          left: `${(width * scale - textWidth * scale) / 2}px`,
-          width: `${textWidth * scale}px`,
-          height: `${textHeight * scale}px`,
+          width: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           gap: `${gap * scale}px`,
+          paddingX: `${10 * scale}px`,
         }}
       >
         <Typography
@@ -93,7 +87,7 @@ for (let word of words) {
             textTransform: "capitalize",
           }}
         >
-          {tilte}
+          {title}
         </Typography>
 
         <Typography

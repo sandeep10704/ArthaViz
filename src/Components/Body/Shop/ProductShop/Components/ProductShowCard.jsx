@@ -48,7 +48,7 @@ const ProductShowCard = ({ product, Id }) => {
     }
   };
 
-  const baseMainImg = 500;
+  const baseMainImg = 495;
   const baseThumb = 110;
   const responsiveSize = (base) => ({
     xs: `${base * 0.6}px`,
@@ -104,13 +104,14 @@ const ProductShowCard = ({ product, Id }) => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
+                p:1,
               }}
             >
               <img
                 src={image}
                 alt={product.name}
                 style={{
-                  width: '100%',
+                  width: 'auto',
                   height: '100%',
                   objectFit: 'cover',
                 }}

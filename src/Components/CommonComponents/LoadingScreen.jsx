@@ -20,11 +20,11 @@ const LoadingDots = () => {
 };
 
 const dotStyle = (delay) => ({
-  width: 15,
-  height: 15,
+  width: 20,
+  height: 20,
   borderRadius: '50%',
   backgroundColor: ColorPalette.orangeline,
-  animation: `bounce 1s infinite`,
+  animation: `bounce 2s infinite`,
   animationDelay: `${delay}s`,
   '@keyframes bounce': {
     '0%, 80%, 100%': {
