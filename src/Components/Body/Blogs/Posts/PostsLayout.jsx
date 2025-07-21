@@ -40,16 +40,21 @@ const PostsLayout = () => {
           sx={{
             order: { xs: 1, md: 1 },
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: { xs: 'row', md: 'column' }, // row on small, column on medium+
             gap: '16px',
+            flexWrap: 'wrap', // wrap in case they overflow horizontally
           }}
         >
-          <SearchBox />
-          <Filters
-            data={filters}
-            selectedFilters={selectedFilters}
-            onFilterChange={handleFilterChange}
-          />
+          <Box sx={{ flex: 1 }}>
+            <SearchBox />
+          </Box>
+          <Box sx={{ flex: 1 }}>
+            <Filters
+              data={filters}
+              selectedFilters={selectedFilters}
+              onFilterChange={handleFilterChange}
+            />
+          </Box>
         </Grid>
 
         <Grid item xs={12} md={9} sx={{ order: { xs: 2, md: 2 } }}>
@@ -57,6 +62,7 @@ const PostsLayout = () => {
         </Grid>
       </Grid>
     </Box>
+
   );
 };
 
